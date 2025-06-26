@@ -16,12 +16,14 @@
     "node": ">=22.0.0"
   },
   "scripts": {
-    "dev": "pnpm -F @raykit/desktop dev",
+    "dev:web": "pnpm -F @raykit/desktop dev",
+    "dev:desktop": "pnpm tauri dev",
     "lint:fix": "eslint . --fix"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^4.14.1",
     "@dotenvx/dotenvx": "^1.44.1",
+    "@tauri-apps/cli": "^2.6.0",
     "@types/node": "^22.15.30",
     "eslint": "^9.29.0",
     "eslint-plugin-format": "^1.0.1",

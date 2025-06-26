@@ -1,5 +1,11 @@
 [workspace]
-members = ["crates/tauri","crates/schema"]
+members = [
+  "crates/tauri",
+  "crates/schema"
+]
 resolver = "2"
 
 [workspace.dependencies]
+serde = { version = "1", features = [ "derive" ] }
+anyhow = "1.0.98"
+serde_json = "1"
