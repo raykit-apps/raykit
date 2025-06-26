@@ -1,0 +1,15 @@
+[package]
+name = "raykit-tauri"
+version = "0.0.0"
+edition = "2021"
+authors = ["Raykit"]
+publish = false
+
+[lib]
+doctest = false
+crate-type = ["lib", "staticlib", "cdylib"]
+
+[[bin]]
+name = "raykit-tauri"
+path = "src/main.rs"
+test = false

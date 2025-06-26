@@ -1,0 +1,38 @@
+{
+  "name": "root",
+  "version": "0.0.0",
+  "private": true,
+  "author": {
+    "name": "raykit-apps",
+    "url": "https://github.com/raykit-apps"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/raykit-apps/raykit.git"
+  },
+  "engines": {
+    "pnpm": ">=10.0.0",
+    "node": ">=22.0.0"
+  },
+  "scripts": {
+    "dev": "pnpm -F @raykit/desktop dev",
+    "lint:fix": "eslint . --fix"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^4.14.1",
+    "@dotenvx/dotenvx": "^1.44.1",
+    "@types/node": "^22.15.30",
+    "eslint": "^9.29.0",
+    "eslint-plugin-format": "^1.0.1",
+    "eslint-plugin-svelte": "^3.9.3",
+    "typescript": "^5.8.3",
+    "vite": "^7.0.0",
+    "vitest": "^3.2.4"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*",
+    "extensions/*"
+  ]
+}
