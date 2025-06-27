@@ -2,6 +2,7 @@ import type { PluginOption } from 'vite'
 import { paraglideVitePlugin } from '@inlang/paraglide-js'
 import { sveltekit } from '@sveltejs/kit/vite'
 import autoprefixer from 'autoprefixer'
+import tailwindcss from 'tailwindcss'
 import { defineConfig } from 'vite'
 
 const host = process.env.TAURI_DEV_HOST
@@ -29,7 +30,7 @@ export default defineConfig({
   },
   css: {
     postcss: {
-      plugins: [autoprefixer()],
+      plugins: [tailwindcss, autoprefixer],
     },
   },
   build: {

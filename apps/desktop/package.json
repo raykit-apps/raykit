@@ -21,7 +21,8 @@
     "build": "vite build"
   },
   "dependencies": {
-    "@inlang/paraglide-js": "^2.0.0"
+    "@inlang/paraglide-js": "^2.0.0",
+    "@raykit/ui": "workspace:*"
   },
   "devDependencies": {
     "@sveltejs/adapter-static": "^3.0.8",

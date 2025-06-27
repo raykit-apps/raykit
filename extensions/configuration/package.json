@@ -16,7 +16,9 @@
     "pnpm": ">=10.0.0",
     "node": ">=22.0.0"
   },
-  "scripts": {},
+  "scripts": {
+    "build:extension": ""
+  },
   "dependencies": {
   },
   "devDependencies": {

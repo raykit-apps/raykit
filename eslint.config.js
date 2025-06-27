@@ -13,5 +13,10 @@ export default antfu(
       'n/prefer-global/process': 'off',
       'no-control-regex': 'off',
     },
+    ignores: [
+      '**/crates',
+      '**/paraglide',
+      // ...globs
+    ]
   },
 )

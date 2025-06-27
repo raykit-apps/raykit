@@ -1,10 +1,10 @@
 {
-  // 文本缩进
-  "editor.tabSize": 2,
   // Disable the default formatter, use eslint instead
   "[rust]": {
     "editor.tabSize": 4
   },
+  // 文本缩进
+  "editor.tabSize": 2,
   "prettier.enable": false,
   "editor.formatOnSave": false,
   // Auto fix

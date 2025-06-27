@@ -16,8 +16,11 @@
     "node": ">=22.0.0"
   },
   "scripts": {
-    "dev:web": "pnpm -F @raykit/desktop dev",
-    "dev:desktop": "pnpm tauri dev",
+    "dev": "pnpm tauri dev",
+    "dev:desktop": "pnpm -F @raykit/desktop dev",
+    "build": "",
+    "build:desktop": "pnpm -F @raykit/desktop build",
+    "build:extensions": "turbo run build:extension",
     "lint:fix": "eslint . --fix"
   },
   "devDependencies": {
@@ -28,6 +31,7 @@
     "eslint": "^9.29.0",
     "eslint-plugin-format": "^1.0.1",
     "eslint-plugin-svelte": "^3.9.3",
+    "turbo": "^2.5.4",
     "typescript": "^5.8.3",
     "vite": "^7.0.0",
     "vitest": "^3.2.4"

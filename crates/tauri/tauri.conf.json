@@ -4,9 +4,9 @@
   "version": "0.1.0",
   "identifier": "com.raykit-app.app",
   "build": {
-    "beforeDevCommand": "pnpm dev:web",
+    "beforeDevCommand": "pnpm dev:desktop",
     "devUrl": "http://localhost:4399",
-    "beforeBuildCommand": "pnpm build",
+    "beforeBuildCommand": "pnpm build:desktop",
     "frontendDist": "../../build"
   },
   "app": {
@@ -26,7 +26,7 @@
         "center": true,
         "transparent": true,
         "windowEffects": {
-          "effects": ["hudWindow", "acrylic", "mica"],
+          "effects": ["hudWindow", "acrylic", "micaLight"],
           "radius": 12
         }
       }
