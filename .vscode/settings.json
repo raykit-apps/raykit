@@ -1,12 +1,14 @@
 {
-  // Disable the default formatter, use eslint instead
   "[rust]": {
-    "editor.tabSize": 4
+    "editor.tabSize": 4,
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "rust-lang.rust-analyzer"
   },
   // 文本缩进
   "editor.tabSize": 2,
   "prettier.enable": false,
   "editor.formatOnSave": false,
+  // Disable the default formatter, use eslint instead
   // Auto fix
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit",

@@ -23,8 +23,10 @@
         "height": 450,
         "decorations": false,
         "hiddenTitle": true,
+        "skipTaskbar": true,
         "center": true,
         "transparent": true,
+        "visible": false,
         "windowEffects": {
           "effects": ["hudWindow", "acrylic", "micaLight"],
           "radius": 12

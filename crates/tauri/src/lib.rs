@@ -1,3 +1,5 @@
+mod system;
+
 // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
 #[tauri::command]
 fn greet(name: &str) -> String {
@@ -8,6 +10,7 @@ fn greet(name: &str) -> String {
 pub fn run() {
     tauri::Builder::default()
         .setup(|app| {
+            system::tray::create_tray(app.handle())?;
             // let effects = EffectsBuilder::new()
             //     .effects(vec![Effect::HudWindow,Effect::Acrylic, Effect::Blur])
             //     .radius(12.0)
