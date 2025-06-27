@@ -14,7 +14,7 @@
   <CommandPrimitive.Input
     data-slot='command-input'
     class={cn(
-      'placeholder:text-muted-foreground outline-hidden flex h-6 w-full bg-transparent text-xl disabled:cursor-not-allowed disabled:opacity-50',
+      'placeholder:text-muted-foreground focus:outline-none flex h-6 w-full bg-transparent text-xl disabled:cursor-not-allowed disabled:opacity-50',
       className,
     )}
     bind:ref

@@ -1,3 +1,4 @@
+mod core;
 mod system;
 
 // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
@@ -11,20 +12,11 @@ pub fn run() {
     tauri::Builder::default()
         .setup(|app| {
             system::tray::create_tray(app.handle())?;
-            // let effects = EffectsBuilder::new()
-            //     .effects(vec![Effect::HudWindow,Effect::Acrylic, Effect::Blur])
-            //     .radius(12.0)
-            //     .build();
 
-            // WebviewWindowBuilder::new(app, "main", WebviewUrl::default())
-            //     .title("Raykit")
-            //     .inner_size(800.0, 600.0)
-            //     .decorations(false)
-            //     .transparent(true)
-            //     .effects(effects)
-            //     .theme(Some(Theme::Dark))
-            //     .build()
-            //     .unwrap();
+            #[cfg(target_os = "macos")]
+            app.set_dock_visibility(false);
+
+            core::window::create(app.handle())?;
 
             Ok(())
         })

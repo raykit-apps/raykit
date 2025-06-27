@@ -13,26 +13,7 @@
     "macOSPrivateApi": true,
     "security": {
       "csp": null
-    },
-    "windows": [
-      {
-        "label": "main",
-        "title": "Raykit",
-        "url": "/app",
-        "width": 750,
-        "height": 450,
-        "decorations": false,
-        "hiddenTitle": true,
-        "skipTaskbar": true,
-        "center": true,
-        "transparent": true,
-        "visible": false,
-        "windowEffects": {
-          "effects": ["hudWindow", "acrylic", "micaLight"],
-          "radius": 12
-        }
-      }
-    ]
+    }
   },
   "bundle": {
     "active": true,

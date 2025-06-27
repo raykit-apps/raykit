@@ -1,14 +1,16 @@
 use tauri::{
-    menu::{ AboutMetadataBuilder, MenuBuilder, MenuItem}, tray::{MouseButton, MouseButtonState, TrayIconBuilder, TrayIconEvent}, Manager, Runtime
+    menu::{AboutMetadataBuilder, MenuBuilder, MenuItem},
+    tray::{MouseButton, MouseButtonState, TrayIconBuilder, TrayIconEvent},
+    Manager, Runtime,
 };
 
 pub fn create_tray<R: Runtime>(app: &tauri::AppHandle<R>) -> tauri::Result<()> {
-
     let about = AboutMetadataBuilder::new()
         .name(Some("Raykit"))
         .version(Some("0.0.1"))
         .authors(Some(vec!["raykit-apps".to_string()]))
         .license(Some("MIT"))
+        .icon(Some(app.default_window_icon().unwrap().clone()))
         .build();
 
     let menu = MenuBuilder::with_id(app, "tray-main")
@@ -40,9 +42,7 @@ pub fn create_tray<R: Runtime>(app: &tauri::AppHandle<R>) -> tauri::Result<()> {
                     let _ = window.set_focus();
                 }
             }
-            _ => {
-                println!("unhandled event {event:?}");
-            }
+            _ => (),
         })
         .on_menu_event(|app, event| match event.id.as_ref() {
             "issues" => {
