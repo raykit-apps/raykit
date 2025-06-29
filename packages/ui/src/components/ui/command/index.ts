@@ -8,7 +8,6 @@ import Input from './command-input.svelte'
 import Item from './command-item.svelte'
 import LinkItem from './command-link-item.svelte'
 import List from './command-list.svelte'
-import Search from './command-search.svelte'
 import Separator from './command-separator.svelte'
 import Shortcut from './command-shortcut.svelte'
 import Root from './command.svelte'
@@ -27,7 +26,6 @@ export {
   LinkItem as CommandLinkItem,
   List as CommandList,
   Loading as CommandLoading,
-  Search as CommandSearch,
   Separator as CommandSeparator,
   Shortcut as CommandShortcut,
   Dialog,
@@ -40,7 +38,6 @@ export {
   List,
   Loading,
   Root,
-  Search,
   Separator,
   Shortcut,
 }
