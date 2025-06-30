@@ -11,15 +11,14 @@ pub fn create(handle: &tauri::AppHandle) -> tauri::Result<tauri::WebviewWindow> 
     let window = tauri::WebviewWindowBuilder::new(handle, "main", tauri::WebviewUrl::App("/app".into()))
         .resizable(true)
         .title("Raykit")
-        .min_inner_size(400.0, 450.0)
-        .inner_size(750.0, 550.0)
+        .min_inner_size(400.0, 400.0)
+        .inner_size(750.0, 475.0)
         .center()
         .transparent(true)
         .visible(false)
         .decorations(false)
         .skip_taskbar(true)
         .effects(effects)
-        .theme(Some(tauri::Theme::Dark))
         .build()?;
 
     Ok(window)

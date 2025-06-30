@@ -4,23 +4,23 @@
   import * as Command from '@raykit/ui/command'
 
   interface CoustomFooterProps {
-    info?: {
-      logo: string
-      name: string
+    extension?: {
+      displayName: string
+      icon: string
     }
   }
 
-  const { info }: CoustomFooterProps = $props()
+  const { extension }: CoustomFooterProps = $props()
 </script>
 
 <Command.Footer class='h-10 border px-3'>
   {#snippet prefix()}
     <div class='h-5 flex justify-center items-center gap-2'>
       <Avatar.Root class='size-5 rounded-sm'>
-        <Avatar.AvatarImage src={info?.logo ?? '/favicon.png'} alt={`${info?.name} Logo`} />
+        <Avatar.AvatarImage src={extension?.icon ?? '/favicon.png'} alt={`${extension?.displayName} Logo`} />
         <Avatar.AvatarFallback>R</Avatar.AvatarFallback>
       </Avatar.Root>
-      <span class='text-xs'>{info?.name ?? 'Raykit'}</span>
+      <span class='text-xs'>{extension?.displayName ?? 'Raykit'}</span>
     </div>
   {/snippet}
   {#snippet suffix()}

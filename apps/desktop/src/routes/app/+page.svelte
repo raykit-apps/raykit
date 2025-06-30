@@ -1,21 +1,59 @@
 <script lang='ts'>
-  import { goto } from '$app/navigation'
+  import type { CustomGroupOptions } from '$lib/components/command'
+  import { CustomGroup } from '$lib/components/command'
   import * as Command from '@raykit/ui/command'
+
+  const suggestionsOptions: CustomGroupOptions[] = [
+    {
+      command: 'raykit.settings',
+      title: '设置',
+      subtitle: 'Raykit',
+      icon: '/favicon.png',
+      shortcut: 'Command',
+    },
+    {
+      command: 'raykit.clipboard',
+      title: '剪切板',
+      subtitle: 'Raykit',
+      icon: '/favicon.png',
+      shortcut: 'Command',
+    },
+    {
+      command: 'raykit.calendar',
+      title: '计算器',
+      subtitle: 'Raykit',
+      icon: '/favicon.png',
+      shortcut: 'Command',
+    },
+  ]
+
+  const commandsOptions = [
+    {
+      command: 'raykit.open',
+      title: '百度搜索',
+      subtitle: 'Raykit',
+      icon: '/favicon.png',
+      shortcut: 'Command',
+    },
+    {
+      command: 'raykit.bing',
+      title: '谷歌搜索',
+      subtitle: 'Raykit',
+      icon: '/favicon.png',
+      shortcut: 'Command',
+    },
+    {
+      command: 'raykit.vscode',
+      title: '打开vscode',
+      subtitle: 'Raykit',
+      icon: '/favicon.png',
+      shortcut: 'Command',
+    },
+  ]
 </script>
 
 <Command.List class='max-h-full'>
   <Command.Empty>No results found.</Command.Empty>
-  <Command.Group heading='最佳匹配' class='p-2'>
-    <Command.Item class='h-10 rounded-lg' onclick={() => goto('app/extension/grid')}>Grid模版</Command.Item>
-    <Command.Item class='h-10 rounded-lg' onclick={() => goto('app/extension/list')}>List模版</Command.Item>
-    <Command.Item class='h-10 rounded-lg' onclick={() => goto('app/extension/black')}>空白模版</Command.Item>
-  </Command.Group>
-  <Command.Group heading='推荐搜索' class='p-2'>
-    <Command.Item class='h-10 rounded-lg'>Test4</Command.Item>
-    <Command.Item class='h-10 rounded-lg'>Test5</Command.Item>
-    <Command.Item class='h-10 rounded-lg'>Test6</Command.Item>
-    <Command.Item class='h-10 rounded-lg'>Test7</Command.Item>
-    <Command.Item class='h-10 rounded-lg'>Test8</Command.Item>
-    <Command.Item class='h-10 rounded-lg'>Test9</Command.Item>
-  </Command.Group>
+  <CustomGroup heading='最佳匹配' options={suggestionsOptions} />
+  <CustomGroup heading='命令' options={commandsOptions} />
 </Command.List>
