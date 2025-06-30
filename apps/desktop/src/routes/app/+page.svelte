@@ -1,7 +1,7 @@
 <script lang='ts'>
   import type { CustomGroupOptions } from '$lib/components/command'
   import { CustomGroup } from '$lib/components/command'
-  import * as Command from '@raykit/ui/command'
+  import { Command } from '@raykit/ui'
 
   const suggestionsOptions: CustomGroupOptions[] = [
     {

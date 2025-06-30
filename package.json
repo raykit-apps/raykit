@@ -19,6 +19,7 @@
     "dev": "pnpm tauri dev",
     "dev:desktop": "pnpm -F @raykit/desktop dev",
     "build": "",
+    "build:ui": "pnpm -F @raykit/ui build",
     "build:desktop": "pnpm -F @raykit/desktop build",
     "build:extensions": "turbo run build:extension",
     "lint:fix": "eslint . --fix"

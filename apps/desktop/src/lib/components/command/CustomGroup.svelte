@@ -1,7 +1,6 @@
 <script lang='ts'>
   import { goto } from '$app/navigation'
-  import * as Avatar from '@raykit/ui/avatar'
-  import * as Command from '@raykit/ui/command'
+  import { Avatar, Command } from '@raykit/ui'
 
   export interface CustomGroupOptions {
     command: string

@@ -1,7 +1,5 @@
 <script lang='ts'>
-  import * as Avatar from '@raykit/ui/avatar'
-  import { Button } from '@raykit/ui/button'
-  import * as Command from '@raykit/ui/command'
+  import { Avatar, Button, Command } from '@raykit/ui'
 
   interface CoustomFooterProps {
     extension?: {

@@ -1,7 +1,6 @@
 <script lang='ts'>
   import { CustomFooter, CustomHeading } from '$lib/components/command'
-  import * as Command from '@raykit/ui/command'
-  import { ScrollArea } from '@raykit/ui/scroll-area'
+  import { Command, ScrollArea } from '@raykit/ui'
 
   const { children } = $props()
 </script>
