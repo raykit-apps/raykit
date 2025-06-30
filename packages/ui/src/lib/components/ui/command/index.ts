@@ -4,6 +4,7 @@ import Dialog from './command-dialog.svelte'
 import Empty from './command-empty.svelte'
 import Footer from './command-footer.svelte'
 import Group from './command-group.svelte'
+import Heading from './command-heading.svelte'
 import Input from './command-input.svelte'
 import Item from './command-item.svelte'
 import LinkItem from './command-link-item.svelte'
@@ -21,6 +22,7 @@ export {
   Empty as CommandEmpty,
   Footer as CommandFooter,
   Group as CommandGroup,
+  Heading as CommandHeading,
   Input as CommandInput,
   Item as CommandItem,
   LinkItem as CommandLinkItem,
@@ -32,6 +34,7 @@ export {
   Empty,
   Footer,
   Group,
+  Heading,
   Input,
   Item,
   LinkItem,
