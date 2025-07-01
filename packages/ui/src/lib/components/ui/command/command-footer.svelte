@@ -13,7 +13,7 @@
   const { class: className, prefix, suffix }: CommandFooterProps = $props()
 </script>
 
-<div class={cn('h-9 border-t flex items-center justify-between', className)} data-slot='command-footer-wrapper'>
+<div class={cn('h-10 border px-3 flex items-center justify-between', className)} data-slot='command-footer-wrapper'>
   {@render prefix?.()}
   {@render suffix?.()}
 </div>

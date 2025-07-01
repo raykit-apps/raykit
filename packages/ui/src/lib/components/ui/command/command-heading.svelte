@@ -1,30 +1,25 @@
-<script lang='ts' module>
+<script lang='ts'>
+  import type { Snippet } from 'svelte'
+  import { cn } from '@raykit/ui'
   import { Command as CommandPrimitive } from 'bits-ui'
 
-  export interface CommandHeadingProps extends CommandPrimitive.InputProps {
-    showBackBtn?: boolean
+  type CommandHeadingProps = CommandPrimitive.InputProps & {
+    prefix?: Snippet
+    suffix?: Snippet
   }
-</script>
-
-<script lang='ts'>
-  import ArrowLeft from '@lucide/svelte/icons/arrow-left'
-  import { cn } from '@raykit/ui'
 
   let {
     ref = $bindable(null),
-    showBackBtn = false,
     class: className,
     value = $bindable(''),
+    prefix,
+    suffix,
     ...restProps
   }: CommandHeadingProps = $props()
 </script>
 
 <div class='h-14 flex items-center border-b gap-2 px-4' data-slot='command-search-wrapper'>
-  {#if showBackBtn}
-    <div class='size-6 rounded-md bg-border flex justify-center items-center'>
-      <ArrowLeft class='size-4' />
-    </div>
-  {/if}
+  {@render prefix?.()}
   <CommandPrimitive.Input
     data-slot='command-input'
     class={cn(
@@ -35,5 +30,5 @@
     {...restProps}
     bind:value
   />
-  <div></div>
+  {@render suffix?.()}
 </div>
