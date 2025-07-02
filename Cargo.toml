@@ -5,6 +5,13 @@ members = [
 ]
 resolver = "2"
 
+[workspace.package]
+authors = [ "raykit-apps" ]
+homepage = "https://github.com/raykit-apps/raykit"
+repository = "https://github.com/raykit-apps/raykit"
+license = "MIT"
+edition = "2021"
+
 [workspace.dependencies]
 serde = { version = "1", features = [ "derive" ] }
 anyhow = "1.0.98"

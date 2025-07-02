@@ -12,11 +12,12 @@ export default antfu(
       'no-console': 'off',
       'n/prefer-global/process': 'off',
       'no-control-regex': 'off',
+      'toml/padding-line-between-pairs': 'off',
     },
     ignores: [
       '**/crates',
       '**/paraglide',
       // ...globs
-    ]
+    ],
   },
 )
