@@ -4,6 +4,8 @@ use schemars::JsonSchema;
 use semver::Version;
 use serde::{Deserialize, Serialize};
 
+use crate::contributes::Contributes;
+
 #[derive(Debug, Clone, Deserialize, Serialize, JsonSchema)]
 pub struct Manifest {
     /// The name of the extension - should be all lowercase with no spaces.
@@ -37,7 +39,7 @@ pub struct Manifest {
     /// The entry point to your extension.
     pub main: String,
     /// An object describing the extension's contributions.
-    pub contributes: String,
+    pub contributes: Contributes,
     /// An array of the activation events for this extension.
     pub activation_events: Vec<String>,
     /// Any runtime Node.js dependencies your extensions needs. Exactly the same as npm's dependencies.
