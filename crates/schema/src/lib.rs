@@ -1,2 +1,2 @@
-pub mod contributes;
+pub mod contribute;
 pub mod manifest;

@@ -4,7 +4,7 @@ use schemars::JsonSchema;
 use semver::Version;
 use serde::{Deserialize, Serialize};
 
-use crate::contributes::Contributes;
+use crate::contribute::Contributes;
 
 #[derive(Debug, Clone, Deserialize, Serialize, JsonSchema)]
 pub struct Manifest {
