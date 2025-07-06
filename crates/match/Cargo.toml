@@ -10,3 +10,11 @@ license.workspace = true
 edition.workspace = true
 
 [dependencies]
+serde = { workspace = true }
+serde_json = { workspace = true }
+regex = "1.10"
+thiserror = "1.0"
+
+[[test]]
+name = "match"
+path = "tests/mod.rs"
