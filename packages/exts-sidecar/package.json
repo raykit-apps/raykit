@@ -17,10 +17,14 @@
     "node": ">=22.0.0"
   },
   "scripts": {
-    "build": "tsx ./scripts/build.ts"
+    "build": "tsx ./scripts/build.ts",
+    "build:all": "tsx ./scripts/build.ts --all-platforms",
+    "test": "tsx ./scripts/build.ts --test"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
+    "@types/node": "^20.0.0",
+    "postject": "^1.0.0-alpha.6",
+    "tsx": "^4.0.0"
   }
 }
