@@ -6,6 +6,8 @@ use serde::{Deserialize, Serialize};
 
 use crate::contribute::Contributes;
 
+pub mod contribute;
+
 #[derive(Debug, Clone, Deserialize, Serialize, JsonSchema)]
 pub struct Manifest {
     /// The name of the extension - should be all lowercase with no spaces.

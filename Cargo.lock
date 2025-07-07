@@ -2870,17 +2870,11 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "20675572f6f24e9e76ef639bc5552774ed45f1c30e2951e1e99c59888861c539"
 
 [[package]]
-name = "raykit-match"
+name = "raykit-extension"
 version = "0.0.0"
-dependencies = [
- "regex",
- "serde",
- "serde_json",
- "thiserror 1.0.69",
-]
 
 [[package]]
-name = "raykit-schema"
+name = "raykit-manifest"
 version = "0.0.0"
 dependencies = [
  "schemars 1.0.3",
@@ -2888,6 +2882,16 @@ dependencies = [
  "serde",
  "serde_json",
  "url",
+]
+
+[[package]]
+name = "raykit-match"
+version = "0.0.0"
+dependencies = [
+ "regex",
+ "serde",
+ "serde_json",
+ "thiserror 1.0.69",
 ]
 
 [[package]]

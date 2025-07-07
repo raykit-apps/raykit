@@ -1,5 +1,5 @@
 [package]
-name = "raykit-schema"
+name = "raykit-manifest"
 version = "0.0.0"
 publish = false
 readme = "README.md"
