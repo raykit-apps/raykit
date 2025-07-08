@@ -108,15 +108,9 @@ importers:
 
   packages/exts-sidecar:
     devDependencies:
-      '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.4
       postject:
         specifier: ^1.0.0-alpha.6
         version: 1.0.0-alpha.6
-      tsx:
-        specifier: ^4.0.0
-        version: 4.20.3
 
   packages/ui:
     dependencies:
@@ -888,9 +882,6 @@ packages:
 
   '@types/ms@2.1.0':
     resolution: {integrity: sha512-GsCCIZDE/p3i96vtEqx+7dBUGXrc7zeSK3wwPHIaRThS+9OhWIXRqzs4d6k1SVU8g91DrNRWxWUGhp5KXQb2VA==}
-
-  '@types/node@20.19.4':
-    resolution: {integrity: sha512-OP+We5WV8Xnbuvw0zC2m4qfB/BJvjyCwtNjhHdJxV1639SGSKrLmJkc3fMnp2Qy8nJyHp8RO6umxELN/dS1/EA==}
 
   '@types/node@22.15.33':
     resolution: {integrity: sha512-wzoocdnnpSxZ+6CjW4ADCK1jVmd1S/J3ArNWfn8FDDQtRm8dkDg7TA+mvek2wNrfCgwuZxqEOiB9B1XCJ6+dbw==}
@@ -3504,10 +3495,6 @@ snapshots:
       '@types/unist': 3.0.3
 
   '@types/ms@2.1.0': {}
-
-  '@types/node@20.19.4':
-    dependencies:
-      undici-types: 6.21.0
 
   '@types/node@22.15.33':
     dependencies:
