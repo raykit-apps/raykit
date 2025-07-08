@@ -106,11 +106,13 @@ importers:
 
   packages/api: {}
 
-  packages/exts-sidecar:
+  packages/extensions:
     devDependencies:
       postject:
         specifier: ^1.0.0-alpha.6
         version: 1.0.0-alpha.6
+
+  packages/server: {}
 
   packages/ui:
     dependencies:

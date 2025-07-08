@@ -15,6 +15,9 @@ crate-type = [
 
 [build-dependencies]
 tauri-build = { version = "2.3.0", features = [] }
+flate2 = "1.1.2"
+tar = "0.4.44"
+zip = "4.2.0"
 
 [dependencies]
 tauri = { version = "2.6.1", features = [
