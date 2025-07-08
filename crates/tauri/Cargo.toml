@@ -28,3 +28,4 @@ tauri = { version = "2.6.1", features = [
 tauri-plugin-opener = "2.4.0"
 serde = { workspace = true }
 serde_json = { workspace = true }
+tauri-plugin-shell = "2.3.0"
