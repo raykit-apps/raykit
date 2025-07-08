@@ -7,7 +7,6 @@ publish = false
 
 [lib]
 doctest = false
-name = "raykit_lib"
 crate-type = [
   "lib",
   "staticlib",
