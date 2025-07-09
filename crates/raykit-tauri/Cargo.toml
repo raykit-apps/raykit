@@ -20,6 +20,10 @@ tar = "0.4.44"
 zip = "4.2.0"
 
 [dependencies]
+tokio = { workspace = true, features = [
+  "rt-multi-thread",
+  "parking_lot"
+] }
 tauri = { version = "2.6.1", features = [
   "macos-private-api",
   "image-png",
