@@ -2,6 +2,7 @@
   "name": "root",
   "version": "0.0.0",
   "private": true,
+  "packageManager": "pnpm@10.0.0",
   "author": {
     "name": "raykit-apps",
     "url": "https://github.com/raykit-apps"
@@ -16,12 +17,13 @@
     "node": ">=22.0.0"
   },
   "scripts": {
-    "dev": "pnpm tauri dev",
+    "dev": "build:packages && pnpm tauri dev",
     "dev:desktop": "pnpm -F @raykit/desktop dev",
-    "build": "",
-    "build:ui": "pnpm -F @raykit/ui build",
+    "build": "turbo run build",
+    "build:all": "turbo run build --filter='./{packages,extensions}/*'",
+    "build:packages": "turbo run build --filter='./packages/*'",
     "build:desktop": "pnpm -F @raykit/desktop build",
-    "build:extensions": "turbo run build:extension",
+    "build:extensions": "turbo run build --filter='./extensions/*'",
     "lint:fix": "eslint . --fix"
   },
   "devDependencies": {
