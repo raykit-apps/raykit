@@ -1,7 +1,37 @@
 <script lang='ts'>
+  import type { ActionPanelGroupOption } from '@raykit/ui'
   import { ActionPanel, Avatar, Button, Command, ScrollArea } from '@raykit/ui'
 
   const { children } = $props()
+
+  const groups: ActionPanelGroupOption[] = [
+    {
+      options: [
+        {
+          command: 'raykit.settings',
+          title: '设置',
+          icon: '/favicon.png',
+          shortcut: 'Command',
+        },
+      ],
+    },
+    {
+      options: [
+        {
+          command: 'raykit.share',
+          title: '共享',
+          icon: '/favicon.png',
+          shortcut: 'Command',
+        },
+        {
+          command: 'raykit.clipboard',
+          title: '复制',
+          icon: '/favicon.png',
+          shortcut: 'Command',
+        },
+      ],
+    },
+  ]
 </script>
 
 <Command.Root class='h-screen rounded-xl' shouldFilter={false} loop>
@@ -30,7 +60,7 @@
           </div>
         </Button>
         <div class='w-[2px] h-3 rounded-sm bg-border'></div>
-        <ActionPanel>
+        <ActionPanel groups={groups}>
           <Button variant='ghost' class='h-7 p-1 pl-2'>
             菜单
             <div class='flex gap-[2px]'>

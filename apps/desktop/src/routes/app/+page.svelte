@@ -1,8 +1,8 @@
 <script lang='ts'>
-  import type { CommandGroupItem } from '@raykit/ui'
+  import type { CommandGroupOption } from '@raykit/ui'
   import { Command } from '@raykit/ui'
 
-  const groups: CommandGroupItem[] = [
+  const groups: CommandGroupOption[] = [
     {
       heading: '最佳匹配',
       options: [

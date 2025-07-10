@@ -20,11 +20,12 @@
     "dev": "pnpm build:packages && pnpm tauri dev",
     "dev:desktop": "pnpm -F @raykit/desktop dev",
     "build": "turbo run build",
-    "build:all": "turbo run build --filter='./{packages,extensions}/*'",
-    "build:packages": "turbo run build --filter='./packages/*'",
+    "build:all": "turbo run build:all",
     "build:desktop": "pnpm -F @raykit/desktop build",
-    "build:extensions": "turbo run build --filter='./extensions/*'",
-    "lint:fix": "eslint . --fix"
+    "build:packages": "turbo run build:package",
+    "build:extensions": "turbo run build:extension",
+    "lint:fix": "eslint . --fix",
+    "postinstall": "pnpm build:all"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^4.14.1",

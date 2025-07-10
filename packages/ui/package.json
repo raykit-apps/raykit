@@ -32,7 +32,7 @@
     "node": ">=22.0.0"
   },
   "scripts": {
-    "build": "pnpm package",
+    "build:package": "pnpm package",
     "package": "svelte-kit sync && svelte-package && publint"
   },
   "peerDependencies": {

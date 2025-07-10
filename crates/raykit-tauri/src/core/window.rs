@@ -1,11 +1,7 @@
 #[cfg(not(target_os = "macos"))]
 pub fn create(handle: &tauri::AppHandle) -> tauri::Result<tauri::WebviewWindow> {
     let effects = tauri::window::EffectsBuilder::new()
-        .effects(vec![
-            tauri::window::Effect::Mica,
-            tauri::window::Effect::Acrylic,
-            tauri::window::Effect::Blur,
-        ])
+        .effects(vec![tauri::window::Effect::Mica])
         .build();
 
     let window = tauri::WebviewWindowBuilder::new(handle, "main", tauri::WebviewUrl::App("/app".into()))

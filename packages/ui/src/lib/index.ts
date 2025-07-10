@@ -1,4 +1,5 @@
 export { ActionPanel } from '$lib/components/ui/action-panel/index.js'
+export type { ActionPanelGroupItem, ActionPanelGroupOption, ActionPanelProps } from '$lib/components/ui/action-panel/index.js'
 export * as Avatar from '$lib/components/ui/avatar/index.js'
 export { Button } from '$lib/components/ui/button/index.js'
 export * as Command from '$lib/components/ui/command/index.js'

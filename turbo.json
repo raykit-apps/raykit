@@ -1,8 +1,14 @@
 {
   "$schema": "https://turborepo.org/schema.json",
   "tasks": {
-    "build": {
-      "dependsOn": ["^build"]
+    "build:package": {
+      "dependsOn": ["^build:package"]
+    },
+    "build:extension": {
+      "dependsOn": ["^build:extension"]
+    },
+    "build:all": {
+      "dependsOn": ["^build:package", "^build:extension"]
     },
     "dev": {
       "dependsOn": ["^build"]

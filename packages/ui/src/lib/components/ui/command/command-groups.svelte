@@ -2,7 +2,7 @@
 
   import { Command as CommandPrimitive, useId } from 'bits-ui'
 
-  export interface CommandGroupOption {
+  export interface CommandGroupItem {
     command: string
     icon?: string
     title: string
@@ -10,15 +10,15 @@
     shortcut?: string
   }
 
-  export interface CommandGroupItem {
+  export interface CommandGroupOption {
     heading?: string
     itemClass?: string
-    options: CommandGroupOption[]
+    options: CommandGroupItem[]
   }
 
   export interface CommandGroupsProps {
     layout?: 'list' | 'grid'
-    groups: CommandGroupItem[]
+    groups: CommandGroupOption[]
     class?: string
     onclick?: () => {}
   }
