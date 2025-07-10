@@ -1,5 +1,5 @@
 <script lang='ts'>
-  import { Avatar, Button, Command, ScrollArea } from '@raykit/ui'
+  import { ActionPanel, Avatar, Button, Command, ScrollArea } from '@raykit/ui'
 
   const { children } = $props()
 </script>
@@ -30,13 +30,15 @@
           </div>
         </Button>
         <div class='w-[2px] h-3 rounded-sm bg-border'></div>
-        <Button variant='ghost' class='h-7 p-1 pl-2'>
-          菜单
-          <div class='flex gap-[2px]'>
-            <div class='h-5 w-6 flex items-center justify-center p-1 rounded-sm bg-border text-xs'>⌘</div>
-            <div class='h-5 w-6 flex items-center justify-center p-1 rounded-sm bg-border text-xs'>K</div>
-          </div>
-        </Button>
+        <ActionPanel>
+          <Button variant='ghost' class='h-7 p-1 pl-2'>
+            菜单
+            <div class='flex gap-[2px]'>
+              <div class='h-5 w-6 flex items-center justify-center p-1 rounded-sm bg-border text-xs'>⌘</div>
+              <div class='h-5 w-6 flex items-center justify-center p-1 rounded-sm bg-border text-xs'>K</div>
+            </div>
+          </Button>
+        </ActionPanel>
       </div>
     {/snippet}
   </Command.Footer>

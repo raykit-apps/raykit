@@ -17,7 +17,7 @@
     "node": ">=22.0.0"
   },
   "scripts": {
-    "dev": "build:packages && pnpm tauri dev",
+    "dev": "pnpm build:packages && pnpm tauri dev",
     "dev:desktop": "pnpm -F @raykit/desktop dev",
     "build": "turbo run build",
     "build:all": "turbo run build --filter='./{packages,extensions}/*'",
