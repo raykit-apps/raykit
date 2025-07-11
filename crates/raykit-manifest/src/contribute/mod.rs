@@ -1,19 +1,23 @@
+use crate::contribute::keybinding::Keybinding;
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
+
+pub mod keybinding;
 
 /// 注册command命令
 #[derive(Debug, Clone, Deserialize, Serialize, JsonSchema)]
 pub struct Command {
-    /// 命令ID
+    /// command id
     pub command: String,
-    /// 命令被搜索时显示的名称
+    /// The display name of the command will be shown to users in the preferences interface and Raykit's root search function.
     pub title: String,
-    /// 命令副标题
+    /// The optional subtitle of the command in the root search.
     pub subtitle: Option<String>,
-    /// 扩展描述，在设置中显示
+    /// It helps users understand what the command does. This information will be displayed in the preferences.
     pub description: String,
     /// 命令图标建议使用svg
     /// 默认为扩展icon
+    #[schemars(pattern(r"\.(png|svg|jpg)$"))]
     pub icon: Option<String>,
 }
 
@@ -24,10 +28,6 @@ pub struct Command {
 ///     "palettes": [
 ///       {
 ///         "command": "myExtension.sayHello",
-///         "when": {
-///           rule: "text == *",
-///           lens: [1,1]
-///         }
 ///       }
 ///     ]
 ///   }
@@ -46,9 +46,6 @@ pub struct Palette {
 pub struct Preference {
     pub title: String,
 }
-
-#[derive(Debug, Clone, Deserialize, Serialize, JsonSchema)]
-pub struct Keybinding {}
 
 #[derive(Debug, Clone, Deserialize, Serialize, JsonSchema)]
 pub struct View {

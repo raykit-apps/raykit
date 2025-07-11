@@ -14,6 +14,7 @@ pub struct Manifest {
     /// The name must be unique to the Marketplace.
     /// ## Example
     /// raykit-clipboard
+    #[schemars(title = "", description = "")]
     pub name: String,
     /// SemVer compatible version.
     pub version: Version,
