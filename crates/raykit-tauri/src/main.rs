@@ -3,6 +3,8 @@
 
 use tauri::generate_context;
 
+use raykit_tauri::core;
+
 fn main() {
     let tauri_context = generate_context!();
 
@@ -23,7 +25,10 @@ fn main() {
                 })
                 .plugin(tauri_plugin_opener::init())
                 .plugin(tauri_plugin_shell::init())
-                .invoke_handler(tauri::generate_handler![]);
+                .invoke_handler(tauri::generate_handler![
+                    core::commands::search_commands,
+                    core::commands::execute_command
+                ]);
 
             builder
                 .build(tauri_context)
@@ -32,5 +37,4 @@ fn main() {
                     let _ = (app_handle, event);
                 });
         });
-    // raykit_tauri::run()
 }

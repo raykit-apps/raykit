@@ -12,9 +12,9 @@ edition.workspace = true
 [dependencies]
 serde = { workspace = true }
 serde_json = { workspace = true }
-url = { version = "2", features = [ "serde" ] }
 semver = { version = "1", features = [ "serde" ] }
 schemars = { version = "1.0.3", features = [
   "url2",
   "semver1"
 ] }
+url = { version = "2", features = [ "serde" ] }

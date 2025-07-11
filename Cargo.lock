@@ -3086,6 +3086,7 @@ dependencies = [
 name = "raykit-tauri"
 version = "0.0.0"
 dependencies = [
+ "anyhow",
  "flate2",
  "serde",
  "serde_json",

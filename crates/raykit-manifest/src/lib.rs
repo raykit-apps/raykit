@@ -19,6 +19,7 @@ pub struct Manifest {
     pub version: Version,
     /// The publisher identifier
     pub publisher: String,
+    pub platform: Vec<String>,
     /// An object containing at least the Raykit key matching the versions of Raykit that the extension is compatible with.
     /// Cannot be *. For
     /// ## Example

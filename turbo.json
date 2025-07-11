@@ -2,15 +2,19 @@
   "$schema": "https://turborepo.org/schema.json",
   "tasks": {
     "build:package": {
+      "cache": false,
       "dependsOn": ["^build:package"]
     },
     "build:extension": {
+      "cache": false,
       "dependsOn": ["^build:extension"]
     },
     "build:all": {
+      "cache": false,
       "dependsOn": ["^build:package", "^build:extension"]
     },
     "dev": {
+      "cache": false,
       "dependsOn": ["^build"]
     }
   }
