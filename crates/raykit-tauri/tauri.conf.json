@@ -26,10 +26,8 @@
       "icons/icon.ico"
     ],
     "resources": {
-      "../../packages/server/dist/exts-server.js": "exts-server.js"
     },
     "externalBin": [
-      "binaries/node"
     ]
   }
 }

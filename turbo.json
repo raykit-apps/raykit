@@ -4,12 +4,6 @@
     "build:package": {
       "dependsOn": ["^build:package"]
     },
-    "build:extension": {
-      "dependsOn": ["^build:extension"]
-    },
-    "build:all": {
-      "dependsOn": ["^build:package", "^build:extension"]
-    },
     "dev": {
       "dependsOn": ["^build"]
     }

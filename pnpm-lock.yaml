@@ -98,15 +98,7 @@ importers:
 
   apps/website: {}
 
-  extensions/configuration: {}
-
-  extensions/developer: {}
-
-  extensions/marketplace: {}
-
   packages/api: {}
-
-  packages/server: {}
 
   packages/ui:
     dependencies:

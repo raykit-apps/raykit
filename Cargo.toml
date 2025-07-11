@@ -1,10 +1,5 @@
 [workspace]
-members = [
-  "crates/raykit-tauri",
-  "crates/raykit-manifest",
-  "crates/raykit-extension",
-  "crates/match"
-]
+members = [ "crates/raykit-tauri" ]
 resolver = "2"
 
 [workspace.package]
