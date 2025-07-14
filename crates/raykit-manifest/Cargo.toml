@@ -18,3 +18,7 @@ schemars = { version = "1.0.3", features = [
   "semver1"
 ] }
 url = { version = "2", features = [ "serde" ] }
+
+[[test]]
+name = "match"
+path = "tests/mod.rs"
