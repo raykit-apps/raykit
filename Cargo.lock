@@ -1022,6 +1022,18 @@ dependencies = [
 ]
 
 [[package]]
+name = "extension-manifest-gen"
+version = "0.0.0"
+dependencies = [
+ "extension-manifest",
+ "schemars 1.0.4",
+ "semver",
+ "serde",
+ "serde_json",
+ "url",
+]
+
+[[package]]
 name = "fastrand"
 version = "2.3.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2931,6 +2943,10 @@ name = "precomputed-hash"
 version = "0.1.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "925383efa346730478fb4838dbe9137d2a47675ad789c546d150a6e1dd4ab31c"
+
+[[package]]
+name = "preferences"
+version = "0.0.0"
 
 [[package]]
 name = "proc-macro-crate"

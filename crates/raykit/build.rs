@@ -129,7 +129,7 @@ fn download_and_extract_nodejs(config: &PlatformConfig, arch: &str, download_dir
 
     // 下载文件
     if !file_path.exists() {
-        let url = format!("https://nodejs.org/dist/latest-jod/{}", filename);
+        let url = format!("https://nodejs.org/dist/v22.17.0/{}", filename);
         println!("cargo:warning=Downloading Node.js from: {}", url);
 
         let status = Command::new("curl")
