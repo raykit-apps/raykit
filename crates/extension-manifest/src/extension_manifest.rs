@@ -9,7 +9,7 @@ use crate::contribute::Contributes;
 pub mod contribute;
 
 #[derive(Debug, Clone, Deserialize, Serialize, JsonSchema)]
-pub struct Manifest {
+pub struct ExtensionManifest {
     /// The name of the extension - should be all lowercase with no spaces.
     /// The name must be unique to the Marketplace.
     /// ## Example

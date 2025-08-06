@@ -3,7 +3,7 @@
 
 use tauri::generate_context;
 
-use raykit_tauri::core;
+use raykit::core;
 
 fn main() {
     let tauri_context = generate_context!();
@@ -17,9 +17,9 @@ fn main() {
 
             let builder = tauri::Builder::default()
                 .setup(move |tauri_app| {
-                    raykit_tauri::core::window::create(tauri_app.handle())?;
+                    raykit::core::window::create(tauri_app.handle())?;
 
-                    raykit_tauri::system::tray::create_tray(tauri_app.handle())?;
+                    raykit::system::tray::create_tray(tauri_app.handle())?;
 
                     Ok(())
                 })

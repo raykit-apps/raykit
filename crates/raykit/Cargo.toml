@@ -1,11 +1,17 @@
 [package]
-name = "raykit-tauri"
+name = "raykit"
 version = "0.0.0"
-edition = "2021"
-authors = [ "Raykit" ]
 publish = false
+readme = "README.md"
+authors.workspace = true
+homepage.workspace = true
+repository.workspace = true
+license.workspace = true
+edition.workspace = true
 
 [lib]
+name = "raykit"
+path = "src/raykit.rs"
 doctest = false
 crate-type = [
   "lib",

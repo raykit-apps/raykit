@@ -1,9 +1,9 @@
 [workspace]
 members = [
-  "crates/raykit-tauri",
-  "crates/raykit-manifest",
-  "crates/raykit-extension",
-  "crates/match"
+  "crates/extension",
+  "crates/extension-host",
+  "crates/extension-manifest",
+  "crates/raykit"
 ]
 resolver = "2"
 
@@ -15,7 +15,7 @@ license = "MIT"
 edition = "2021"
 
 [workspace.dependencies]
-tokio = { version = "1.46.1", default-features = false }
+tokio = { version = "1.47.1", default-features = false }
 serde = { version = "1", features = [ "derive" ] }
 anyhow = "1.0.98"
 serde_json = "1"
