@@ -1022,7 +1022,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "extension-manifest-gen"
+name = "extension-schema"
 version = "0.0.0"
 dependencies = [
  "extension-manifest",

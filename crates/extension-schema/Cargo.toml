@@ -1,5 +1,5 @@
 [package]
-name = "extension-manifest-gen"
+name = "extension-schema"
 version = "0.0.0"
 publish = false
 readme = "README.md"

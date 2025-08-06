@@ -3,7 +3,7 @@ members = [
   "crates/extension",
   "crates/extension-host",
   "crates/extension-manifest",
-  "crates/extension-manifest-gen",
+  "crates/extension-schema",
   "crates/preferences",
   "crates/raykit"
 ]
