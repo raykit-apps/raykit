@@ -3,6 +3,7 @@ members = [
   "crates/extension",
   "crates/extension-host",
   "crates/extension-manifest",
+  "crates/preferences",
   "crates/raykit"
 ]
 resolver = "2"
