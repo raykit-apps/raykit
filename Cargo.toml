@@ -4,8 +4,8 @@ members = [
   "crates/extension-host",
   "crates/extension-manifest",
   "crates/extension-schema",
-  "crates/preferences",
   "crates/raykit",
+  "crates/settings",
   "crates/utils"
 ]
 resolver = "2"
@@ -24,15 +24,16 @@ edition = "2024"
 #
 
 extension-manifest = { path = "crates/extension-manifest" }
+settings = { path = "crates/settings" }
 utils = { path = "crates/utils" }
 
 #
 # External crates
 #
 
-tokio = { version = "1.47.1", default-features = false }
-serde = { version = "1", features = [ "derive" ] }
 anyhow = "1.0.98"
+dirs = "6.0.0"
+serde = { version = "1", features = [ "derive" ] }
 serde_json = "1"
 semver = { version = "1", features = [ "serde" ] }
 schemars = { version = "1.0.4", features = [
@@ -40,3 +41,6 @@ schemars = { version = "1.0.4", features = [
   "semver1"
 ] }
 url = { version = "2", features = [ "serde" ] }
+tokio = { version = "1.47.1", default-features = false }
+tracing = "0.1.41"
+tracing-subscriber = "0.3.19"

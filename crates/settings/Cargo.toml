@@ -1,5 +1,5 @@
 [package]
-name = "preferences"
+name = "settings"
 version = "0.0.0"
 publish = false
 readme = "README.md"
@@ -10,10 +10,10 @@ license.workspace = true
 edition.workspace = true
 
 [lib]
-path = "src/preferences.rs"
+path = "src/settings.rs"
 
 [[test]]
-name = "preferences"
+name = "settings"
 path = "tests/mod.rs"
 
 [dependencies]

@@ -27,6 +27,7 @@ zip = "4.2.0"
 
 [dependencies]
 anyhow = { workspace = true }
+dirs = { workspace = true }
 tokio = { workspace = true, features = [
   "rt-multi-thread",
   "parking_lot"
@@ -41,5 +42,9 @@ tauri = { version = "2.6.1", features = [
 tauri-plugin-opener = "2.4.0"
 tauri-plugin-shell = "2.3.0"
 tauri-plugin-global-shortcut = "2.3.0"
+tauri-plugin-log = "2.6.0"
 serde = { workspace = true }
 serde_json = { workspace = true }
+log = "^0.4"
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
