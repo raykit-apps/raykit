@@ -5,7 +5,8 @@ members = [
   "crates/extension-manifest",
   "crates/extension-schema",
   "crates/preferences",
-  "crates/raykit"
+  "crates/raykit",
+  "crates/utils"
 ]
 resolver = "2"
 
@@ -14,7 +15,7 @@ authors = [ "raykit-apps" ]
 homepage = "https://github.com/raykit-apps/raykit"
 repository = "https://github.com/raykit-apps/raykit"
 license = "MIT"
-edition = "2021"
+edition = "2024"
 
 [workspace.dependencies]
 
@@ -23,6 +24,7 @@ edition = "2021"
 #
 
 extension-manifest = { path = "crates/extension-manifest" }
+utils = { path = "crates/utils" }
 
 #
 # External crates
@@ -33,7 +35,7 @@ serde = { version = "1", features = [ "derive" ] }
 anyhow = "1.0.98"
 serde_json = "1"
 semver = { version = "1", features = [ "serde" ] }
-schemars = { version = "1.0.3", features = [
+schemars = { version = "1.0.4", features = [
   "url2",
   "semver1"
 ] }

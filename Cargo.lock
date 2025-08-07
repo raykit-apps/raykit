@@ -1005,6 +1005,9 @@ dependencies = [
 [[package]]
 name = "extension"
 version = "0.0.0"
+dependencies = [
+ "extension-manifest",
+]
 
 [[package]]
 name = "extension-host"
@@ -1031,6 +1034,7 @@ dependencies = [
  "serde",
  "serde_json",
  "url",
+ "utils",
 ]
 
 [[package]]
@@ -4608,6 +4612,10 @@ name = "utf8_iter"
 version = "1.0.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "b6c140620e7ffbb22c2dee59cafe6084a59b5ffc27a8859a5f0d494b5d52b6be"
+
+[[package]]
+name = "utils"
+version = "0.0.0"
 
 [[package]]
 name = "uuid"

@@ -16,3 +16,4 @@ serde_json = { workspace = true }
 semver = { workspace = true }
 schemars = { workspace = true }
 url = { workspace = true }
+utils = { workspace = true }

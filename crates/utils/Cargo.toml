@@ -1,5 +1,5 @@
 [package]
-name = "extension"
+name = "utils"
 version = "0.0.0"
 publish = false
 readme = "README.md"
@@ -10,11 +10,10 @@ license.workspace = true
 edition.workspace = true
 
 [lib]
-path = "src/extension.rs"
+path = "src/utils.rs"
 
 [[test]]
-name = "extension"
+name = "utils"
 path = "tests/mod.rs"
 
 [dependencies]
-extension-manifest = { workspace = true }
