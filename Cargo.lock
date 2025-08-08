@@ -1129,6 +1129,7 @@ version = "0.0.0"
 name = "extension-manifest"
 version = "0.0.0"
 dependencies = [
+ "anyhow",
  "schemars 1.0.4",
  "semver",
  "serde",
@@ -1247,6 +1248,10 @@ checksum = "e13624c2627564efccf4934284bdd98cbaa14e79b0b5a141218e507b3a823456"
 dependencies = [
  "percent-encoding",
 ]
+
+[[package]]
+name = "fs"
+version = "0.0.0"
 
 [[package]]
 name = "funty"
@@ -4513,6 +4518,10 @@ dependencies = [
  "mac",
  "utf-8",
 ]
+
+[[package]]
+name = "theme"
+version = "0.0.0"
 
 [[package]]
 name = "thiserror"

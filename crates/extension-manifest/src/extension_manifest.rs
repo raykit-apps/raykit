@@ -1,5 +1,6 @@
-use std::collections::HashMap;
+use std::{collections::HashMap, path::Path, sync::Arc};
 
+use anyhow::{Ok, Result};
 use schemars::JsonSchema;
 use semver::Version;
 use serde::{Deserialize, Serialize};
@@ -87,6 +88,13 @@ pub struct ExtensionManifest {
         description = "Path to a 128x128px (or larger) icon for the extension."
     )]
     pub icon: String,
+}
+
+impl ExtensionManifest {
+    pub async fn load(extension_dir: &Path) -> Result<()> {
+        let mut extension_manifest_path = extension_dir.join("package.json");
+        Ok(())
+    }
 }
 
 /// Represents a compatible operating system platform.

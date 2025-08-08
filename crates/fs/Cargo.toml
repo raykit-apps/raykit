@@ -1,5 +1,5 @@
 [package]
-name = "extension-manifest"
+name = "fs"
 version = "0.0.0"
 publish = false
 readme = "README.md"
@@ -10,16 +10,10 @@ license.workspace = true
 edition.workspace = true
 
 [lib]
-path = "src/extension_manifest.rs"
+path = "src/fs.rs"
 
 [[test]]
-name = "extension-manifest"
+name = "fs"
 path = "tests/mod.rs"
 
 [dependencies]
-anyhow.workspace = true
-serde.workspace = true
-serde_json.workspace = true
-semver.workspace = true
-schemars.workspace = true
-url.workspace = true

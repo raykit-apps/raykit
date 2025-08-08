@@ -4,8 +4,11 @@ members = [
   "crates/extension-host",
   "crates/extension-manifest",
   "crates/extension-schema",
+  "crates/fs",
+  "crates/paths",
   "crates/raykit",
   "crates/settings",
+  "crates/theme",
   "crates/utils"
 ]
 resolver = "2"

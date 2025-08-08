@@ -1,5 +1,5 @@
 [package]
-name = "extension-manifest"
+name = "theme"
 version = "0.0.0"
 publish = false
 readme = "README.md"
@@ -10,16 +10,10 @@ license.workspace = true
 edition.workspace = true
 
 [lib]
-path = "src/extension_manifest.rs"
+path = "src/theme.rs"
 
 [[test]]
-name = "extension-manifest"
+name = "theme"
 path = "tests/mod.rs"
 
 [dependencies]
-anyhow.workspace = true
-serde.workspace = true
-serde_json.workspace = true
-semver.workspace = true
-schemars.workspace = true
-url.workspace = true

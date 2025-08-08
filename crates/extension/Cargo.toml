@@ -17,4 +17,4 @@ name = "extension"
 path = "tests/mod.rs"
 
 [dependencies]
-extension-manifest = { workspace = true }
+extension-manifest.workspace = true
