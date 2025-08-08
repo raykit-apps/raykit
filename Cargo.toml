@@ -27,6 +27,7 @@ edition = "2024"
 #
 
 extension-manifest = { path = "crates/extension-manifest" }
+paths = { path = "crates/paths" }
 settings = { path = "crates/settings" }
 utils = { path = "crates/utils" }
 
