@@ -17,3 +17,7 @@ name = "fs"
 path = "tests/mod.rs"
 
 [dependencies]
+anyhow.workspace = true
+async-trait.workspace = true
+paths.workspace = true
+tokio = { workspace = true, features = [ 'fs' ] }

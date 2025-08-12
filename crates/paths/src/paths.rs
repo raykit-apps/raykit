@@ -76,5 +76,5 @@ pub fn temp_dir() -> &'static PathBuf {
 
 pub fn extensions_dir() -> &'static PathBuf {
     static EXTENSIONS_DIR: OnceLock<PathBuf> = OnceLock::new();
-    EXTENSIONS_DIR.get_or_init(|| home_dir().join("extensions"))
+    EXTENSIONS_DIR.get_or_init(|| home_dir().join(".raykit").join("extensions"))
 }

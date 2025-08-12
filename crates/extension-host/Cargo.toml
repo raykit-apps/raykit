@@ -17,3 +17,4 @@ name = "extension-host"
 path = "tests/mod.rs"
 
 [dependencies]
+fs.workspace = true

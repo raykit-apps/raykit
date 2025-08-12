@@ -27,6 +27,7 @@ edition = "2024"
 #
 
 extension-manifest = { path = "crates/extension-manifest" }
+fs = { path = "crates/fs" }
 paths = { path = "crates/paths" }
 settings = { path = "crates/settings" }
 utils = { path = "crates/utils" }
@@ -36,6 +37,7 @@ utils = { path = "crates/utils" }
 #
 
 anyhow = "1.0.98"
+async-trait = "0.1"
 dirs = "6.0.0"
 serde = { version = "1", features = [ "derive" ] }
 serde_json = "1"

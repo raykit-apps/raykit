@@ -1124,6 +1124,9 @@ dependencies = [
 [[package]]
 name = "extension-host"
 version = "0.0.0"
+dependencies = [
+ "fs",
+]
 
 [[package]]
 name = "extension-manifest"
@@ -1252,6 +1255,12 @@ dependencies = [
 [[package]]
 name = "fs"
 version = "0.0.0"
+dependencies = [
+ "anyhow",
+ "async-trait",
+ "paths",
+ "tokio",
+]
 
 [[package]]
 name = "funty"
