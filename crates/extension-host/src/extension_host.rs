@@ -2,6 +2,8 @@ use std::{path::PathBuf, sync::Arc};
 
 use fs::Fs;
 
+pub mod js_host;
+
 pub struct ExtensionStore {
     pub fs: Arc<dyn Fs>,
     pub index_path: PathBuf,

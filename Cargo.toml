@@ -5,6 +5,7 @@ members = [
   "crates/extension-manifest",
   "crates/extension-schema",
   "crates/fs",
+  "crates/js-runtime",
   "crates/paths",
   "crates/raykit",
   "crates/settings",
@@ -41,6 +42,7 @@ utils = { path = "crates/utils" }
 anyhow = "1.0.98"
 async-trait = "0.1"
 dirs = "6.0.0"
+futures = "0.3"
 serde = { version = "1", features = [ "derive" ] }
 serde_json = "1"
 semver = { version = "1", features = [ "serde" ] }

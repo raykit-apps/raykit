@@ -17,4 +17,5 @@ name = "extension"
 path = "tests/mod.rs"
 
 [dependencies]
+async-trait.workspace = true
 extension-manifest.workspace = true
