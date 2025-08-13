@@ -8,6 +8,8 @@ pub trait Fs: Send + Sync {
         Ok(String::from_utf8(self.load_bytes(path).await?)?)
     }
     async fn load_bytes(&self, path: &Path) -> Result<Vec<u8>>;
+    async fn is_file(&self, path: &Path) -> bool;
+    async fn is_dir(&self, path: &Path) -> bool;
     fn home_dir(&self) -> Option<PathBuf>;
 }
 
@@ -27,6 +29,18 @@ impl Fs for RealFs {
 
     async fn load_bytes(&self, path: &Path) -> Result<Vec<u8>> {
         Ok(tokio::fs::read(path).await?)
+    }
+
+    async fn is_file(&self, path: &Path) -> bool {
+        tokio::fs::metadata(path)
+            .await
+            .map_or(false, |metadata| metadata.is_file())
+    }
+
+    async fn is_dir(&self, path: &Path) -> bool {
+        tokio::fs::metadata(path)
+            .await
+            .map_or(false, |metadata| metadata.is_dir())
     }
 
     fn home_dir(&self) -> Option<PathBuf> {

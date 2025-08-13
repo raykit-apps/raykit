@@ -1,6 +1,7 @@
-use std::{collections::HashMap, path::Path, sync::Arc};
+use std::{collections::HashMap, ffi::OsStr, path::Path, sync::Arc};
 
-use anyhow::{Ok, Result};
+use anyhow::{Context as _, Result};
+use fs::Fs;
 use schemars::JsonSchema;
 use semver::Version;
 use serde::{Deserialize, Serialize};
@@ -91,9 +92,23 @@ pub struct ExtensionManifest {
 }
 
 impl ExtensionManifest {
-    pub async fn load(extension_dir: &Path) -> Result<()> {
-        let mut extension_manifest_path = extension_dir.join("package.json");
-        Ok(())
+    pub async fn load(fs: Arc<dyn Fs>, extension_dir: &Path) -> Result<Self> {
+        let extension_name = extension_dir
+            .file_name()
+            .and_then(OsStr::to_str)
+            .context("invalid extension name")?;
+
+        let extension_manifest_path = extension_dir.join("package.json");
+        if fs.is_file(&extension_manifest_path).await {
+            let manifest_content = fs
+                .load(&extension_manifest_path)
+                .await
+                .with_context(|| format!("failed to load {extension_name} package.json"))?;
+            serde_json::from_str::<ExtensionManifest>(&manifest_content)
+                .with_context(|| format!("invalid package.json for extension {extension_name}"))
+        } else {
+            anyhow::bail!("extension {} is missing required package.json file", extension_name)
+        }
     }
 }
 

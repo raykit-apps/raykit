@@ -26,6 +26,8 @@ edition = "2024"
 # Workspace member crates
 #
 
+extension = { path = "crates/extension" }
+extension-host = { path = "crates/extension-host" }
 extension-manifest = { path = "crates/extension-manifest" }
 fs = { path = "crates/fs" }
 paths = { path = "crates/paths" }

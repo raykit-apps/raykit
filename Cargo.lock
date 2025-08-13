@@ -1133,6 +1133,7 @@ name = "extension-manifest"
 version = "0.0.0"
 dependencies = [
  "anyhow",
+ "fs",
  "schemars 1.0.4",
  "semver",
  "serde",
