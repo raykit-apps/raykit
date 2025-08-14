@@ -42,7 +42,9 @@ utils = { path = "crates/utils" }
 anyhow = "1.0.98"
 async-trait = "0.1"
 dirs = "6.0.0"
+file-id = "0.2.3"
 futures = "0.3"
+libc = "0.2"
 serde = { version = "1", features = [ "derive" ] }
 serde_json = "1"
 semver = { version = "1", features = [ "serde" ] }
@@ -50,6 +52,7 @@ schemars = { version = "1.0.4", features = [
   "url2",
   "semver1"
 ] }
+tauri = { version = "2.7.0" }
 url = { version = "2", features = [ "serde" ] }
 tokio = { version = "1.47.1", default-features = false }
 tracing = "0.1.41"

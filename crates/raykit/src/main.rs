@@ -32,10 +32,10 @@ fn main() {
                 .level(log::LevelFilter::Error);
 
             let builder = tauri::Builder::default()
-                .setup(move |tauri_app| {
-                    raykit::core::window::create(tauri_app.handle())?;
+                .setup(move |app| {
+                    raykit::core::window::create(app.handle())?;
 
-                    raykit::system::tray::create_tray(tauri_app.handle())?;
+                    raykit::system::tray::create_tray(app.handle())?;
 
                     Ok(())
                 })

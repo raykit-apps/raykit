@@ -20,4 +20,12 @@ path = "tests/mod.rs"
 anyhow.workspace = true
 async-trait.workspace = true
 paths.workspace = true
-tokio = { workspace = true, features = [ 'fs' ] }
+libc.workspace = true
+serde.workspace = true
+tokio = { workspace = true, features = [
+  'fs',
+  'rt'
+] }
+
+[target.'cfg(target_os = "windows")'.dependencies]
+file-id.workspace = true
