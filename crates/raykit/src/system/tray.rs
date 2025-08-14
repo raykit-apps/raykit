@@ -1,7 +1,7 @@
 use tauri::{
+    Manager, Runtime,
     menu::{AboutMetadataBuilder, MenuBuilder, MenuItem},
     tray::{MouseButton, MouseButtonState, TrayIconBuilder, TrayIconEvent},
-    Manager, Runtime,
 };
 
 pub fn create_tray<R: Runtime>(app: &tauri::AppHandle<R>) -> tauri::Result<()> {
@@ -25,7 +25,7 @@ pub fn create_tray<R: Runtime>(app: &tauri::AppHandle<R>) -> tauri::Result<()> {
         .build()?;
 
     let _ = TrayIconBuilder::with_id("tray-main")
-        .tooltip("Kunkun")
+        .tooltip("Raykit")
         .icon(app.default_window_icon().unwrap().clone())
         .menu(&menu)
         .show_menu_on_left_click(false)
@@ -44,7 +44,7 @@ pub fn create_tray<R: Runtime>(app: &tauri::AppHandle<R>) -> tauri::Result<()> {
             }
             _ => (),
         })
-        .on_menu_event(|app, event| match event.id.as_ref() {
+        .on_menu_event(|_, event| match event.id.as_ref() {
             "issues" => {
                 println!("issues");
             }
