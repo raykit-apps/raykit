@@ -28,6 +28,7 @@ zip = "4.2.0"
 [dependencies]
 anyhow.workspace = true
 dirs.workspace = true
+extension-host.workspace = true
 tokio = { workspace = true, features = [
   "rt-multi-thread",
   "parking_lot"
