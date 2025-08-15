@@ -67,9 +67,20 @@ pub fn temp_dir() -> &'static PathBuf {
             } else {
                 dirs::cache_dir().expect("failed to determine XDG_CACHE_HOME directory")
             }
-            .join("raykit")
+            .join("Raykit")
         } else {
             home_dir().join("cache")
+        }
+    })
+}
+
+pub fn logs_dir() -> &'static PathBuf {
+    static LOGS_DIR: OnceLock<PathBuf> = OnceLock::new();
+    LOGS_DIR.get_or_init(|| {
+        if cfg!(target_os = "macos") {
+            home_dir().join("Library/Logs/Raykit")
+        } else {
+            data_dir().join("logs")
         }
     })
 }

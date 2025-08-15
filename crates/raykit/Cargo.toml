@@ -29,6 +29,8 @@ zip = "4.2.0"
 anyhow.workspace = true
 dirs.workspace = true
 extension-host.workspace = true
+fs.workspace = true
+paths.workspace = true
 tokio = { workspace = true, features = [
   "rt-multi-thread",
   "parking_lot"
@@ -49,3 +51,4 @@ serde_json.workspace = true
 log = "^0.4"
 tracing.workspace = true
 tracing-subscriber.workspace = true
+rfd = "0.15.4"
