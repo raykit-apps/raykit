@@ -6,6 +6,9 @@ use std::{
     time::SystemTime,
 };
 
+#[cfg(unix)]
+use std::os::unix::fs::{FileTypeExt, MetadataExt};
+
 #[async_trait::async_trait]
 pub trait Fs: Send + Sync {
     async fn create_dir(&self, path: &Path) -> Result<()>;
