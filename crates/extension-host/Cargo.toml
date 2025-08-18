@@ -21,4 +21,5 @@ extension.workspace = true
 fs.workspace = true
 futures.workspace = true
 paths.workspace = true
+rustyscript.workspace = true
 tauri.workspace = true
