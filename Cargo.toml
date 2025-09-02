@@ -2,7 +2,8 @@
 members = [
   "crates/extension",
   "crates/raykit",
-  "crates/schema"
+  "crates/schema-generator",
+  "crates/utils"
 ]
 resolver = "2"
 
@@ -21,6 +22,7 @@ edition = "2024"
 #
 
 extension = { path = "crates/extension" }
+utils = { path = "crates/utils" }
 
 #
 # External crates
