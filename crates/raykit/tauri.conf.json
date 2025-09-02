@@ -4,10 +4,10 @@
   "version": "0.1.0",
   "identifier": "Raykit",
   "build": {
-    "beforeDevCommand": "bun dev:desktop",
-    "devUrl": "http://localhost:4399",
-    "beforeBuildCommand": "bun build:desktop",
-    "frontendDist": "../../build"
+    "beforeDevCommand": "pnpm dev:desktop",
+    "devUrl": "http://localhost:3000",
+    "beforeBuildCommand": "pnpm build:desktop",
+    "frontendDist": "../../out"
   },
   "app": {
     "macOSPrivateApi": true,
