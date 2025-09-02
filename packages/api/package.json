@@ -1,7 +1,7 @@
 {
-  "name": "raykit",
+  "name": "@raykit/api",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "",
   "author": {
     "name": "raykit-apps",
@@ -11,10 +11,6 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/raykit-apps/raykit.git"
-  },
-  "engines": {
-    "pnpm": ">=10.0.0",
-    "node": ">=22.0.0"
   },
   "scripts": {},
   "dependencies": {

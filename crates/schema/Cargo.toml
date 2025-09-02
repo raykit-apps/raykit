@@ -1,9 +1,6 @@
 [package]
-name = "extension"
+name = "schema"
 version = "0.1.0"
 publish.workspace = true
 license.workspace = true
 edition.workspace = true
-
-[lib]
-path = "src/extension.rs"

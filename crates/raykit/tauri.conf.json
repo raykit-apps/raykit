@@ -4,9 +4,9 @@
   "version": "0.1.0",
   "identifier": "Raykit",
   "build": {
-    "beforeDevCommand": "pnpm dev:desktop",
+    "beforeDevCommand": "bun dev:desktop",
     "devUrl": "http://localhost:4399",
-    "beforeBuildCommand": "pnpm build:desktop",
+    "beforeBuildCommand": "bun build:desktop",
     "frontendDist": "../../build"
   },
   "app": {
@@ -24,9 +24,6 @@
       "icons/128x128@2x.png",
       "icons/icon.icns",
       "icons/icon.ico"
-    ],
-    "resources": {
-      "../../packages/server/dist/exts-server.js": "exts-server.js"
-    }
+    ]
   }
 }

@@ -1,13 +1,12 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
+    "target": "ES2017",
     "useDefineForClassFields": true,
     "baseUrl": ".",
     "module": "ESNext",
     /* Bundler mode */
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
-    "types": ["vitest/globals"],
     "allowImportingTsExtensions": true,
     "allowJs": true,
     /* Linting */

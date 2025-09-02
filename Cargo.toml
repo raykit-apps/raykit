@@ -1,21 +1,14 @@
 [workspace]
 members = [
   "crates/extension",
-  "crates/extension-host",
-  "crates/extension-manifest",
-  "crates/extension-schema",
-  "crates/fs",
-  "crates/js-runtime",
-  "crates/paths",
   "crates/raykit",
-  "crates/settings",
-  "crates/theme",
-  "crates/utils"
+  "crates/schema"
 ]
 resolver = "2"
 
 [workspace.package]
 authors = [ "raykit-apps" ]
+publish = false
 homepage = "https://github.com/raykit-apps/raykit"
 repository = "https://github.com/raykit-apps/raykit"
 license = "MIT"
@@ -28,32 +21,21 @@ edition = "2024"
 #
 
 extension = { path = "crates/extension" }
-extension-host = { path = "crates/extension-host" }
-extension-manifest = { path = "crates/extension-manifest" }
-fs = { path = "crates/fs" }
-paths = { path = "crates/paths" }
-settings = { path = "crates/settings" }
-utils = { path = "crates/utils" }
 
 #
 # External crates
 #
 
-anyhow = "1.0.98"
-async-trait = "0.1"
-dirs = "6.0.0"
-file-id = "0.2.3"
+anyhow = "1"
+dirs = "6.0"
 futures = "0.3"
-libc = "0.2"
 serde = { version = "1", features = [ "derive" ] }
 serde_json = "1"
 semver = { version = "1", features = [ "serde" ] }
-schemars = { version = "1.0.4", features = [
+schemars = { version = "1", features = [
   "url2",
   "semver1"
 ] }
-tauri = { version = "2.7.0" }
-url = { version = "2", features = [ "serde" ] }
-tokio = { version = "1.47.1", default-features = false }
-tracing = "0.1.41"
-tracing-subscriber = "0.3.19"
+tauri = { version = "2.8" }
+url = { version = "2.5", features = [ "serde" ] }
+tokio = { version = "1.47.0", default-features = false }
