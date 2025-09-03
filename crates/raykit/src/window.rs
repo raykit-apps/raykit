@@ -4,7 +4,7 @@ pub fn create(handle: &tauri::AppHandle) -> tauri::Result<tauri::WebviewWindow> 
         .effects(vec![tauri::window::Effect::Mica])
         .build();
 
-    let window = tauri::WebviewWindowBuilder::new(handle, "main", tauri::WebviewUrl::App("/app".into()))
+    let window = tauri::WebviewWindowBuilder::new(handle, "main", tauri::WebviewUrl::default())
         .resizable(true)
         .title("Raykit")
         .min_inner_size(400.0, 400.0)
@@ -27,7 +27,7 @@ pub fn create(handle: &tauri::AppHandle) -> tauri::Result<tauri::WebviewWindow> 
         .radius(12.0)
         .build();
 
-    let window = tauri::WebviewWindowBuilder::new(handle, "main", tauri::WebviewUrl::App("/app".into()))
+    let window = tauri::WebviewWindowBuilder::new(handle, "main", tauri::WebviewUrl::default())
         .resizable(true)
         .title("Raykit")
         .min_inner_size(400.0, 450.0)

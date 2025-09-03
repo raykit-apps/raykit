@@ -76,11 +76,15 @@ importers:
         specifier: 19.1.0
         version: 19.1.0
 
+  extensions/preferences: {}
+
   extensions/store: {}
 
   packages/api: {}
 
   packages/cli: {}
+
+  packages/ui: {}
 
   packages/utils: {}
 
