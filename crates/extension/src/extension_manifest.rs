@@ -1,3 +1,7 @@
+use std::{ffi::OsStr, path::Path, sync::Arc};
+
+use anyhow::{Context as _, Result};
+use fs::Fs;
 use schemars::JsonSchema;
 use semver::Version;
 use serde::{Deserialize, Serialize};
@@ -66,6 +70,7 @@ pub struct ContributesManifest {
     /// List of all commands vended by this extensions.
     #[schemars(title = "Executable extension's commands", length(max = 100))]
     pub commands: Option<Vec<CommandManifest>>,
+    pub views: Option<Vec<ViewsManifest>>,
 }
 
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
@@ -82,14 +87,38 @@ pub struct CommandManifest {
     #[schemars(title = "", pattern(r"\.(png|svg|jpg)$"))]
     pub icon: Option<String>,
     #[schemars(title = "")]
-    pub mode: ModeManifest,
+    pub keywords: Option<Vec<String>>,
+    #[schemars(title = "")]
+    pub when: Option<String>,
     #[schemars(title = "")]
     pub disabled_by_default: Option<bool>,
 }
 
 #[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "camelCase")]
-pub enum ModeManifest {
-    View,
-    NoView,
+pub struct ViewsManifest {
+    #[schemars(title = "", length(min = 2, max = 255), pattern(r"^[a-z0-9-~][a-zA-Z0-9-._~]*$"))]
+    pub command: String,
+    pub label: Option<String>,
+}
+
+impl ExtensionManifest {
+    pub async fn load(fs: Arc<dyn Fs>, extension_dir: &Path) -> Result<Self> {
+        let extension_name = extension_dir
+            .file_name()
+            .and_then(OsStr::to_str)
+            .context("invalid extension name")?;
+
+        let extension_manifest_path = extension_dir.join("package.json");
+        if fs.is_file(&extension_manifest_path).await {
+            let manifest_content = fs
+                .load(&extension_manifest_path)
+                .await
+                .with_context(|| format!("failed to load {extension_name} package.json"))?;
+            serde_json::from_str::<ExtensionManifest>(&manifest_content)
+                .with_context(|| format!("invalid package.json for extension {extension_name}"))
+        } else {
+            anyhow::bail!("extension {} is missing required package.json file", extension_name)
+        }
+    }
 }
