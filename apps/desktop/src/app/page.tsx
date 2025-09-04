@@ -1,3 +1,5 @@
+'use client'
+
 import Footer from '@/app/components/Footer.tsx'
 
 export default function Raykit() {
