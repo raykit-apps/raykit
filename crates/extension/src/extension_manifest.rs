@@ -64,7 +64,7 @@ pub enum LicenseManifest {
     Mit,
 }
 
-#[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
+#[derive(Debug, PartialEq, Clone, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "camelCase")]
 pub struct ContributesManifest {
     /// List of all commands vended by this extensions.
@@ -94,12 +94,25 @@ pub struct CommandManifest {
     pub disabled_by_default: Option<bool>,
 }
 
-#[derive(Debug, PartialEq, Eq, Clone, Deserialize, Serialize, JsonSchema)]
+#[derive(Debug, PartialEq, Clone, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "camelCase")]
 pub struct ViewsManifest {
     #[schemars(title = "", length(min = 2, max = 255), pattern(r"^[a-z0-9-~][a-zA-Z0-9-._~]*$"))]
     pub command: String,
     pub label: Option<String>,
+    pub center: Option<bool>,
+    pub drag_drop_enabled: Option<bool>,
+    pub x: Option<f64>,
+    pub y: Option<f64>,
+    pub width: Option<f64>,
+    pub height: Option<f64>,
+    pub min_width: Option<f64>,
+    pub min_height: Option<f64>,
+    pub max_width: Option<f64>,
+    pub max_height: Option<f64>,
+    pub resizable: Option<bool>,
+    pub maximizable: Option<bool>,
+    pub minimizable: Option<bool>,
 }
 
 impl ExtensionManifest {

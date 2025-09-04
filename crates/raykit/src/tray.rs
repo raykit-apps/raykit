@@ -1,10 +1,10 @@
 use tauri::{
-    Manager, Runtime,
+    Manager,
     menu::{AboutMetadataBuilder, MenuBuilder, MenuItem},
     tray::{MouseButton, MouseButtonState, TrayIconBuilder, TrayIconEvent},
 };
 
-pub fn create_tray<R: Runtime>(app: &tauri::AppHandle<R>) -> tauri::Result<()> {
+pub fn create(app: &tauri::AppHandle) -> tauri::Result<()> {
     let about = AboutMetadataBuilder::new()
         .name(Some("Raykit"))
         .version(Some("0.1.0"))
@@ -37,7 +37,7 @@ pub fn create_tray<R: Runtime>(app: &tauri::AppHandle<R>) -> tauri::Result<()> {
             } => {
                 // in this example, let's show and focus the main window when the tray is clicked
                 let app = tray.app_handle();
-                if let Some(window) = app.get_webview_window("main") {
+                if let Some(window) = app.get_window("main") {
                     let _ = window.show();
                     let _ = window.set_focus();
                 }

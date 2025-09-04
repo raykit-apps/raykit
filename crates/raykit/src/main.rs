@@ -12,9 +12,9 @@ async fn main() {
             #[cfg(target_os = "macos")]
             app.set_dock_visibility(false);
 
-            raykit::tray::create_tray(app.handle())?;
+            raykit::window::init(app.handle())?;
 
-            raykit::window::create(app.handle())?;
+            raykit::tray::create(app.handle())?;
 
             Ok(())
         })

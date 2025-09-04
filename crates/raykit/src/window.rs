@@ -1,5 +1,5 @@
 #[cfg(not(target_os = "macos"))]
-pub fn create(handle: &tauri::AppHandle) -> tauri::Result<tauri::WebviewWindow> {
+pub fn init(handle: &tauri::AppHandle) -> tauri::Result<tauri::WebviewWindow> {
     let effects = tauri::window::EffectsBuilder::new()
         .effects(vec![tauri::window::Effect::Mica])
         .build();
@@ -21,7 +21,7 @@ pub fn create(handle: &tauri::AppHandle) -> tauri::Result<tauri::WebviewWindow> 
 }
 
 #[cfg(target_os = "macos")]
-pub fn create(handle: &tauri::AppHandle) -> tauri::Result<tauri::WebviewWindow> {
+pub fn init(handle: &tauri::AppHandle) -> tauri::Result<tauri::WebviewWindow> {
     let effects = tauri::window::EffectsBuilder::new()
         .effects(vec![tauri::window::Effect::WindowBackground])
         .radius(12.0)
