@@ -1,5 +1,13 @@
 'use client'
 
-export default function Footer() {
-  return <div className="h-10"></div>
+import { cn } from '@/lib/utils'
+
+// React.HTMLAttributes<HTMLDivElement>
+export function Footer({ className }: React.ComponentPropsWithoutRef<'div'>) {
+  return (
+    <div className={cn('h-10 border-t px-3 flex justify-between', className)}>
+      <div></div>
+      <div></div>
+    </div>
+  )
 }
