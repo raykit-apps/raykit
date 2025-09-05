@@ -2,6 +2,7 @@
 members = [
   "crates/extension",
   "crates/fs",
+  "crates/manifest",
   "crates/raykit",
   "crates/schema-generator",
   "crates/utils"
@@ -24,6 +25,7 @@ edition = "2024"
 
 extension = { path = "crates/extension" }
 fs = { path = "crates/fs" }
+manifest = { path = "crates/manifest" }
 utils = { path = "crates/utils" }
 
 #

@@ -1,7 +1,7 @@
 use std::path::PathBuf;
 
 use anyhow::Result;
-use extension::extension_manifest::ExtensionManifest;
+use manifest::ExtensionManifest;
 use utils::write_if_changed;
 
 pub fn main() -> Result<()> {

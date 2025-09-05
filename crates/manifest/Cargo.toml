@@ -1,14 +1,18 @@
 [package]
-name = "schema-generator"
+name = "manifest"
 version = "0.1.0"
 publish.workspace = true
 license.workspace = true
 edition.workspace = true
 
-[build-dependencies]
+[lib]
+path = "src/manifest.rs"
+
+[dependencies]
 anyhow.workspace = true
-manifest.workspace = true
-schemars.workspace = true
+fs.workspace = true
 serde.workspace = true
 serde_json.workspace = true
-utils.workspace = true
+semver.workspace = true
+schemars.workspace = true
+url.workspace = true
