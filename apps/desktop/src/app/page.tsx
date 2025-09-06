@@ -8,7 +8,7 @@ import {
   Smile,
   User,
 } from 'lucide-react'
-import { Footer } from '@/app/components/footer.tsx'
+import { Footer } from '@/app/components/footer'
 import {
   Command,
   CommandEmpty,
@@ -16,7 +16,6 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-  CommandSeparator,
   CommandShortcut,
 } from '@/components/ui/command'
 
