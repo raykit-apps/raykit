@@ -1,68 +1,26 @@
 'use client'
 
-import {
-  Calculator,
-  Calendar,
-  CreditCard,
-  Settings,
-  Smile,
-  User,
-} from 'lucide-react'
+import * as React from 'react'
+import { CustomCommand, CustomCommandInput } from '@/app/components/custom-command'
 import { Footer } from '@/app/components/footer'
-import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-  CommandShortcut,
-} from '@/components/ui/command'
 
 export default function Raykit() {
-  // const setTopApp = async () => {
-  //   await invoke('set_top_app')
+  // const [search, setSearch] = React.useState('')
+  // const inputRef = React.useRef<HTMLInputElement | null>(null)
+
+  // React.useEffect(() => {
+  //   inputRef?.current?.focus()
+  // }, [])
+
+  // const searchCommands = (v: string) => {
+  //   setSearch(v)
   // }
 
   return (
     <div className="size-full flex flex-col">
-      <Command className="flex-1">
-        <CommandInput placeholder="Type a command or search..." />
-        <CommandList>
-          <CommandEmpty>No results found.</CommandEmpty>
-          <CommandGroup heading="Suggestions">
-            <CommandItem>
-              <Calendar />
-              <span>Calendar</span>
-            </CommandItem>
-            <CommandItem>
-              <Smile />
-              <span>Search Emoji</span>
-            </CommandItem>
-            <CommandItem disabled>
-              <Calculator />
-              <span>Calculator</span>
-            </CommandItem>
-          </CommandGroup>
-          <CommandGroup heading="Settings">
-            <CommandItem>
-              <User />
-              <span>Profile</span>
-              <CommandShortcut>⌘P</CommandShortcut>
-            </CommandItem>
-            <CommandItem>
-              <CreditCard />
-              <span>Billing</span>
-              <CommandShortcut>⌘B</CommandShortcut>
-            </CommandItem>
-            <CommandItem>
-              <Settings />
-              <span>Settings</span>
-              <CommandShortcut>⌘S</CommandShortcut>
-            </CommandItem>
-          </CommandGroup>
-        </CommandList>
-      </Command>
+      <CustomCommand className="flex-1">
+        <CustomCommandInput />
+      </CustomCommand>
       <Footer />
     </div>
   )

@@ -7,8 +7,9 @@ pub fn init(handle: &tauri::AppHandle) -> tauri::Result<tauri::Window> {
     let window = tauri::WindowBuilder::new(handle, "main")
         .resizable(true)
         .title("Raykit")
-        .min_inner_size(400.0, 400.0)
-        .inner_size(750.0, 475.0)
+        .min_inner_size(400., 400.)
+        .inner_size(750., 475.)
+        .max_inner_size(900., 1200.)
         .center()
         .transparent(true)
         .visible(false)
@@ -42,8 +43,9 @@ pub fn init(handle: &tauri::AppHandle) -> tauri::Result<tauri::Window> {
     let window = tauri::WindowBuilder::new(handle, "main")
         .resizable(true)
         .title("Raykit")
-        .min_inner_size(400.0, 400.0)
-        .inner_size(750.0, 475.0)
+        .min_inner_size(400., 400.)
+        .inner_size(750., 475.)
+        .max_inner_size(900., 1200.)
         .center()
         .visible(false)
         .transparent(true)
@@ -54,7 +56,7 @@ pub fn init(handle: &tauri::AppHandle) -> tauri::Result<tauri::Window> {
     window.add_child(
         tauri::WebviewBuilder::new("main-app", tauri::WebviewUrl::App(Default::default())).auto_resize(),
         tauri::LogicalPosition::new(0., 0.),
-        tauri::LogicalSize::new(750., 475.),
+        tauri::LogicalSize::new(750., 476.),
     )?;
 
     Ok(window)
