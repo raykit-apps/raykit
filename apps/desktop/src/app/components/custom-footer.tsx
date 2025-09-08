@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils'
 import { Actions } from './actions'
 
 // React.HTMLAttributes<HTMLDivElement>
-function Footer({ className }: React.ComponentPropsWithoutRef<'div'>) {
+function CustomFooter({ className }: React.ComponentPropsWithoutRef<'div'>) {
   return (
     <div className={cn('h-10 border-t px-3 flex justify-between', className)}>
       <div className="flex gap-2 items-center">
@@ -14,10 +14,10 @@ function Footer({ className }: React.ComponentPropsWithoutRef<'div'>) {
         <span className="text-sm">Raykit</span>
       </div>
       <div className="flex gap-3 items-center">
-        <FooterButton>
+        <CustomFooterButton>
           Enter
           <Hotkeys keys="↵" />
-        </FooterButton>
+        </CustomFooterButton>
         <div className="w-px bg-slate-300 h-3"></div>
         <Actions />
       </div>
@@ -25,7 +25,7 @@ function Footer({ className }: React.ComponentPropsWithoutRef<'div'>) {
   )
 }
 
-function FooterButton({ className, ...props }: React.ComponentProps<'button'>) {
+function CustomFooterButton({ className, ...props }: React.ComponentProps<'button'>) {
   return (
     <button
       data-slot="button"
@@ -36,4 +36,4 @@ function FooterButton({ className, ...props }: React.ComponentProps<'button'>) {
   )
 }
 
-export { Footer, FooterButton }
+export { CustomFooter, CustomFooterButton }

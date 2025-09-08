@@ -18,7 +18,6 @@ interface CustomCommandInputProps extends Omit<React.ComponentPropsWithRef<'div'
 function CustomCommandInput({ className, ...props }: CustomCommandInputProps) {
   return (
     <div className={cn('h-14 w-full flex flex-row items-center border-b px-4 text-base', className)} {...props}>
-      {/* <div className="focus:outline-none custom-edit-hide-scroll flex-1 overflow-x-scroll whitespace-nowrap" contentEditable role='textbox' ></div> */}
       <div></div>
       <div></div>
     </div>
@@ -33,8 +32,8 @@ function CustomCommandEmpty() {
   return <></>
 }
 
-function CustomCommandGroup() {
+function CustomCommandGroups() {
   return <></>
 }
 
-export { CustomCommand, CustomCommandEmpty, CustomCommandGroup, CustomCommandInput, CustomCommandList }
+export { CustomCommand, CustomCommandEmpty, CustomCommandGroups, CustomCommandInput, CustomCommandList }

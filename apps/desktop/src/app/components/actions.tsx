@@ -24,16 +24,16 @@ import {
 } from '@/components/ui/popover'
 
 import { Hotkeys } from '../../components/ui/hotkeys'
-import { FooterButton } from './footer'
+import { CustomFooterButton } from './custom-footer'
 
 function Actions() {
   return (
     <Popover modal>
       <PopoverTrigger asChild>
-        <FooterButton>
+        <CustomFooterButton>
           Actions
           <Hotkeys keys="Ctrl+k" />
-        </FooterButton>
+        </CustomFooterButton>
       </PopoverTrigger>
       <PopoverContent side="top" align="end" sideOffset={16} alignOffset={0}>
         <Command className="rounded-lg border shadow-md w-80 h-64">

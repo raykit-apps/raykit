@@ -2,7 +2,7 @@
 
 import * as React from 'react'
 import { CustomCommand, CustomCommandInput } from '@/app/components/custom-command'
-import { Footer } from '@/app/components/footer'
+import { CustomFooter } from '@/app/components/custom-footer'
 
 export default function Raykit() {
   // const [search, setSearch] = React.useState('')
@@ -21,7 +21,7 @@ export default function Raykit() {
       <CustomCommand className="flex-1">
         <CustomCommandInput />
       </CustomCommand>
-      <Footer />
+      <CustomFooter />
     </div>
   )
 }
