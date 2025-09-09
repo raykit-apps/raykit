@@ -3,8 +3,7 @@ import antfu from '@antfu/eslint-config'
 export default antfu(
   {
     formatters: true,
-    react: true,
-    nextjs: true,
+    svelte: true,
     typescript: true,
   },
   {
@@ -12,13 +11,9 @@ export default antfu(
     rules: {
       'n/prefer-global/process': 'off',
       'no-control-regex': 'off',
-      'toml/padding-line-between-pairs': 'off',
-      'react-refresh/only-export-components': 'off',
     },
     ignores: [
-      '**/crates',
-      '**/.next',
-      // ...globs
+      '**/.sveltekit',
     ],
   },
 )

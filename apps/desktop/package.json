@@ -3,30 +3,26 @@
   "type": "module",
   "version": "0.1.0",
   "private": true,
+  "main": "./out/main/index.js",
   "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build --turbopack"
+    "dev": "electron-vite dev",
+    "build": "electron-vite build",
+    "postinstall": "electron-builder install-app-deps"
   },
   "dependencies": {
-    "@radix-ui/react-dialog": "^1.1.15",
-    "@radix-ui/react-popover": "^1.1.15",
-    "@radix-ui/react-scroll-area": "^1.2.10",
-    "@tauri-apps/api": "^2.8.0",
-    "class-variance-authority": "^0.7.1",
-    "clsx": "^2.1.1",
-    "cmdk": "^1.1.1",
-    "lucide-react": "^0.542.0",
-    "next": "15.5.2",
-    "react": "19.1.0",
-    "react-dom": "19.1.0",
-    "slate": "^0.118.1",
-    "slate-react": "^0.117.4",
-    "tailwind-merge": "^3.3.1",
-    "tailwindcss-animate": "^1.0.7"
+    "@electron-toolkit/utils": "^4.0.0"
   },
   "devDependencies": {
-    "@types/react-dom": "^19",
-    "autoprefixer": "10.4.21",
-    "tailwindcss": "3.4.17"
+    "@sveltejs/adapter-static": "^3.0.9",
+    "@sveltejs/kit": "^2.37.1",
+    "@sveltejs/vite-plugin-svelte": "^6.1.4",
+    "@tailwindcss/vite": "^4.1.13",
+    "electron": "^38.0.0",
+    "electron-builder": "^26.0.12",
+    "electron-updater": "^6.6.2",
+    "electron-vite": "^4.0.0",
+    "svelte": "^5.38.7",
+    "svelte-check": "^4.3.1",
+    "tailwindcss": "^4.1.13"
   }
 }

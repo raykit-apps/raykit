@@ -1,9 +1,0 @@
-[package]
-name = "utils"
-version = "0.1.0"
-publish.workspace = true
-license.workspace = true
-edition.workspace = true
-
-[lib]
-path = "src/utils.rs"

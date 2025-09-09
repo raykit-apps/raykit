@@ -1,5 +1,4 @@
 {
-  "$schema": "../../crates/schema-generator/schemas/raykit.schema.json",
   "publisher": "raykit",
   "name": "developer",
   "title": "开发者工具",
@@ -19,8 +18,7 @@
   },
   "script": {},
   "dependencies": {
-    "@raykit/api": "workspace:*",
-    "react": "19.1.0"
+    "@raykit/api": "workspace:*"
   },
   "devDependencies": {}
 }

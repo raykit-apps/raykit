@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
-    "target": "ES2017",
+    "target": "esnext",
     "useDefineForClassFields": true,
     "baseUrl": ".",
-    "module": "ESNext",
+    "module": "esnext",
     /* Bundler mode */
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
