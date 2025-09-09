@@ -2,13 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-/* .custom-edit-hide-scroll::-webkit-scrollbar {
+.scroll-none::-webkit-scrollbar {
   display: none;
 }
 
-.custom-edit-hide-scroll {
+.scroll-none {
   scrollbar-width: none;
-} */
+}
 
 @layer base {
   html,

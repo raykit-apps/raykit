@@ -3,10 +3,10 @@
 import Image from 'next/image'
 import { Hotkeys } from '@/components/ui/hotkeys'
 import { cn } from '@/lib/utils'
-import { Actions } from './actions'
+import { ActionsPanel } from './actions-panel'
 
 // React.HTMLAttributes<HTMLDivElement>
-function CustomFooter({ className }: React.ComponentPropsWithoutRef<'div'>) {
+function CommandFooter({ className }: React.ComponentPropsWithoutRef<'div'>) {
   return (
     <div className={cn('h-10 border-t px-3 flex justify-between', className)}>
       <div className="flex gap-2 items-center">
@@ -14,18 +14,18 @@ function CustomFooter({ className }: React.ComponentPropsWithoutRef<'div'>) {
         <span className="text-sm">Raykit</span>
       </div>
       <div className="flex gap-3 items-center">
-        <CustomFooterButton>
+        <CommandFooterButton>
           Enter
           <Hotkeys keys="↵" />
-        </CustomFooterButton>
+        </CommandFooterButton>
         <div className="w-px bg-slate-300 h-3"></div>
-        <Actions />
+        <ActionsPanel />
       </div>
     </div>
   )
 }
 
-function CustomFooterButton({ className, ...props }: React.ComponentProps<'button'>) {
+function CommandFooterButton({ className, ...props }: React.ComponentProps<'button'>) {
   return (
     <button
       data-slot="button"
@@ -36,4 +36,4 @@ function CustomFooterButton({ className, ...props }: React.ComponentProps<'butto
   )
 }
 
-export { CustomFooter, CustomFooterButton }
+export { CommandFooter, CommandFooterButton }
