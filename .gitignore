@@ -15,6 +15,10 @@ out
 # misc
 .DS_Store
 *.pem
+Thumbs.db
 
 # svelte-kit
 .svelte-kit
+
+# vite
+.vite

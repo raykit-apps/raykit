@@ -6,15 +6,8 @@ const config = {
   preprocess: vitePreprocess(),
   kit: {
     adapter: adapter({
-      pages: 'out/renderer',
-      assets: 'out/renderer',
+      pages: '.vite/renderer/main_window',
     }),
-    alias: { '@/*': './src/renderer/lib/*' },
-    files: {
-      lib: 'src/renderer/lib',
-      routes: 'src/renderer/routes',
-      appTemplate: 'src/renderer/app.html',
-    },
   },
 }
 

@@ -16,8 +16,9 @@
     "pnpm": ">=10.0.0"
   },
   "scripts": {
-    "dev": "pnpm -F @raykit/desktop dev",
-    "build": "pnpm -F @raykit/desktop build",
+    "start": "pnpm -F @raykit/desktop start",
+    "package": "pnpm -F @raykit/desktop package",
+    "make": "pnpm -F @raykit/desktop make",
     "lint:fix": "eslint . --fix"
   },
   "devDependencies": {
@@ -32,8 +33,9 @@
   },
   "pnpm": {
     "onlyBuiltDependencies": [
+      "esbuild",
       "electron",
-      "esbuild"
+      "electron-winstaller"
     ]
   }
 }
