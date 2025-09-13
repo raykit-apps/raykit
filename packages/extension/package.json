@@ -1,15 +1,10 @@
 {
-  "name": "@raykit/utils",
+  "name": "@raykit/extension",
   "type": "module",
   "version": "0.1.0",
   "private": true,
   "description": "",
-  "main": "./src/index.ts",
-  "types": "./src/index.ts",
   "scripts": {},
-  "peerDependencies": {
-    "electron": "^38.0.0"
-  },
   "dependencies": {
   },
   "devDependencies": {
