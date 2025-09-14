@@ -11,6 +11,8 @@ export default antfu(
     rules: {
       'n/prefer-global/process': 'off',
       'no-control-regex': 'off',
+      'no-redeclare': 'off',
+      '@typescript-eslint/no-redeclare': 'off',
     },
     ignores: [
       '**/.sveltekit',

@@ -2,3 +2,6 @@ packages:
   - 'apps/*'
   - 'extensions/*'
   - 'packages/*'
+
+catalog:
+  electron: ^38.1.0

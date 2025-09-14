@@ -21,12 +21,16 @@
     "make": "pnpm -F @raykit/desktop make",
     "lint:fix": "eslint . --fix"
   },
+  "dependencies": {
+    "fs-extra": "^11.3.1"
+  },
   "devDependencies": {
     "@antfu/eslint-config": "^5.2.1",
     "@types/node": "^22.18.0",
     "eslint": "^9.34.0",
     "eslint-plugin-format": "^1.0.1",
     "eslint-plugin-svelte": "^3.12.2",
+    "tsx": "^4.20.5",
     "turbo": "^2.5.6",
     "typescript": "^5.9.2",
     "vite": "^7.1.5"

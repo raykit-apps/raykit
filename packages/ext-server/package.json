@@ -1,5 +1,5 @@
 {
-  "name": "@raykit/utils",
+  "name": "@raykit/ext-server",
   "type": "module",
   "version": "0.1.0",
   "private": true,
@@ -7,9 +7,6 @@
   "main": "./src/index.ts",
   "types": "./src/index.ts",
   "scripts": {},
-  "peerDependencies": {
-    "electron": "catalog:"
-  },
   "dependencies": {
   },
   "devDependencies": {

@@ -1,9 +1,11 @@
 {
-  "name": "@raykit/extension",
+  "name": "@raykit/ext-host",
   "type": "module",
   "version": "0.1.0",
   "private": true,
   "description": "",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
   "scripts": {},
   "dependencies": {
   },

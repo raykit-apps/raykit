@@ -1,5 +1,4 @@
 import type { BrowserWindow } from 'electron'
-import path from 'node:path'
 import { app, globalShortcut } from 'electron'
 import started from 'electron-squirrel-startup'
 import { createTray } from './common/tray'
