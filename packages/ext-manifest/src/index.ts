@@ -3,40 +3,51 @@ import * as z from 'zod'
 export const CommandsManifest = z.object({
   command: z.string(),
   title: z.string(),
-  subtitle: z.optional(z.string()),
+  subtitle: z.string().optional(),
+  icon: z.string().optional(),
   description: z.string(),
-  icon: z.optional(z.string()),
-  keywords: z.optional(z.array(z.string())),
-  when: z.optional(z.string()),
-  mode: z.union([z.literal('view'), z.literal('no-view')]),
-  disabledByDefault: z.optional(z.boolean()),
+  keywords: z.string().array().optional(),
+  when: z.string().optional(),
+  lens: z.number().array().optional(),
+  disabledByDefault: z.boolean().optional().default(false),
 })
 
-export const ViewsManifest = z.object({
+const PopupManifest = z.object({
   command: z.string(),
-  x: z.optional(z.number()),
-  y: z.optional(z.number()),
-  width: z.optional(z.number()),
-  height: z.optional(z.number()),
-  minWidth: z.optional(z.number()),
-  minHeight: z.optional(z.number()),
-  maxWidth: z.optional(z.number()),
-  maxHeight: z.optional(z.number()),
-  resizable: z.optional(z.boolean()),
-  title: z.optional(z.string()),
-  fullscreen: z.optional(z.boolean()),
-  focus: z.optional(z.boolean()),
+  mode: z.literal('popup'),
+  x: z.number().optional(),
+  y: z.number().optional(),
+  width: z.number().optional(),
+  height: z.number().optional(),
+  minWidth: z.number().optional(),
+  maxWidth: z.number().optional(),
+  minHeight: z.number().optional(),
+  maxHeight: z.number().optional(),
+  resizable: z.boolean().optional(),
+  title: z.string().optional(),
+  fullscreen: z.boolean().optional(),
+  focus: z.boolean().optional(),
 })
+
+const EmbedManifest = z.object({
+  command: z.string(),
+  mode: z.literal('embed'),
+  detachable: z.boolean().optional().default(false),
+})
+
+export const ViewsManifest = z.discriminatedUnion('mode', [PopupManifest, EmbedManifest])
+
+export type ViewsManifest = z.infer<typeof ViewsManifest>
 
 export const ThemesManifest = z.object({})
 
 export const KeybindingsManifest = z.object({})
 
 export const ContributesManifest = z.object({
-  commands: z.optional(z.array(CommandsManifest)),
-  views: z.optional(z.array(ViewsManifest)),
-  themes: z.optional(z.array(ThemesManifest)),
-  keybindings: z.optional(z.array(KeybindingsManifest)),
+  commands: z.array(CommandsManifest).optional(),
+  views: z.array(ViewsManifest).optional(),
+  themes: z.array(ThemesManifest).optional(),
+  keybindings: z.array(KeybindingsManifest).optional(),
 })
 
 export const License = z.union([

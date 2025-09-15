@@ -5,7 +5,8 @@
   "private": true,
   "description": "",
   "scripts": {
-    "build:schema": "tsx ./script/build.ts"
+    "build:schema": "tsx ./script/build.ts",
+    "postinstall": "pnpm build:schema"
   },
   "dependencies": {
     "@raykit/ext-manifest": "workspace:*",
