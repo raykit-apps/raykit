@@ -9,7 +9,7 @@ export const CommandsManifest = z.object({
   keywords: z.string().array().optional(),
   when: z.string().optional(),
   lens: z.number().array().optional(),
-  disabledByDefault: z.boolean().optional().default(false),
+  disabledByDefault: z.boolean().default(false).optional(),
 })
 
 const PopupManifest = z.object({
@@ -32,12 +32,10 @@ const PopupManifest = z.object({
 const EmbedManifest = z.object({
   command: z.string(),
   mode: z.literal('embed'),
-  detachable: z.boolean().optional().default(false),
+  detachable: z.boolean().default(false).optional(),
 })
 
 export const ViewsManifest = z.discriminatedUnion('mode', [PopupManifest, EmbedManifest])
-
-export type ViewsManifest = z.infer<typeof ViewsManifest>
 
 export const ThemesManifest = z.object({})
 
@@ -50,7 +48,7 @@ export const ContributesManifest = z.object({
   keybindings: z.array(KeybindingsManifest).optional(),
 })
 
-export const License = z.union([
+export const LicenseManifest = z.union([
   z.literal('Apache-2.0'),
   z.literal('BSD-2-Clause'),
   z.literal('BSD-3-Clause'),
@@ -66,9 +64,18 @@ export const ExtensionManifest = z.object({
   name: z.string(),
   title: z.string(),
   version: z.string(),
-  publisher: z.string(),
-  license: License,
+  author: z.string(),
+  description: z.string(),
+  preview: z.boolean().default(false).optional(),
+  main: z.string(),
+  categories: z.string().array(),
+  icon: z.string(),
+  license: LicenseManifest,
   contributes: ContributesManifest,
+  keywords: z.string().array().optional(),
+  extensionPack: z.string().array().optional(),
+  extensionDependencies: z.string().array().optional(),
+  activation: z.enum(['startup', 'onCommand']),
 })
 
 export type ExtensionManifest = z.infer<typeof ExtensionManifest>

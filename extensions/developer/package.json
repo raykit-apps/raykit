@@ -1,24 +1,28 @@
 {
-  "publisher": "raykit",
+  "$schema": "../../packages/schema/.schema/nightly.schema.json",
   "name": "developer",
   "title": "开发者工具",
   "version": "0.0.1",
   "description": "Raykit 开发者工具",
+  "author": "raykit-apps",
   "license": "MIT",
+  "categories": [],
+  "main": "./src/extension.ts",
+  "activation": "onCommand",
   "icon": "logo.svg",
   "contributes": {
     "commands": [
       {
-        "command": "devtools",
+        "command": "developer",
         "title": "开发者工具",
-        "description": "Raykit 开发者工具",
-        "mode": "view"
+        "description": "Raykit 开发者工具"
+      }
+    ],
+    "views": [
+      {
+        "command": "developer",
+        "mode": "embed"
       }
     ]
-  },
-  "script": {},
-  "dependencies": {
-    "@raykit/api": "workspace:*"
-  },
-  "devDependencies": {}
+  }
 }
