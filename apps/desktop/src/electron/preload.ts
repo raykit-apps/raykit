@@ -1,3 +1,4 @@
 import { contextBridge } from 'electron/renderer'
 
-contextBridge.exposeInMainWorld('raykit', {})
+contextBridge.exposeInMainWorld('raykit', {
+})

@@ -1,5 +1,5 @@
 import type { BrowserWindow } from 'electron'
-import { app, globalShortcut } from 'electron'
+import { app, globalShortcut, ipcMain } from 'electron'
 import started from 'electron-squirrel-startup'
 import { createTray } from './common/tray'
 import { createWindow } from './common/window'

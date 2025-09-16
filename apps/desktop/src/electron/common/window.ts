@@ -14,11 +14,17 @@ export function createWindow() {
     skipTaskbar: true,
     resizable: true,
     frame: false,
+    webPreferences: {
+      nodeIntegration: true,
+      preload: path.join(import.meta.dirname, `./preload.js`),
+      nodeIntegrationInSubFrames: true,
+      // sandbox: true,
+    },
   })
 
   if (MAIN_WINDOW_VITE_DEV_SERVER_URL) {
-    window.loadURL(MAIN_WINDOW_VITE_DEV_SERVER_URL)
-    window.webContents.on('did-frame-finish-load', () => {
+    window.loadURL(`${MAIN_WINDOW_VITE_DEV_SERVER_URL}/app/extension`)
+    window.on('show', () => {
       window.webContents.openDevTools({ mode: 'detach' })
     })
   }

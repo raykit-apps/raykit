@@ -21,7 +21,8 @@
     "views": [
       {
         "command": "developer",
-        "mode": "embed"
+        "mode": "embed",
+        "entry": "./src/developer.html"
       }
     ]
   }

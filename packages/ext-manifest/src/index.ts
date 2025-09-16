@@ -14,6 +14,7 @@ export const CommandsManifest = z.object({
 
 const PopupManifest = z.object({
   command: z.string(),
+  entry: z.string(),
   mode: z.literal('popup'),
   x: z.number().optional(),
   y: z.number().optional(),
@@ -31,19 +32,30 @@ const PopupManifest = z.object({
 
 const EmbedManifest = z.object({
   command: z.string(),
+  entry: z.string(),
   mode: z.literal('embed'),
   detachable: z.boolean().default(false).optional(),
 })
 
 export const ViewsManifest = z.discriminatedUnion('mode', [PopupManifest, EmbedManifest])
 
-export const ThemesManifest = z.object({})
+export const ThemesManifest = z.object({
+  label: z.string(),
+  uiTheme: z.string(),
+  path: z.string(),
+})
 
-export const KeybindingsManifest = z.object({})
+export const KeybindingsManifest = z.object({
+  command: z.string(),
+  key: z.string(),
+  mac: z.string().optional(),
+  windows: z.string().optional(),
+  linux: z.string().optional(),
+})
 
 export const ContributesManifest = z.object({
-  commands: z.array(CommandsManifest).optional(),
-  views: z.array(ViewsManifest).optional(),
+  commands: z.array(CommandsManifest).min(1).max(100).optional(),
+  views: z.array(ViewsManifest).min(1).max(100).optional(),
   themes: z.array(ThemesManifest).optional(),
   keybindings: z.array(KeybindingsManifest).optional(),
 })
@@ -61,8 +73,8 @@ export const LicenseManifest = z.union([
 ])
 
 export const ExtensionManifest = z.object({
-  name: z.string(),
-  title: z.string(),
+  name: z.string().min(3).max(255).regex(/[a-z][a-z0-9-_]*/).meta({ title: 'The extension\'s name/identifier', description: 'The slugged extension\'s name used internally as identifier and in the store as part of the URL.' }),
+  title: z.string().min(2).max(255),
   version: z.string(),
   author: z.string(),
   description: z.string(),
@@ -72,6 +84,7 @@ export const ExtensionManifest = z.object({
   icon: z.string(),
   license: LicenseManifest,
   contributes: ContributesManifest,
+  platforms: z.enum(['windows', 'mac', 'linux']).array().optional(),
   keywords: z.string().array().optional(),
   extensionPack: z.string().array().optional(),
   extensionDependencies: z.string().array().optional(),
