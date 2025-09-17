@@ -1,11 +1,10 @@
 <script lang='ts'>
-  import { Command } from '$lib/components/command'
+  import Footer from '$lib/components/layout/Footer.svelte'
 
   const { children } = $props()
 </script>
 
-<div>
-  <Command>
-    {@render children()}
-  </Command>
+<div class='size-full bg-background flex flex-col'>
+  {@render children()}
+  <Footer />
 </div>
