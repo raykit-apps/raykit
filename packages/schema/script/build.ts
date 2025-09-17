@@ -1,5 +1,5 @@
 import path from 'node:path'
-import { ExtensionManifest } from '@raykit/ext-manifest'
+import { ExtensionManifest } from '@raykit/manifest'
 import fs from 'fs-extra'
 import { getJsonSchema } from '../src'
 

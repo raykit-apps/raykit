@@ -9,7 +9,7 @@
     "postinstall": "pnpm build:schema"
   },
   "dependencies": {
-    "@raykit/ext-manifest": "workspace:*",
+    "@raykit/manifest": "workspace:*",
     "zod": "^4.1.8"
   },
   "devDependencies": {
