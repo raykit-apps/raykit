@@ -1,14 +1,14 @@
 import type { BrowserWindow } from 'electron'
 import path from 'node:path'
-import { getResourceDir } from '@raykit/utils'
+import { getResourceDir, isMac, isWindows } from '@raykit/utils'
 import { app, Menu, shell, Tray } from 'electron'
 
 export function createTray(window: BrowserWindow) {
   let icon
-  if (process.platform === 'darwin') {
+  if (isMac()) {
     icon = path.join(getResourceDir(), './icons/iconTemplate@4x.png')
   }
-  else if (process.platform === 'win32') {
+  else if (isWindows()) {
     icon = path.join(getResourceDir(), './icons/icon.ico')
   }
   else {

@@ -11,14 +11,15 @@ const config: ForgeConfig = {
   packagerConfig: {
     name: 'Raykit',
     asar: true,
-    extraResource: ['./resources'],
+    extraResource: ['./resources/icons', './resources/app'],
+    icon: './resources/icons/icon',
   },
   rebuildConfig: {},
   makers: [
-    new MakerSquirrel({}),
+    new MakerSquirrel({ setupIcon: './resources/icons/icon.ico' }),
     new MakerZIP({}, ['darwin']),
     new MakerRpm({}),
-    new MakerDeb({}),
+    new MakerDeb({ options: { icon: './resources/icons/icon.png' } }),
   ],
   plugins: [
     new VitePlugin({
