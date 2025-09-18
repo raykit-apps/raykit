@@ -23,7 +23,7 @@ export function createWindow() {
   })
 
   if (MAIN_WINDOW_VITE_DEV_SERVER_URL) {
-    window.loadURL(`${MAIN_WINDOW_VITE_DEV_SERVER_URL}/app/extension`)
+    window.loadURL(`${MAIN_WINDOW_VITE_DEV_SERVER_URL}/app`)
     window.on('show', () => {
       window.webContents.openDevTools({ mode: 'detach' })
     })

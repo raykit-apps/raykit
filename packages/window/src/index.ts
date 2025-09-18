@@ -43,7 +43,9 @@ export class WindowStore {
   }
 
   createWindow(label: string, opt?: any) {
+    const window = new BrowserWindow({})
 
+    return window
   }
 
   getMainWindow() {

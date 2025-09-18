@@ -12,6 +12,7 @@
     "publish": "electron-forge publish"
   },
   "dependencies": {
+    "@lucide/svelte": "^0.544.0",
     "@raykit/utils": "workspace:*",
     "bits-ui": "^2.9.8",
     "clsx": "^2.1.1",
