@@ -8,5 +8,6 @@ export default defineConfig({
       entry: 'src/electron/main.ts',
       fileName: 'main',
     },
+    minify: true,
   },
 })

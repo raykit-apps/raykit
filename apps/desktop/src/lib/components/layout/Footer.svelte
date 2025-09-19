@@ -11,8 +11,8 @@
   const { class: className, ...restProps }: CommandFooterProps = $props()
 </script>
 
-<footer data-slot='layout-footer' class={cn('h-10 px-2 flex border-t justify-between items-center', className)} {...restProps}>
-  <Button>
+<footer data-slot='layout-footer' class={cn('h-10 px-2 flex border-t box-content justify-between items-center', className)} {...restProps}>
+  <Button variant='ghost' class='h-7 p-2 text-[13px]/4'>
     <Avatar.Root class='rounded-xl'>
       <Avatar.Image
         width={18}
@@ -24,25 +24,21 @@
     Raykit
   </Button>
   <div class='flex gap-3 items-center'>
-    <Button>
+    <Button variant='ghost' class='h-7 py-1 pl-2 pr-1 text-[13px]/4'>
       Open Command
-      {#snippet kbdSlot()}
-        <KbdItem>
-          <CornerDownLeft />
-        </KbdItem>
-      {/snippet}
+      <KbdItem>
+        <CornerDownLeft />
+      </KbdItem>
     </Button>
     <div class='h-3 w-0.5 rounded-xs bg-gray-300'></div>
-    <Button>
+    <Button variant='ghost' class='h-7 py-1 pl-2 pr-1 text-[13px]/4'>
       Actions
-      {#snippet kbdSlot()}
-        <KbdGroup>
-          <KbdItem>
-            <Command />
-          </KbdItem>
-          <KbdItem>K</KbdItem>
-        </KbdGroup>
-      {/snippet}
+      <KbdGroup>
+        <KbdItem>
+          <Command />
+        </KbdItem>
+        <KbdItem>K</KbdItem>
+      </KbdGroup>
     </Button>
   </div>
 </footer>

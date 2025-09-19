@@ -8,5 +8,6 @@ export default defineConfig({
       entry: 'src/electron/preload.ts',
       fileName: 'preload',
     },
+    minify: true,
   },
 })

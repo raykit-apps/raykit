@@ -4,16 +4,14 @@
 
   let {
     ref = $bindable(null),
-    value = $bindable(''),
     class: className,
     ...restProps
-  }: CommandPrimitive.RootProps = $props()
+  }: CommandPrimitive.ListProps = $props()
 </script>
 
-<CommandPrimitive.Root
-  bind:value
+<CommandPrimitive.List
   bind:ref
-  data-slot='command'
-  class={cn('size-full flex flex-col overflow-hidden outline-hidden', className)}
+  data-slot='command-list'
+  class={cn('flex-1 h-0 scroll-py-1 px-2 overflow-hidden', className)}
   {...restProps}
 />

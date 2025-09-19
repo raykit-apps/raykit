@@ -12,6 +12,8 @@ export const CommandsManifest = z.object({
   disabledByDefault: z.boolean().default(false).optional(),
 })
 
+export type CommandsManifest = z.infer<typeof CommandsManifest>
+
 const PopupManifest = z.object({
   command: z.string(),
   entry: z.string(),

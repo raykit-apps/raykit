@@ -9,11 +9,11 @@
     ...restProps
   }: CommandPrimitive.InputProps = $props()
 </script>
-<div class='h-14 items-center border-b px-4' data-slot='command-input-wrapper'>
+<div class='h-14 flex items-center border-b px-4' data-slot='command-input-wrapper'>
   <CommandPrimitive.Input
     data-slot='command-input'
     class={cn(
-      'placeholder:text-muted-foreground outline-hidden flex h-10 w-full rounded-md bg-transparent py-3 text-sm disabled:cursor-not-allowed disabled:opacity-50',
+      'placeholder:text-muted-foreground outline-hidden flex h-12 w-full rounded-md bg-transparent py-3 text-sm disabled:cursor-not-allowed disabled:opacity-50',
       className,
     )}
     bind:ref
