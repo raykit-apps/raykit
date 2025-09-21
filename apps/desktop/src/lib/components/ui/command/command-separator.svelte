@@ -4,19 +4,14 @@
 
   let {
     ref = $bindable(null),
-    value = $bindable(''),
     class: className,
     ...restProps
-  }: CommandPrimitive.RootProps = $props()
+  }: CommandPrimitive.SeparatorProps = $props()
 </script>
 
-<CommandPrimitive.Root
-  bind:value
+<CommandPrimitive.Separator
   bind:ref
-  data-slot='command'
-  class={cn(
-    'flex h-full w-full flex-col overflow-hidden',
-    className,
-  )}
+  data-slot='command-separator'
+  class={cn('-mx-1 h-px', className)}
   {...restProps}
 />

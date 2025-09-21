@@ -1,8 +1,8 @@
 <script lang='ts'>
-  import ExtensionHeader from '$lib/components/layout/ExtensionHeader.svelte'
+  import Header from '$lib/components/features/extension/Header.svelte'
 </script>
 
-<ExtensionHeader />
+<Header />
 <main class='flex-1 h-0 w-full'>
   <iframe
     title='extension-iframe'

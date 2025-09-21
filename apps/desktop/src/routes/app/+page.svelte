@@ -1,8 +1,8 @@
 <script lang='ts'>
-  import type { Commands } from '$lib/components/ui/command'
+  import type { Commands } from '$lib/components/features/app'
   import { goto } from '$app/navigation'
-  import { Command, CommandEmpty, CommandGroup, CommandInput, CommandList } from '$lib/components/ui/command'
-  import { onMount } from 'svelte'
+  import { CommandPalette, CommandSearch, CommandSection } from '$lib/components/features/app'
+  import { Command, CommandEmpty } from '$lib/components/ui/command'
 
   const commands: Commands[] = [
     {
@@ -25,21 +25,27 @@
     },
   ]
 
-  const input = $state<HTMLInputElement>()
-
-  onMount(() => {
-    input?.focus()
-  })
-
   const onCommandSelect = () => {
     goto('/app/extension', { state: { command: '' } })
   }
 </script>
 
 <Command class='flex-1' shouldFilter={false} loop disablePointerSelection>
-  <CommandInput ref={input} placeholder='Type a command or search...' />
+  <CommandSearch placeholder='Type a command or search...' />
+  <CommandPalette>
+    <CommandEmpty>No results found.</CommandEmpty>
+    <CommandSection
+      heading='Suggestion'
+      commands={commands}
+      onCommandSelect={onCommandSelect}
+    />
+  </CommandPalette>
+</Command>
+
+<!-- <Command class='flex-1' shouldFilter={false} loop disablePointerSelection>
+  <CommandInput bind:ref={inputRef} placeholder='Type a command or search...' />
   <CommandList>
     <CommandEmpty>No results found.</CommandEmpty>
     <CommandGroup heading='Suggestion' commands={commands} onCommandSelect={onCommandSelect} />
   </CommandList>
-</Command>
+</Command> -->

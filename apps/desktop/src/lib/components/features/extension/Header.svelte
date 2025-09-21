@@ -1,13 +1,13 @@
 <script lang='ts'>
   import type { HTMLAttributes } from 'svelte/elements'
   import { goto } from '$app/navigation'
+  import { Button } from '$lib/components/ui/button'
   import { cn } from '$lib/utils'
   import { ArrowLeft } from '@lucide/svelte'
-  import { Button } from '../ui/button'
 
-  type CommandFooterProps = HTMLAttributes<HTMLElement> & {}
+  type ExtensionHeaderProps = HTMLAttributes<HTMLElement> & {}
 
-  const { class: className, ...restProps }: CommandFooterProps = $props()
+  const { class: className, ...restProps }: ExtensionHeaderProps = $props()
 
   const goAppPage = () => {
     goto('/app')

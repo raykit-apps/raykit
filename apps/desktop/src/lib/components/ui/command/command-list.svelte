@@ -12,6 +12,6 @@
 <CommandPrimitive.List
   bind:ref
   data-slot='command-list'
-  class={cn('flex-1 h-0 scroll-py-1 px-2 overflow-hidden', className)}
+  class={cn('h-full scroll-py-1 overflow-hidden', className)}
   {...restProps}
 />
