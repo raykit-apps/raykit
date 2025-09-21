@@ -1,3 +1,30 @@
 import * as z from 'zod'
 
-export const ThemeManifest = z.object({})
+export const ThemeManifest = z.object({
+  name: z.string(),
+  type: z.union([z.literal('light'), z.literal('dark')]),
+  nativeColors: z.object({
+    'background': z.string().optional(),
+    'border': z.string().optional(),
+    'logo.foreground': z.string().optional(),
+    'search.textForeground': z.string().optional(),
+    'search.placeholderForeground': z.string().optional(),
+    'header.background': z.string().optional(),
+    'content.background': z.string().optional(),
+    'command.activeBackground': z.string().optional(),
+    'command.hoverBackground': z.string().optional(),
+    'command.titleTextForeground': z.string().optional(),
+    'command.subtitleTextForeground': z.string().optional(),
+    'command.typeTextForeground': z.string().optional(),
+    'heading.textForeground': z.string().optional(),
+    'kdb.background': z.string().optional(),
+    'kdb.textForeground': z.string().optional(),
+    'footer.background': z.string().optional(),
+    'button.activeBackground': z.string().optional(),
+    'button.hoverBackground': z.string().optional(),
+    'button.textForeground': z.string().optional(),
+    'button.selectTextForeground': z.string().optional(),
+    'actions.popoverBackground': z.string().optional(),
+  }),
+  extensionColors: z.object({}),
+})
