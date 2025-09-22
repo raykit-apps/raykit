@@ -5,7 +5,19 @@
 
 :root {
   --raykit-background: oklch(1 0 0);
+  --raykit-foreground: oklch(0.922 0 0);
   --raykit-border: oklch(0.922 0 0);
+  --raykit-logo-foreground: oklch(0.922 0 0);
+  --raykit-search-textForeground: oklch(0.922 0 0);
+  --raykit-search-placeholderForeground: oklch(0.922 0 0);
+  --raykit-header-background: oklch(0.922 0 0);
+  --raykit-content-background: oklch(0.922 0 0);
+  --raykit-command-activeBackground: oklch(0.922 0 0);
+  --raykit-command-hoverBackground: oklch(0.922 0 0);
+  --raykit-command-titleTextForeground: oklch(0.922 0 0);
+  --raykit-command-subtitleTextForeground: oklch(0.922 0 0);
+  --raykit-command-typeTextForeground: oklch(0.922 0 0);
+  --raykit-heading-textForeground: oklch(0.922 0 0);
   /* --raykit-border: oklch(0.65 0.01 0 / 0.2); */
 
   /* temp */
@@ -46,6 +58,7 @@
 @theme inline {
   --color-background: var(--raykit-background);
   --color-border: var(--raykit-border);
+  --color-header-background: var(--raykit-header-background, --raykit-background, inherit);
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);

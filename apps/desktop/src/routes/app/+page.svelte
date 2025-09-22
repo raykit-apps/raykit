@@ -41,11 +41,3 @@
     />
   </CommandPalette>
 </Command>
-
-<!-- <Command class='flex-1' shouldFilter={false} loop disablePointerSelection>
-  <CommandInput bind:ref={inputRef} placeholder='Type a command or search...' />
-  <CommandList>
-    <CommandEmpty>No results found.</CommandEmpty>
-    <CommandGroup heading='Suggestion' commands={commands} onCommandSelect={onCommandSelect} />
-  </CommandList>
-</Command> -->

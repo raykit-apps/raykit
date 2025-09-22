@@ -5,6 +5,7 @@ export const ThemeManifest = z.object({
   type: z.union([z.literal('light'), z.literal('dark')]),
   nativeColors: z.object({
     'background': z.string().optional(),
+    'foreground': z.string().optional(),
     'border': z.string().optional(),
     'logo.foreground': z.string().optional(),
     'search.textForeground': z.string().optional(),
