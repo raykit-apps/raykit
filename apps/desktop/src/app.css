@@ -4,21 +4,45 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --raykit-background: oklch(1 0 0);
+  /** global **/
+  --raykit-background: none;
   --raykit-foreground: oklch(0.922 0 0);
   --raykit-border: oklch(0.922 0 0);
+  /** logo **/
   --raykit-logo-foreground: oklch(0.922 0 0);
-  --raykit-search-textForeground: oklch(0.922 0 0);
+  /** search **/
+  --raykit-search-background: inherit;
+  --raykit-search-border: oklch(0.922 0 0);
+  --raykit-search-foreground: oklch(0.922 0 0);
   --raykit-search-placeholderForeground: oklch(0.922 0 0);
-  --raykit-header-background: oklch(0.922 0 0);
-  --raykit-content-background: oklch(0.922 0 0);
-  --raykit-command-activeBackground: oklch(0.922 0 0);
+  /** commands **/
+  --raykit-command-background: inherit;
+  --raykit-commandsHeading-foreground: oklch(0.922 0 0);
   --raykit-command-hoverBackground: oklch(0.922 0 0);
-  --raykit-command-titleTextForeground: oklch(0.922 0 0);
-  --raykit-command-subtitleTextForeground: oklch(0.922 0 0);
-  --raykit-command-typeTextForeground: oklch(0.922 0 0);
-  --raykit-heading-textForeground: oklch(0.922 0 0);
-  /* --raykit-border: oklch(0.65 0.01 0 / 0.2); */
+  --raykit-command-hoverWarningBackground: oklch(0.922 0 0);
+  --raykit-command-activeBackground: oklch(0.922 0 0);
+  --raykit-command-activeWarningBackground: oklch(0.922 0 0);
+  --raykit-commandTitle-foreground: oklch(0.922 0 0);
+  --raykit-commandTitle-warningForeground: oklch(0.922 0 0);
+  --raykit-commandSubtitle-foreground: oklch(0.922 0 0);
+  --raykit-commandSubtitle-warningForeground: oklch(0.922 0 0);
+  --raykit-commandType-foreground: oklch(0.922 0 0);
+  --raykit-commandType-warningForeground: oklch(0.922 0 0);
+  /* kbd */
+  --raykit-kdb-background: oklch(0.922 0 0);
+  --raykit-kdb-foreground: oklch(0.922 0 0);
+  /* button */
+  --raykit-button-hoverBackground: oklch(0.922 0 0);
+  --raykit-button-activeBackground: oklch(0.922 0 0);
+  --raykit-button-foreground: oklch(0.922 0 0);
+  --raykit-button-selectForeground: oklch(0.922 0 0);
+  /* button */
+  --raykit-actionsBar-background: inherit;
+  --raykit-actionsBar-border: oklch(0.922 0 0);
+  --raykit-actionsPopover-background: oklch(0.922 0 0);
+  /* notifications */
+  --raykit-notifications-background: oklch(0.922 0 0);
+  --raykit-notifications-foreground: oklch(0.922 0 0);
 
   /* temp */
   --radius: 0.625rem;
@@ -56,9 +80,7 @@
 }
 
 @theme inline {
-  --color-background: var(--raykit-background);
-  --color-border: var(--raykit-border);
-  --color-header-background: var(--raykit-header-background, --raykit-background, inherit);
+  /** global **/
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);

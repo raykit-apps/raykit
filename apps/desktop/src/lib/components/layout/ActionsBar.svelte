@@ -6,12 +6,12 @@
   import { Button } from '../ui/button'
   import { KbdGroup, KbdItem } from '../ui/kbd'
 
-  type CommandFooterProps = HTMLAttributes<HTMLElement> & {}
+  type ActionsBarProps = HTMLAttributes<HTMLElement> & {}
 
-  const { class: className, ...restProps }: CommandFooterProps = $props()
+  const { class: className, ...restProps }: ActionsBarProps = $props()
 </script>
 
-<footer data-slot='layout-footer' class={cn('h-10 px-2 flex border-t box-content justify-between items-center', className)} {...restProps}>
+<footer data-slot='cations-bar' class={cn('h-10 px-2 flex border-t box-content justify-between items-center', className)} {...restProps}>
   <Button variant='ghost' class='h-7 p-2 text-[13px]/4'>
     <Avatar.Root class='rounded-xl'>
       <Avatar.Image

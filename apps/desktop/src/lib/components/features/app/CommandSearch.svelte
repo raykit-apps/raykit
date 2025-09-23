@@ -15,6 +15,6 @@
   })
 </script>
 
-<div class='h-14 flex items-center border-b px-4' data-slot='command-search'>
+<header class='h-14 flex items-center border-b px-4' data-slot='command-search'>
   <CommandInput bind:ref={inputRef} {placeholder} />
-</div>
+</header>
