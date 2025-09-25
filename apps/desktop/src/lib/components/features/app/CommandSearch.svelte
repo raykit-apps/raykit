@@ -15,6 +15,16 @@
   })
 </script>
 
-<header class='h-14 bg-search-background flex items-center border-b border-search-border px-4' data-slot='command-search'>
-  <CommandInput bind:ref={inputRef} class='text-search-foreground placeholder:text-search-placeholderForeground' {placeholder} />
+<header
+  style='app-region: drag;'
+  class='h-14 bg-search-background flex items-center border-b border-search-border px-4'
+  data-slot='command-search'
+>
+  <div class='flex-1 w-0 flex' style='app-region: no-drag;'>
+    <CommandInput
+      bind:ref={inputRef}
+      class='text-base text-search-foreground placeholder:text-search-placeholderForeground'
+      {placeholder}
+    />
+  </div>
 </header>

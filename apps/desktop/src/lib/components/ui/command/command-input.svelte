@@ -13,7 +13,7 @@
 <CommandPrimitive.Input
   data-slot='command-input'
   class={cn(
-    'outline-hidden flex h-10 w-full bg-transparent py-3 text-sm disabled:cursor-not-allowed disabled:opacity-50',
+    'outline-hidden flex w-full bg-transparent text-sm disabled:cursor-not-allowed disabled:opacity-50',
     className,
   )}
   bind:ref

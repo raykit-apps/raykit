@@ -53,9 +53,9 @@ export const ThemeManifest = z.object({
     'actionsButton.foreground': z.string().optional(),
     'actionsButton.hoverBackground': z.string().optional(),
     'actionsButton.activeBackground': z.string().optional(),
-    'actionsPopover.background': z.string().optional(),
-    'actionsPopover.backdrop': z.string().optional(),
-    'actionsPopover.shadow': z.string().optional(),
+    'actionsPanel.background': z.string().optional(),
+    'actionsPanel.backdrop': z.string().optional(),
+    'actionsPanel.shadow': z.string().optional(),
     // notifications
     'notifications.background': z.string().optional(),
     'notifications.foreground': z.string().optional(),

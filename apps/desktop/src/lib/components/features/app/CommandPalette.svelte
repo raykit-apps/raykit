@@ -9,6 +9,6 @@
   const { children }: CommandPaletteProps = $props()
 </script>
 
-<CommandList class='px-2 bg-commands-background outline-hidden'>
+<CommandList class='h-0 flex-1 px-2 bg-commands-background outline-hidden'>
   {@render children()}
 </CommandList>

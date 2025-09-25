@@ -47,7 +47,7 @@
   /* actions */
   /* --raykit-actionsBar-background: inherit; */
   /* --raykit-actionsBar-border: oklch(0.922 0 0); */
-  --raykit-actionsPopover-background: oklch(0.922 0 0);
+  --raykit-actionsPanel-background: oklch(100% 0 271.152);
   --raykit-actionsPopover-backdrop: oklch(0.922 0 0);
   --raykit-actionsPopover-shadow: oklch(0.922 0 0);
   /* notifications */
@@ -85,6 +85,7 @@
   --color-actionsButton-foreground: var(--raykit-actionsButton-foreground, var(--raykit-accent-foreground));
   --color-actionsButton-hoverBackground: var(--raykit-actionsButton-hoverBackground, var(--raykit-accent));
   --color-actionsButton-activeBackground: var(--raykit-actionsButton-activeBackground, var(--raykit-accent));
+  --color-actionsPanel-background: var(--raykit-actionsPanel-background);
 }
 
 @layer components {

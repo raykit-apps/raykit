@@ -14,6 +14,8 @@ export function createWindow() {
     skipTaskbar: true,
     resizable: true,
     frame: false,
+    backgroundMaterial: 'mica',
+    vibrancy: 'content',
     webPreferences: {
       nodeIntegration: true,
       preload: path.join(import.meta.dirname, `./preload.js`),
