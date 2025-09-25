@@ -15,6 +15,6 @@
   })
 </script>
 
-<header class='h-14 flex items-center border-b px-4' data-slot='command-search'>
-  <CommandInput bind:ref={inputRef} {placeholder} />
+<header class='h-14 bg-search-background flex items-center border-b border-search-border px-4' data-slot='command-search'>
+  <CommandInput bind:ref={inputRef} class='text-search-foreground placeholder:text-search-placeholderForeground' {placeholder} />
 </header>

@@ -25,15 +25,15 @@
   }: CommandSectionProps = $props()
 </script>
 
-<CommandGroup {heading} class='p-0' classHeading='p-2 pt-4'>
+<CommandGroup {heading} class='p-0' classHeading='p-2 pt-4' classItems='flex flex-col gap-0.5'>
   {#each commands as command}
-    <CommandItem class='px-2 py-0 h-10 gap-2.5' onSelect={() => onCommandSelect?.(command)}>
+    <CommandItem class='px-2 py-0 h-10 gap-2.5 hover:bg-command-hoverBackground aria-selected:bg-command-activeBackground rounded-md electron-smooth' onSelect={() => onCommandSelect?.(command)}>
       <Icon />
       <div class='flex-1 w-0 flex gap-2.5 items-center'>
-        <span>{command.title}</span>
-        <span>{command.subtitle}</span>
+        <span class='text-commandTitle-foreground'>{command.title}</span>
+        <span class='text-commandSubtitle-foreground'>{command.subtitle}</span>
       </div>
-      <div>{command.type}</div>
+      <div class='text-commandType-foreground'>{command.type}</div>
     </CommandItem>
   {/each}
 </CommandGroup>

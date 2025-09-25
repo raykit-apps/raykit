@@ -30,7 +30,7 @@
   }
 </script>
 
-<Command class='flex-1' shouldFilter={false} loop disablePointerSelection>
+<Command class='flex-1 outline-hidden' shouldFilter={false} loop disablePointerSelection>
   <CommandSearch placeholder='Type a command or search...' />
   <CommandPalette>
     <CommandEmpty>No results found.</CommandEmpty>

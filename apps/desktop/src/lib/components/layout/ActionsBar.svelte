@@ -11,7 +11,7 @@
   const { class: className, ...restProps }: ActionsBarProps = $props()
 </script>
 
-<footer data-slot='cations-bar' class={cn('h-10 px-2 flex border-t box-content justify-between items-center', className)} {...restProps}>
+<footer data-slot='cations-bar' class={cn('h-10 bg-actionsBar-background px-2 flex border-t border-actionsBar-border box-content justify-between items-center', className)} {...restProps}>
   <Button variant='ghost' class='h-7 p-2 text-[13px]/4'>
     <Avatar.Root class='rounded-xl'>
       <Avatar.Image

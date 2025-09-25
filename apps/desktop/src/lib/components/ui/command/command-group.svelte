@@ -8,18 +8,20 @@
     children,
     heading,
     classHeading,
+    classItems,
     value,
     ...restProps
   }: CommandPrimitive.GroupProps & {
     heading?: string
     classHeading?: string
+    classItems?: string
   } = $props()
 </script>
 
 <CommandPrimitive.Group
   bind:ref
   data-slot='command-group'
-  class={cn('overflow-hidden p-1', className)}
+  class={cn('p-1', className)}
   value={value ?? heading ?? `----${useId()}`}
   {...restProps}
 >
@@ -30,5 +32,5 @@
       {heading}
     </CommandPrimitive.GroupHeading>
   {/if}
-  <CommandPrimitive.GroupItems {children} />
+  <CommandPrimitive.GroupItems class={classItems} {children} />
 </CommandPrimitive.Group>

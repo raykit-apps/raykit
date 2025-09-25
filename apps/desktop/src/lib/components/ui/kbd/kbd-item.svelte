@@ -7,6 +7,6 @@
   const { class: className, children, ...restProps }: CommandFooterProps = $props()
 </script>
 
-<kbd class={cn('h-5 w-6 flex items-center justify-center rounded-sm bg-amber-100 text-xs text-[11px] [&_svg:not([class*="size-"])]:size-3', className)} {...restProps}>
+<kbd class={cn('h-5 w-6 flex items-center justify-center rounded-sm electron-smooth bg-kdb-background text-kdb-foreground text-xs [&_svg:not([class*="size-"])]:size-3', className)} {...restProps}>
   {@render children?.()}
 </kbd>
