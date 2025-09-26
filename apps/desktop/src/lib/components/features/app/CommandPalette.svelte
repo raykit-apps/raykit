@@ -10,7 +10,7 @@
   const { children }: CommandPaletteProps = $props()
 </script>
 
-<ScrollArea type='scroll' class='h-0 flex-1 bg-commands-background' scrollHideDelay={1800}>
+<ScrollArea type='scroll' class='h-0 flex-1 bg-commands-background' scrollHideDelay={1200}>
   <CommandList class='px-2 outline-hidden'>
     <CommandViewport>
       {@render children()}

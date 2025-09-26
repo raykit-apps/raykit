@@ -6,6 +6,10 @@
 :root {
   /** global **/
   --raykit-background: none;
+  --raykit-backdrop: none;
+  --raykit-border: oklch(0.922 0 0);
+  --raykit-primary: oklch(0.53707 0.16813 255.09);
+  /* --raykit-background: none;
   --raykit-foreground: oklch(0.145 0 0);
   --raykit-popover: oklch(1 0 0);
   --raykit-popover-foreground: oklch(0.145 0 0);
@@ -18,74 +22,103 @@
   --raykit-accent: oklch(0.97 0 0);
   --raykit-accent-foreground: oklch(0.205 0 0);
   --raykit-backdrop: none;
-  --raykit-border: oklch(0.922 0 0);
+  --raykit-border: oklch(0.922 0 0); */
   /** search **/
-  /* --raykit-search-background: inherit; */
-  /* --raykit-search-border: oklch(0.922 0 0); */
-  /* --raykit-search-foreground: oklch(61.294% 0.25154 29.223); */
-  /* --raykit-search-placeholderForeground: oklch(0.556 0 0); */
+  --raykit-search-foreground: oklch(0.145 0 0);
+  --raykit-search-placeholderForeground: oklch(0.556 0 0);
   /** commands **/
-  /* --raykit-commands-background: inherit; */
-  /* --raykit-commandsHeading-foreground: oklch(0.922 0 0); */
-  /* --raykit-command-hoverBackground: oklch(0.922 0 0); */
-  --raykit-command-hoverDeletedBackground: oklch(0.922 0 0);
+  --raykit-commandsHeading-foreground: oklch(0.556 0 0);
+  --raykit-command-hoverBackground: oklch(0.97 0 0);
   --raykit-command-hoverShadow: 4px 4px 6px oklch(0.97 0 0);
-  --raykit-command-hoverDeletedShadow: oklch(0.922 0 0);
-  /* --raykit-command-activeBackground: oklch(0.922 0 0); */
-  --raykit-command-activeShadow: oklch(0.922 0 0);
-  --raykit-command-activeDeletedBackground: oklch(0.922 0 0);
-  --raykit-command-activeDeletedShadow: oklch(0.922 0 0);
-  /* --raykit-commandTitle-foreground: oklch(62.793% 0.25768 29.223); */
-  --raykit-commandTitle-deletedForeground: oklch(0.922 0 0);
-  /* --raykit-commandSubtitle-foreground: oklch(0.922 0 0); */
-  --raykit-commandSubtitle-deletedForeground: oklch(0.922 0 0);
-  /* --raykit-commandType-foreground: oklch(0.922 0 0); */
-  --raykit-commandType-deletedForeground: oklch(0.922 0 0);
+  --raykit-command-activeBackground: oklch(0.93 0 0);
+  --raykit-command-activeShadow: 4px 4px 6px oklch(0.922 0 0);
+  --raykit-command-foreground: oklch(0.145 0 0);
+  --raykit-commandSubtitle-foreground: oklch(0.556 0 0);
+  --raykit-commandType-foreground: oklch(0.556 0 0);
   /* kbd */
-  /* --raykit-kdb-background: oklch(0.922 0 0);
-  --raykit-kdb-foreground: oklch(0.922 0 0); */
+  --raykit-kdb-background: oklch(0.92 0 0);
+  --raykit-kdb-foreground: oklch(0.556 0 0);
   /* actions */
-  /* --raykit-actionsBar-background: inherit; */
-  /* --raykit-actionsBar-border: oklch(0.922 0 0); */
+  --raykit-actionsButton-background: none;
+  --raykit-actionsButton-foreground: oklch(0.205 0 0);
+  --raykit-actionsButton-hoverBackground: oklch(0.97 0 0);
+  --raykit-actionsButton-activeBackground: oklch(0.95 0 0);
   --raykit-actionsPanel-background: oklch(100% 0 271.152);
-  --raykit-actionsPopover-backdrop: oklch(0.922 0 0);
-  --raykit-actionsPopover-shadow: oklch(0.922 0 0);
+  --raykit-actionsPopover-backdrop: none;
+  --raykit-actionsPopover-shadow: 4px 4px 6px oklch(0.97 0 0);
+  --raykit-actionsPanelCommand-deleteForeground: oklch(0.59 0.22 17.68);
   /* notifications */
   --raykit-notifications-background: oklch(0.922 0 0);
   --raykit-notifications-foreground: oklch(0.922 0 0);
+  /* scrollBar */
+  --raykit-scrollBar-background: oklch(0.922 0 0);
+  --raykit-scrollBar-activeBackground: oklch(0.922 0 0);
+  --raykit-scrollBar-foreground: oklch(0.922 0 0);
+  --raykit-scrollBar-activeForeground: oklch(0.922 0 0);
 }
 
 @theme inline {
   /** global **/
   --color-background: var(--raykit-background);
   --blur-backdrop: var(--raykit-backdrop);
-  --color-foreground: var(--raykit-foreground);
   --color-border: var(--raykit-border);
+  --color-primary: var(--raykit-primary);
   /** search **/
   --color-search-background: var(--raykit-search-background, var(--raykit-background));
   --color-search-border: var(--raykit-search-border, var(--raykit-border));
-  --color-search-foreground: var(--raykit-search-foreground, var(--raykit-foreground));
-  --color-search-placeholderForeground: var(--raykit-search-placeholderForeground, var(--raykit-muted-foreground));
+  --color-search-foreground: var(--raykit-search-foreground);
+  --color-search-placeholderForeground: var(--raykit-search-placeholderForeground);
   /** commands **/
   --color-commands-background: var(--raykit-commands-background, var(--raykit-background));
-  --color-commandsHeading-foreground: var(--raykit-commandsHeading-foreground, var(--raykit-muted-foreground));
-  --color-command-hoverBackground: var(--raykit-command-hoverBackground, var(--raykit-accent));
-  /** kbd **/
-  --color-kdb-background: var(--raykit-kdb-background, var(--raykit-muted));
-  --color-kdb-foreground: var(--raykit-kdb-foreground, var(--raykit-muted-foreground));
-  /* --shadow-command-hoverShadow: var(--raykit-command-hoverShadow); */
-  --color-command-activeBackground: var(--raykit-command-activeBackground, var(--raykit-muted));
-  --color-commandTitle-foreground: var(--raykit-commandTitle-foreground, var(--raykit-foreground));
+  --color-commandsHeading-foreground: var(--raykit-commandsHeading-foreground);
+  --color-command-hoverBackground: var(--raykit-command-hoverBackground);
+  --shadow-command-hoverShadow: var(--raykit-command-hoverShadow);
+  --color-command-activeBackground: var(--raykit-command-activeBackground);
+  --shadow-command-activeShadow: var(--raykit-command-activeShadow);
+  --color-command-foreground: var(--raykit-command-foreground);
   --color-commandSubtitle-foreground: var(--raykit-commandSubtitle-foreground, var(--raykit-muted-foreground));
   --color-commandType-foreground: var(--raykit-commandType-foreground, var(--raykit-muted-foreground));
+  /** kbd **/
+  --color-kdb-background: var(--raykit-kdb-background);
+  --color-kdb-foreground: var(--raykit-kdb-foreground);
   /* actions */
   --color-actionsBar-background: var(--raykit-actionsBar-background, var(--raykit-background));
   --color-actionsBar-border: var(--raykit-actionsBar-border, var(--raykit-border));
-  --color-actionsButton-background: var(--raykit-actionsButton-background, var(--raykit-background));
-  --color-actionsButton-foreground: var(--raykit-actionsButton-foreground, var(--raykit-accent-foreground));
-  --color-actionsButton-hoverBackground: var(--raykit-actionsButton-hoverBackground, var(--raykit-accent));
-  --color-actionsButton-activeBackground: var(--raykit-actionsButton-activeBackground, var(--raykit-accent));
+  --color-actionsButton-background: var(--raykit-actionsButton-background);
+  --color-actionsButton-foreground: var(--raykit-actionsButton-foreground);
+  --color-actionsButton-hoverBackground: var(--raykit-actionsButton-hoverBackground);
+  --color-actionsButton-activeBackground: var(--raykit-actionsButton-activeBackground);
   --color-actionsPanel-background: var(--raykit-actionsPanel-background);
+  --blur-actionsPopover-backdrop: var(--raykit-actionsPopover-backdrop);
+  --shadow-actionsPopover-shadow: var(--raykit-actionsPopover-shadow);
+  --color-actionsPanel-border: var(--raykit-actionsPanel-border, var(--raykit-border));
+  --color-actionsPanelSearch-foreground: var(--raykit-actionsPanelSearch-foreground, var(--raykit-search-foreground));
+  --color-actionsPanelSearch-placeholderForeground: var(
+    --raykit-actionsPanelSearch-placeholderForeground,
+    var(--raykit-search-placeholderForeground)
+  );
+  --color-actionsPanelCommandHeading-foreground: var(
+    --raykit-actionsPanelCommandHeading-foreground,
+    var(--color-commandsHeading-foreground)
+  );
+  --color-actionsPanelCommand-activeBackground: var(
+    --raykit-actionsPanelCommand-activeBackground,
+    var(--raykit-command-activeBackground)
+  );
+  --shadow-actionsPanelCommand-activeShadow: var(
+    --raykit-actionsPanelCommand-activeShadow,
+    var(--raykit-command-activeShadow)
+  );
+  --color-actionsPanelCommand-foreground: var(
+    --raykit-actionsPanelCommand-foreground,
+    var(--raykit-command-foreground)
+  );
+  --color-actionsPanelCommand-deleteForeground: var(--raykit-actionsPanelCommand-deleteForeground);
+  /* scrollBar */
+  --color-scrollBar-background: var(--raykit-scrollBar-background);
+  --color-scrollBar-activeBackground: var(--raykit-scrollBar-activeBackground);
+  --color-scrollBar-foreground: var(--raykit-scrollBar-foreground);
+  --color-scrollBar-activeForeground: var(--raykit-scrollBar-activeForeground);
 }
 
 @layer components {

@@ -30,27 +30,27 @@
 
 <Popover>
   <PopoverTrigger {...restProps} />
-  <PopoverContent {align} sideOffset={12} class='p-0 w-96 h-60 bg-actionsPanel-background electron-smooth'>
+  <PopoverContent {align} sideOffset={12} class='p-0 w-96 h-60 bg-actionsPanel-background electron-smooth border-actionsPanel-border'>
     <Command>
-      <ScrollArea type='scroll' class='h-0 flex-1' scrollHideDelay={1800}>
+      <ScrollArea type='scroll' class='h-0 flex-1' scrollHideDelay={1200}>
         <CommandList>
           <CommandViewport>
             <CommandEmpty>No results found.</CommandEmpty>
             {#each sections as section, i}
-              <CommandGroup class='p-2' heading={section.heading}>
+              <CommandGroup class='p-2' heading={section.heading} classHeading='text-actionsPanelCommandHeading-foreground'>
                 {#each section.actions as action}
-                  <CommandItem class='h-9 p-2'>{action.title}</CommandItem>
+                  <CommandItem class='h-9 p-2 rounded-md electron-smooth aria-selected:bg-actionsPanelCommand-activeBackground text-actionsPanelCommand-foreground'>{action.title}</CommandItem>
                 {/each}
               </CommandGroup>
               {#if i < sections.length - 1}
-                <CommandSeparator class='bg-border' />
+                <CommandSeparator class='bg-actionsPanel-border' />
               {/if}
             {/each}
           </CommandViewport>
         </CommandList>
       </ScrollArea>
-      <div class='h-10 px-4 box-content border-t flex items-center'>
-        <CommandInput placeholder='Search...' />
+      <div class='h-10 px-4 box-content border-t border-actionsBar-border flex items-center'>
+        <CommandInput placeholder='Search...' class='text-actionsPanelSearch-foreground placeholder:text-actionsPanelSearch-placeholderForeground' />
       </div>
     </Command>
   </PopoverContent>

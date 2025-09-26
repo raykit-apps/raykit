@@ -52,7 +52,7 @@
     },
     {
       command: 'raykit.store.copy',
-      title: 'Store',
+      title: 'Store Copy',
       subtitle: 'Raykit',
       type: 'View',
     },

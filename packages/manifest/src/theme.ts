@@ -23,7 +23,7 @@ export const ThemeManifest = z.object({
     'command.hoverShadow': z.string().optional(),
     'command.activeBackground': z.string().optional(),
     'command.activeShadow': z.string().optional(),
-    'commandTitle.foreground': z.string().optional(),
+    'command.foreground': z.string().optional(),
     'commandSubtitle.foreground': z.string().optional(),
     'commandType.foreground': z.string().optional(),
     // kbd
@@ -39,9 +39,22 @@ export const ThemeManifest = z.object({
     'actionsPanel.background': z.string().optional(),
     'actionsPanel.backdrop': z.string().optional(),
     'actionsPanel.shadow': z.string().optional(),
+    'actionsPanel.border': z.string().optional(),
+    'actionsPanelSearch.foreground': z.string().optional(),
+    'actionsPanelSearch.placeholderForeground': z.string().optional(),
+    'actionsPanelCommandHeading.foreground': z.string().optional(),
+    'actionsPanelCommand.activeBackground': z.string().optional(),
+    'actionsPanelCommand.activeShadow': z.string().optional(),
+    'actionsPanelCommand.foreground': z.string().optional(),
+    'actionsPanelCommand.deleteForeground': z.string().optional(),
     // notifications
     'notifications.background': z.string().optional(),
     'notifications.foreground': z.string().optional(),
+    // scrollBar
+    'scrollBar.background': z.string().optional(),
+    'scrollBar.activeBackground': z.string().optional(),
+    'scrollBar.foreground': z.string().optional(),
+    'scrollBar.activeForeground': z.string().optional(),
   }),
   tokenColors: z.object({
     'background': z.string().optional(),

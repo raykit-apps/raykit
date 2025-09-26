@@ -48,7 +48,7 @@
         <CornerDownLeft />
       </KbdItem>
     </Button>
-    <div class='h-3 w-0.5 rounded-xs bg-gray-300'></div>
+    <div class='h-3 w-0.5 rounded-xs bg-actionsBar-border'></div>
     <ActionsPanel sections={sections}>
       {#snippet child({ props })}
         <Button variant='ghost' {...props} class='h-7 py-1 pl-2 pr-1 text-[13px]/4'>
