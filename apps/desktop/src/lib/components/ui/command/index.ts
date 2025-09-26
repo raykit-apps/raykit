@@ -10,6 +10,7 @@ import Shortcut from './command-shortcut.svelte'
 import Root from './command.svelte'
 
 const Loading = CommandPrimitive.Loading
+const Viewport = CommandPrimitive.Viewport
 
 export {
   //
@@ -23,6 +24,7 @@ export {
   Loading as CommandLoading,
   Separator as CommandSeparator,
   Shortcut as CommandShortcut,
+  Viewport as CommandViewport,
   Empty,
   Group,
   Input,
@@ -33,4 +35,5 @@ export {
   Root,
   Separator,
   Shortcut,
+  Viewport,
 }

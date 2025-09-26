@@ -23,6 +23,39 @@
       subtitle: 'Raykit',
       type: 'View',
     },
+    {
+      command: 'raykit.store',
+      title: 'Store',
+      subtitle: 'Raykit',
+      type: 'View',
+    },
+  ]
+
+  const commands1: Commands[] = [
+    {
+      command: 'raykit.clipboard.copy',
+      title: 'Clipboard History Copy',
+      subtitle: 'Raykit',
+      type: 'Command',
+    },
+    {
+      command: 'raykit.openApplication.copy',
+      title: 'VSCode Copy',
+      subtitle: 'Raykit',
+      type: 'Application',
+    },
+    {
+      command: 'raykit.JsonFormat.copy',
+      title: 'JSON Format Copy',
+      subtitle: 'Raykit',
+      type: 'View',
+    },
+    {
+      command: 'raykit.store.copy',
+      title: 'Store',
+      subtitle: 'Raykit',
+      type: 'View',
+    },
   ]
 
   const onCommandSelect = () => {
@@ -37,6 +70,11 @@
     <CommandSection
       heading='Suggestion'
       commands={commands}
+      onCommandSelect={onCommandSelect}
+    />
+    <CommandSection
+      heading='Commands'
+      commands={commands1}
       onCommandSelect={onCommandSelect}
     />
   </CommandPalette>

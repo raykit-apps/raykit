@@ -1,6 +1,7 @@
 <script lang='ts'>
   import type { Snippet } from 'svelte'
-  import { CommandList } from '$lib/components/ui/command'
+  import { CommandList, CommandViewport } from '$lib/components/ui/command'
+  import { ScrollArea } from '$lib/components/ui/scroll-area'
 
   interface CommandPaletteProps {
     children: Snippet
@@ -9,6 +10,10 @@
   const { children }: CommandPaletteProps = $props()
 </script>
 
-<CommandList class='h-0 flex-1 px-2 bg-commands-background outline-hidden'>
-  {@render children()}
-</CommandList>
+<ScrollArea type='scroll' class='h-0 flex-1 bg-commands-background' scrollHideDelay={1800}>
+  <CommandList class='px-2 outline-hidden'>
+    <CommandViewport>
+      {@render children()}
+    </CommandViewport>
+  </CommandList>
+</ScrollArea>

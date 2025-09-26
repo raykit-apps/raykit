@@ -14,7 +14,7 @@ export function createWindow() {
     skipTaskbar: true,
     resizable: true,
     frame: false,
-    backgroundMaterial: 'mica',
+    // backgroundMaterial: 'mica',
     vibrancy: 'content',
     webPreferences: {
       nodeIntegration: true,
