@@ -10,10 +10,23 @@
   type ActionsBarProps = HTMLAttributes<HTMLElement> & {}
 
   const { class: className, ...restProps }: ActionsBarProps = $props()
+
+  const sections = [
+    {
+      actions: [
+        { title: '执行命令' },
+      ],
+    },
+    {
+      actions: [
+        { title: '分离窗口' },
+      ],
+    },
+  ]
 </script>
 
 <footer data-slot='cations-bar' class={cn('h-10 bg-actionsBar-background px-2 flex border-t border-actionsBar-border box-content justify-between items-center', className)} {...restProps}>
-  <ActionsPanel align='start'>
+  <ActionsPanel align='start' sections={sections}>
     {#snippet child({ props })}
       <Button variant='ghost' {...props} class='h-7 p-2 text-[13px]/4'>
         <Avatar.Root class='rounded-xl'>
@@ -36,7 +49,7 @@
       </KbdItem>
     </Button>
     <div class='h-3 w-0.5 rounded-xs bg-gray-300'></div>
-    <ActionsPanel>
+    <ActionsPanel sections={sections}>
       {#snippet child({ props })}
         <Button variant='ghost' {...props} class='h-7 py-1 pl-2 pr-1 text-[13px]/4'>
           Actions

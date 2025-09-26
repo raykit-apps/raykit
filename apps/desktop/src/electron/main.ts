@@ -1,11 +1,11 @@
-import type { BrowserWindow } from 'electron'
-import { app, globalShortcut, ipcMain } from 'electron'
+import type { WindowStore } from '@raykit/window'
+import { initWindowStore } from '@raykit/window'
+import { app, globalShortcut } from 'electron'
 import started from 'electron-squirrel-startup'
 import { createTray } from './common/tray'
-import { createWindow } from './common/window'
 
 class App {
-  public window?: BrowserWindow
+  public windowStore?: WindowStore
 
   constructor() {
     if (started) {
@@ -17,6 +17,7 @@ class App {
       process.exit(0)
     }
     else {
+      this.windowStore = initWindowStore()
       this.beforeReady()
       this.onReady()
       this.onRunning()
@@ -30,15 +31,16 @@ class App {
       //   app.moveToApplicationsFolder()
       // }
       // else {
-      app.dock?.hide()
+      // app.dock?.hide()
       // }
     }
   }
 
   onReady() {
     const readyFn = () => {
-      this.window = createWindow()
-      createTray(this.window)
+      const winShell = this.windowStore?.createMainWindow()
+      if (winShell)
+        createTray(winShell)
     }
 
     app.whenReady().then(readyFn).catch(e => console.error('Failed create window:', e))
@@ -46,24 +48,24 @@ class App {
 
   onRunning() {
     app.on('second-instance', () => {
-      const win = this.window
-      if (win) {
-        if (win.isMinimized()) {
-          win.restore()
+      const winShell = this.windowStore?.mainWindow
+      if (winShell) {
+        if (winShell.window.isMinimized()) {
+          winShell.window.restore()
         }
-        win.focus()
+        winShell.show()
+        winShell.focus()
       }
     })
     app.on('activate', async () => {
-      if (!this.window) {
-        this.window = createWindow()
-      }
+      this.windowStore?.createMainWindow()
     })
   }
 
   onQuit() {
     app.on('window-all-closed', () => {
       if (process.platform !== 'darwin') {
+        this.windowStore?.quit()
         app.quit()
       }
     })

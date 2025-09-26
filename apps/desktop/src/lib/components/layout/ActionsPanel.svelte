@@ -1,15 +1,22 @@
 <script lang='ts' module>
   import type { Snippet } from 'svelte'
 
-  export interface ActionsCommands {
+  export interface Action {
+    title: string
+    icon?: string
+    shortcut?: string
+  }
 
+  export interface Section {
+    heading?: string
+    actions: Action[]
   }
 
   export interface ActionsProps {
     child?: Snippet<[{ props: Record<string, unknown> }]>
     children?: Snippet
     align?: 'start' | 'center' | 'end'
-  // actionsCommands: ActionsCommands[]
+    sections: Section[]
   }
 </script>
 
@@ -18,7 +25,7 @@
   import { Popover, PopoverContent, PopoverTrigger } from '$lib/components/ui/popover'
   import { ScrollArea } from '$lib/components/ui/scroll-area'
 
-  const { align = 'end', ...restProps }: ActionsProps = $props()
+  const { align = 'end', sections, ...restProps }: ActionsProps = $props()
 </script>
 
 <Popover>
@@ -29,17 +36,16 @@
         <CommandList>
           <CommandViewport>
             <CommandEmpty>No results found.</CommandEmpty>
-            <CommandGroup class='p-2'>
-              <CommandItem class='h-9 p-2'>文字1</CommandItem>
-              <CommandItem>文字2</CommandItem>
-              <CommandItem>文字3</CommandItem>
-              <CommandItem>文字4</CommandItem>
-            </CommandGroup>
-            <CommandSeparator class='bg-border' />
-            <CommandGroup class='p-2'>
-              <CommandItem>文字1</CommandItem>
-              <CommandItem>文字2</CommandItem>
-            </CommandGroup>
+            {#each sections as section, i}
+              <CommandGroup class='p-2' heading={section.heading}>
+                {#each section.actions as action}
+                  <CommandItem class='h-9 p-2'>{action.title}</CommandItem>
+                {/each}
+              </CommandGroup>
+              {#if i < sections.length - 1}
+                <CommandSeparator class='bg-border' />
+              {/if}
+            {/each}
           </CommandViewport>
         </CommandList>
       </ScrollArea>

@@ -34,6 +34,10 @@ const config: ForgeConfig = {
           config: 'vite.preload.config.ts',
           target: 'preload',
         },
+        {
+          entry: 'src/electron/services.ts',
+          config: 'vite.services.config.ts',
+        },
       ],
       renderer: [
         {

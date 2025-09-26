@@ -15,6 +15,7 @@
   "dependencies": {
     "@lucide/svelte": "^0.544.0",
     "@raykit/utils": "workspace:*",
+    "@raykit/window": "workspace:*",
     "bits-ui": "^2.9.8",
     "electron-squirrel-startup": "^1.0.1"
   },

@@ -57,6 +57,9 @@ importers:
       '@raykit/utils':
         specifier: workspace:*
         version: link:../../packages/utils
+      '@raykit/window':
+        specifier: workspace:*
+        version: link:../../packages/window
       bits-ui:
         specifier: ^2.9.8
         version: 2.9.8(@internationalized/date@3.9.0)(svelte@5.38.10)

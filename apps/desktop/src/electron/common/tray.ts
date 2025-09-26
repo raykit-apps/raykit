@@ -1,9 +1,9 @@
-import type { BrowserWindow } from 'electron'
+import type { WindowShell } from '@raykit/window'
 import path from 'node:path'
 import { getResourceDir, isMac, isWindows } from '@raykit/utils'
 import { app, Menu, shell, Tray } from 'electron'
 
-export function createTray(window: BrowserWindow) {
+export function createTray(winShell: WindowShell) {
   let icon
   if (isMac()) {
     icon = path.join(getResourceDir(), './icons/iconTemplate@4x.png')
@@ -37,8 +37,8 @@ export function createTray(window: BrowserWindow) {
 
   appIcon.setToolTip('Raykit')
   appIcon.on('click', () => {
-    window.show()
-    window.focus()
+    winShell.show()
+    winShell.focus()
   })
 
   appIcon.on('right-click', () => {
