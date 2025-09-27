@@ -6,13 +6,19 @@ export const CommandsManifest = z.object({
   subtitle: z.string().optional(),
   icon: z.string().optional(),
   description: z.string(),
+})
+
+export type CommandsManifest = z.infer<typeof CommandsManifest>
+
+export const CommandsPaletteManifest = z.object({
+  command: z.string(),
   keywords: z.string().array().optional(),
   when: z.string().optional(),
   lens: z.number().array().optional(),
   disabledByDefault: z.boolean().default(false).optional(),
 })
 
-export type CommandsManifest = z.infer<typeof CommandsManifest>
+export type CommandsPaletteManifest = z.infer<typeof CommandsPaletteManifest>
 
 const PopupManifest = z.object({
   command: z.string(),
@@ -57,6 +63,7 @@ export const KeybindingsManifest = z.object({
 
 export const ContributesManifest = z.object({
   commands: z.array(CommandsManifest).min(1).max(100).optional(),
+  commandPalette: z.array(CommandsPaletteManifest).min(1).max(100).optional(),
   views: z.array(ViewsManifest).min(1).max(100).optional(),
   themes: z.array(ThemesManifest).optional(),
   keybindings: z.array(KeybindingsManifest).optional(),
