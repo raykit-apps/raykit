@@ -144,7 +144,17 @@ importers:
 
   packages/cli: {}
 
-  packages/extension: {}
+  packages/extension:
+    dependencies:
+      '@raykit/manifest':
+        specifier: workspace:*
+        version: link:../manifest
+      '@raykit/utils':
+        specifier: workspace:*
+        version: link:../utils
+      zod:
+        specifier: ^4.1.8
+        version: 4.1.8
 
   packages/manifest:
     dependencies:
