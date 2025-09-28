@@ -7,3 +7,7 @@ export async function loadExtensionManifest(extensionDir: string) {
   const manifestContent = await readJSON(extensionManifestPath)
   return ExtensionManifest.parse(manifestContent)
 }
+
+export class Extensions {
+
+}

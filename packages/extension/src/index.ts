@@ -1,2 +1,2 @@
-export * from './extension-host'
-export * from './extension-server'
+export * from './main/extension-host-service'
+export * from './server/extension-server'

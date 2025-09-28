@@ -101,3 +101,20 @@ export const ExtensionManifest = z.object({
 })
 
 export type ExtensionManifest = z.infer<typeof ExtensionManifest>
+
+export const ExtensionIndexEntry = z.object({
+  manifest: ExtensionManifest,
+  dev: z.boolean(),
+})
+
+export const ExtensionIndexThemeEntry = z.object({
+  extension: z.string(),
+  path: z.string(),
+})
+
+export const ExtensionIndex = z.object({
+  extensions: z.record(z.string(), ExtensionIndexEntry),
+  themes: z.record(z.string(), ExtensionIndexThemeEntry),
+})
+
+export type ExtensionIndexType = z.infer<typeof ExtensionIndex>
