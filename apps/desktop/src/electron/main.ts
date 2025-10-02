@@ -1,52 +1,68 @@
-import type { WindowStore } from '@raykit/window'
-import { initWindowStore } from '@raykit/window'
-import { app, globalShortcut } from 'electron'
-import started from 'electron-squirrel-startup'
-import { createTray } from './common/tray'
+import { app } from 'electron'
 
-if (started) {
-  app.quit()
-}
-const isSingleInstance = app.requestSingleInstanceLock()
-if (!isSingleInstance) {
-  app.quit()
-  process.exit(0)
-}
-
-const windowStore: WindowStore = initWindowStore()
-
-function readyFn() {
-  const winShell = windowStore.createMainWindow()
-  if (winShell)
-    createTray(winShell)
-}
-
-app.whenReady().then(readyFn).catch(e => console.error('Failed create window:', e))
-
-app.on('second-instance', () => {
-  const winShell = windowStore?.mainWindow
-  if (winShell) {
-    if (winShell.window.isMinimized()) {
-      winShell.window.restore()
+class RaykitMain {
+  main() {
+    try {
+      //
+    } catch (error) {
+      console.error(error)
+      app.exit(1)
     }
-    winShell.show()
-    winShell.focus()
   }
-})
-app.on('activate', async () => {
-  windowStore?.createMainWindow()
-})
+}
 
-app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') {
-    windowStore.quit()
-    app.quit()
-  }
-})
+const raykit = new RaykitMain()
+raykit.main()
 
-app.on('will-quit', () => {
-  globalShortcut.unregisterAll()
-})
+// import type { WindowStore } from '@raykit/window'
+// import { initWindowStore } from '@raykit/window'
+// import { app, globalShortcut } from 'electron'
+// import started from 'electron-squirrel-startup'
+// import { createTray } from './common/tray'
+
+// if (started) {
+//   app.quit()
+// }
+// const isSingleInstance = app.requestSingleInstanceLock()
+// if (!isSingleInstance) {
+//   app.quit()
+//   process.exit(0)
+// }
+
+// const windowStore: WindowStore = initWindowStore()
+
+// function readyFn() {
+//   const winShell = windowStore.createMainWindow()
+//   if (winShell)
+//     createTray(winShell)
+// }
+
+// app.whenReady().then(readyFn).catch(e => console.error('Failed create window:', e))
+
+// app.on('second-instance', () => {
+//   const winShell = windowStore?.mainWindow
+//   if (winShell) {
+//     if (winShell.window.isMinimized()) {
+//       winShell.window.restore()
+//     }
+//     winShell.show()
+//     winShell.focus()
+//   }
+// })
+// app.on('activate', async () => {
+//   windowStore?.createMainWindow()
+// })
+
+// app.on('window-all-closed', () => {
+//   if (process.platform !== 'darwin') {
+//     windowStore.quit()
+//     app.quit()
+//   }
+// })
+
+// app.on('will-quit', () => {
+//   globalShortcut.unregisterAll()
+// })
 
 // class App {
 //   public windowStore?: WindowStore

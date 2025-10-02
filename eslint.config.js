@@ -13,6 +13,7 @@ export default antfu(
       'no-control-regex': 'off',
       'no-redeclare': 'off',
       '@typescript-eslint/no-redeclare': 'off',
+      'brace-style': ['error', '1tbs', { allowSingleLine: true }],
     },
     ignores: [
       '**/.sveltekit',

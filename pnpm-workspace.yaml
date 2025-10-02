@@ -3,4 +3,4 @@ packages:
   - 'packages/*'
 
 catalog:
-  electron: ^38.1.0
+  electron: ^38.2.0

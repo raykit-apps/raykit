@@ -51,8 +51,7 @@ export class WindowStore {
       winShell.window.on('show', () => {
         view.webContents.openDevTools({ mode: 'detach' })
       })
-    }
-    else {
+    } else {
       view.webContents.loadFile(path.join(import.meta.dirname, `../renderer/${MAIN_WINDOW_VITE_NAME}/index.html`))
     }
 

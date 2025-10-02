@@ -2,7 +2,6 @@
   "compilerOptions": {
     "target": "esnext",
     "useDefineForClassFields": true,
-    "baseUrl": ".",
     "module": "esnext",
     /* Bundler mode */
     "moduleResolution": "bundler",

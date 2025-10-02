@@ -39,8 +39,7 @@ export const getHomeDir = once(() => {
 export const getConfigDir = once(() => {
   if (isWindows() || isLinux()) {
     return app.getPath('userData')
-  }
-  else {
+  } else {
     return path.join(getHomeDir(), '.config/raykit')
   }
 })
@@ -62,11 +61,9 @@ export const getConfigDir = once(() => {
 export const getDataDir = once(() => {
   if (isWindows()) {
     return path.join(getHomeDir(), 'AppData/Local/Raykit')
-  }
-  else if (isLinux()) {
+  } else if (isLinux()) {
     return path.join(path.join(getHomeDir(), '.local/share/raykit'))
-  }
-  else {
+  } else {
     return app.getPath('userData')
   }
 })

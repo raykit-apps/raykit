@@ -7,11 +7,9 @@ export function createTray(winShell: WindowShell) {
   let icon
   if (isMac()) {
     icon = path.join(getResourceDir(), './icons/iconTemplate@4x.png')
-  }
-  else if (isWindows()) {
+  } else if (isWindows()) {
     icon = path.join(getResourceDir(), './icons/icon.ico')
-  }
-  else {
+  } else {
     icon = path.join(getResourceDir(), './icons/icon.png')
   }
 
