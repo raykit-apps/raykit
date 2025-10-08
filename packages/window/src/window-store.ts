@@ -11,7 +11,7 @@ export class WindowStore {
     this.shells = new Map()
   }
 
-  createMainWindow() {
+  async createMainWindow() {
     if (this.mainLabel)
       return this.shells.get(this.mainLabel) as WindowShell
 
@@ -47,12 +47,12 @@ export class WindowStore {
     this.mainLabel = label
 
     if (MAIN_WINDOW_VITE_DEV_SERVER_URL) {
-      view.webContents.loadURL(`${MAIN_WINDOW_VITE_DEV_SERVER_URL}/app`)
+      await view.webContents.loadURL(`${MAIN_WINDOW_VITE_DEV_SERVER_URL}/app`)
       winShell.window.on('show', () => {
         view.webContents.openDevTools({ mode: 'detach' })
       })
     } else {
-      view.webContents.loadFile(path.join(import.meta.dirname, `../renderer/${MAIN_WINDOW_VITE_NAME}/index.html`))
+      await view.webContents.loadFile(path.join(import.meta.dirname, `../renderer/${MAIN_WINDOW_VITE_NAME}/index.html`))
     }
 
     return winShell

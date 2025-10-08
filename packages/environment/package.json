@@ -1,0 +1,20 @@
+{
+  "name": "@raykit/environment",
+  "type": "module",
+  "version": "0.1.0",
+  "description": "",
+  "author": {
+    "name": "raykit-apps",
+    "url": "https://github.com/raykit-apps"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/raykit-apps/raykit.git"
+  },
+  "scripts": {},
+  "dependencies": {
+  },
+  "devDependencies": {
+  }
+}
