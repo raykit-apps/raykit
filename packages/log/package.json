@@ -1,5 +1,5 @@
 {
-  "name": "@raykit/ipc",
+  "name": "@raykit/log",
   "type": "module",
   "version": "0.1.0",
   "scripts": {},

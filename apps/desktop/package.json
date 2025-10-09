@@ -14,6 +14,8 @@
   },
   "dependencies": {
     "@lucide/svelte": "^0.544.0",
+    "@raykit/common": "workspace:*",
+    "@raykit/instantiation": "workspace:*",
     "@raykit/utils": "workspace:*",
     "@raykit/window": "workspace:*",
     "bits-ui": "^2.11.4",

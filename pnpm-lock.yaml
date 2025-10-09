@@ -51,6 +51,12 @@ importers:
       '@lucide/svelte':
         specifier: ^0.544.0
         version: 0.544.0(svelte@5.39.8)
+      '@raykit/common':
+        specifier: workspace:*
+        version: link:../../packages/common
+      '@raykit/instantiation':
+        specifier: workspace:*
+        version: link:../../packages/instantiation
       '@raykit/utils':
         specifier: workspace:*
         version: link:../../packages/utils
@@ -159,6 +165,8 @@ importers:
 
   packages/ipc: {}
 
+  packages/log: {}
+
   packages/manifest:
     dependencies:
       zod:
@@ -185,6 +193,8 @@ importers:
       electron:
         specifier: 'catalog:'
         version: 38.2.0
+
+  packages/windows: {}
 
 packages:
 
@@ -4854,7 +4864,7 @@ snapshots:
     dependencies:
       '@typescript-eslint/tsconfig-utils': 8.45.0(typescript@5.9.3)
       '@typescript-eslint/types': 8.45.0
-      debug: 4.4.1
+      debug: 4.4.3
       typescript: 5.9.3
     transitivePeerDependencies:
       - supports-color
@@ -4882,7 +4892,7 @@ snapshots:
       '@typescript-eslint/types': 8.45.0
       '@typescript-eslint/typescript-estree': 8.45.0(typescript@5.9.3)
       '@typescript-eslint/utils': 8.45.0(eslint@9.36.0(jiti@2.6.1))(typescript@5.9.3)
-      debug: 4.4.1
+      debug: 4.4.3
       eslint: 9.36.0(jiti@2.6.1)
       ts-api-utils: 2.1.0(typescript@5.9.3)
       typescript: 5.9.3
@@ -4915,7 +4925,7 @@ snapshots:
       '@typescript-eslint/tsconfig-utils': 8.45.0(typescript@5.9.3)
       '@typescript-eslint/types': 8.45.0
       '@typescript-eslint/visitor-keys': 8.45.0
-      debug: 4.4.1
+      debug: 4.4.3
       fast-glob: 3.3.3
       is-glob: 4.0.3
       minimatch: 9.0.5
