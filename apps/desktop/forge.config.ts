@@ -26,23 +26,23 @@ const config: ForgeConfig = {
       build: [
         {
           entry: 'src/electron/main.ts',
-          config: 'vite.main.config.ts',
+          config: './build-configs/vite.main.config.ts',
           target: 'main',
         },
         {
           entry: 'src/electron/preload.ts',
-          config: 'vite.preload.config.ts',
+          config: './build-configs/vite.preload.config.ts',
           target: 'preload',
         },
         {
           entry: 'src/electron/services.ts',
-          config: 'vite.services.config.ts',
+          config: './build-configs/vite.services.config.ts',
         },
       ],
       renderer: [
         {
           name: 'main_window',
-          config: 'vite.config.ts',
+          config: './build-configs/vite.renderer.config.ts',
         },
       ],
     }),

@@ -5,7 +5,7 @@ export default defineConfig({
     outDir: '.vite/build',
     lib: {
       formats: ['es'],
-      entry: 'src/electron/main.ts',
+      entry: 'src/main.ts',
       fileName: 'main',
     },
     minify: true,

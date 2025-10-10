@@ -11,6 +11,6 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true
-  }
-  // "include": ["src/**/*"]
+  },
+  "include": ["build-configs/**/*.ts"]
 }
