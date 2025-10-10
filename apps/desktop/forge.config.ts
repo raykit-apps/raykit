@@ -25,19 +25,19 @@ const config: ForgeConfig = {
     new VitePlugin({
       build: [
         {
-          entry: 'src/electron/main.ts',
+          entry: 'src/main.ts',
           config: './build-configs/vite.main.config.ts',
           target: 'main',
         },
         {
-          entry: 'src/electron/preload.ts',
+          entry: 'src/electron-preload/preload.ts',
           config: './build-configs/vite.preload.config.ts',
           target: 'preload',
         },
-        {
-          entry: 'src/electron/services.ts',
-          config: './build-configs/vite.services.config.ts',
-        },
+        // {
+        //   entry: 'src/electron/services.ts',
+        //   config: './build-configs/vite.services.config.ts',
+        // },
       ],
       renderer: [
         {

@@ -1,3 +1,4 @@
+import path from 'node:path'
 import adapter from '@sveltejs/adapter-static'
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte'
 
@@ -8,6 +9,12 @@ const config = {
     adapter: adapter({
       pages: '.vite/renderer/main_window',
     }),
+    alias: {
+      $lib: path.resolve('./src/electron-browser/lib'),
+    },
+    files: {
+      src: 'src/electron-browser',
+    },
   },
 }
 
