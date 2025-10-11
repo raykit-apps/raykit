@@ -2,6 +2,26 @@
   "name": "@raykit/ipc",
   "type": "module",
   "version": "0.1.0",
+  "exports": {
+    ".": {
+      "types": "./src/common/index.ts",
+      "import": "./src/common/index.ts"
+    },
+    "./electron-main": {
+      "types": "./src/electron-main/index.ts",
+      "import": "./src/electron-main/index.ts"
+    },
+    "./electron-renderer": {
+      "types": "./src/electron-renderer/index.ts",
+      "import": "./src/electron-renderer/index.ts"
+    },
+    "./node": {
+      "types": "./src/node/index.ts",
+      "import": "./src/node/index.ts"
+    }
+  },
+  "main": "./src/common/index.ts",
+  "types": "./src/common/index.ts",
   "scripts": {},
   "dependencies": {
   },
