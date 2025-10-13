@@ -1,8 +1,8 @@
 import type { IInstantiationService } from '@raykit/instantiation'
-import path from 'node:path'
 import { DisposableStore } from '@raykit/common'
 import { InstantiationService, ServiceCollection } from '@raykit/instantiation'
-import { app, BrowserWindow } from 'electron'
+import { app } from 'electron'
+import { RaykitApplication } from './app'
 
 class RaykitMain {
   main(): void {
@@ -15,22 +15,14 @@ class RaykitMain {
   }
 
   private async startup(): Promise<void> {
-    // const [instantiationService] = this.createServices()
+    const [instantiationService] = this.createServices()
 
     // 创建窗口
-    const window = new BrowserWindow({
-      width: 800,
-      height: 600,
-      webPreferences: {
-        // preload: path.join(__dirname, 'preload.js'),
-      },
-    })
-    window.loadURL(`${MAIN_WINDOW_VITE_DEV_SERVER_URL}/app`)
 
     try {
-      // await instantiationService.invokeFunction(async () => {
-      //   //
-      // })
+      await instantiationService.invokeFunction(async () => {
+        return instantiationService.createInstance(RaykitApplication).startup()
+      })
     } catch {
       //
     }

@@ -143,7 +143,11 @@ importers:
 
   packages/common: {}
 
-  packages/environment: {}
+  packages/environment:
+    dependencies:
+      '@raykit/common':
+        specifier: workspace:*
+        version: link:../common
 
   packages/extension:
     dependencies:
