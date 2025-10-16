@@ -4,13 +4,24 @@
   "version": "0.1.0",
   "private": true,
   "description": "",
-  "main": "./src/index.ts",
-  "types": "./src/index.ts",
+  "exports": {
+    ".": {
+      "types": "./src/common/index.ts",
+      "import": "./src/common/index.ts"
+    },
+    "./electron": {
+      "types": "./src/electron/index.ts",
+      "import": "./src/electron/index.ts"
+    }
+  },
+  "main": "./src/common/index.ts",
+  "types": "./src//common/index.ts",
   "scripts": {},
   "peerDependencies": {
     "electron": "catalog:"
   },
   "dependencies": {
+    "@raykit/common": "workspace:*"
   },
   "devDependencies": {
   }

@@ -4,6 +4,9 @@
   "version": "0.1.0",
   "scripts": {},
   "dependencies": {
+    "@raykit/common": "workspace:*",
+    "@raykit/instantiation": "workspace:*",
+    "@raykit/window": "workspace:*"
   },
   "devDependencies": {
   }

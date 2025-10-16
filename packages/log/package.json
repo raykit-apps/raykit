@@ -8,8 +8,8 @@
       "import": "./src/common/index.ts"
     },
     "./electron-main": {
-      "types": "./src/electron-main/index.ts",
-      "import": "./src/electron-main/index.ts"
+      "types": "./src/electron/index.ts",
+      "import": "./src/electron/index.ts"
     },
     "./node": {
       "types": "./src/node/index.ts",
@@ -20,6 +20,7 @@
   "types": "./src/common/index.ts",
   "scripts": {},
   "dependencies": {
+    "@raykit/common": "workspace:*"
   },
   "devDependencies": {
   }

@@ -30,7 +30,7 @@ const config: ForgeConfig = {
           target: 'main',
         },
         {
-          entry: 'src/electron-preload/preload.ts',
+          entry: 'src/node/preload.ts',
           config: './build-configs/vite.preload.config.ts',
           target: 'preload',
         },

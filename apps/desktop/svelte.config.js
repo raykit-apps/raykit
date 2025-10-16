@@ -10,10 +10,10 @@ const config = {
       pages: '.vite/renderer/main_window',
     }),
     alias: {
-      $lib: path.resolve('./src/electron-browser/lib'),
+      $lib: path.resolve('./src/renderer/lib'),
     },
     files: {
-      src: 'src/electron-browser',
+      src: 'src/renderer',
     },
   },
 }

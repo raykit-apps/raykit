@@ -5,7 +5,7 @@ export default defineConfig({
     outDir: '.vite/build',
     lib: {
       formats: ['es'],
-      entry: 'src/portal/electron-preload/preload.ts',
+      entry: 'src/node/preload.ts',
       fileName: 'preload',
     },
     minify: true,

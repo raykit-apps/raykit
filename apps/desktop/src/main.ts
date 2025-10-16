@@ -1,8 +1,4 @@
-import path from 'node:path'
-import { fileURLToPath } from 'node:url'
 import { app, Menu, protocol } from 'electron'
-
-const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 const isSingleInstance = app.requestSingleInstanceLock()
 
@@ -20,9 +16,5 @@ protocol.registerSchemesAsPrivileged([
 ])
 
 app.once('ready', () => {
-  onReady()
+  import('./mian/index.js')
 })
-
-function onReady() {
-  import('./electron-main/main.js')
-}
