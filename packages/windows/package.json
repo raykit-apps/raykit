@@ -1,12 +1,9 @@
 {
   "name": "@raykit/windows",
   "type": "module",
-  "version": "0.1.0",
+  "private": true,
   "scripts": {},
   "dependencies": {
-    "@raykit/common": "workspace:*",
-    "@raykit/instantiation": "workspace:*",
-    "@raykit/window": "workspace:*"
   },
   "devDependencies": {
   }

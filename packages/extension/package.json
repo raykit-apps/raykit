@@ -1,16 +1,9 @@
 {
   "name": "@raykit/extension",
   "type": "module",
-  "version": "0.1.0",
   "private": true,
-  "description": "",
-  "main": "./src/common/index.ts",
-  "types": "./src/common/index.ts",
   "scripts": {},
   "dependencies": {
-    "@raykit/manifest": "workspace:*",
-    "@raykit/utils": "workspace:*",
-    "zod": "^4.1.8"
   },
   "devDependencies": {
   }

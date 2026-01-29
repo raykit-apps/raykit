@@ -1,11 +1,8 @@
 {
-  "name": "@raykit/utils",
+  "name": "@raykit/base",
   "type": "module",
   "private": true,
   "scripts": {},
-  "peerDependencies": {
-    "electron": "catalog:"
-  },
   "dependencies": {
   },
   "devDependencies": {
