@@ -12,6 +12,16 @@
     "type": "git",
     "url": "https://github.com/raykit-apps/raykit.git"
   },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "rkc": "./bin/cli.js"
+  },
+  "files": [
+    "README.md",
+    "bin",
+    "dist"
+  ],
   "scripts": {
     "build": "rollup -c rollup.config.ts --configPlugin typescript && echo ''",
     "prepare": "pnpm build"
