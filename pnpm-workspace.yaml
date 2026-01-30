@@ -9,3 +9,4 @@ packages:
 catalog:
   electron: ^40.1.0
   inversify: ^7.11.0
+  solid-js: ^1.9.11

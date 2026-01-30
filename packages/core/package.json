@@ -2,9 +2,20 @@
   "name": "@raykit/core",
   "type": "module",
   "private": true,
-  "scripts": {},
-  "dependencies": {
+  "exports": {
+    ".": "./src/main/index.ts",
+    "./browser": "./src/browser/index.ts",
+    "./main": "./src/main/index.ts",
+    "./node": "./src/node/index.ts"
   },
-  "devDependencies": {
+  "main": "./src/main/index.ts",
+  "types": "./src/main/index.ts",
+  "peerDependencies": {
+    "electron": "catalog:",
+    "solid-js": "catalog:"
+  },
+  "dependencies": {
+    "@raykit/base": "workspace:*",
+    "inversify": "catalog:"
   }
 }
