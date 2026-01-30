@@ -17,7 +17,8 @@
   },
   "scripts": {
     "lint": "eslint",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "check": "tsc --noEmit"
   },
   "dependencies": {
     "fs-extra": "^11.3.3"

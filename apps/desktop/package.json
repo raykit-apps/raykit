@@ -2,12 +2,19 @@
   "name": "@raykit/desktop",
   "productName": "Raykit",
   "type": "module",
+  "version": "1.0.0",
   "private": true,
+  "main": "./out/main/index.js",
   "scripts": {
+    "dev": "rkc dev",
+    "build": "rkc build",
+    "preview": "rkc preview"
   },
   "dependencies": {
     "inversify": "catalog:"
   },
   "devDependencies": {
+    "@raykit/cli": "workspace:*",
+    "electron": "catalog:"
   }
 }

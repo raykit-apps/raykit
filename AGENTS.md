@@ -12,7 +12,7 @@ raykit 是一个electron开发的桌面端应用，使用pnpm+monorepo项目结�
 - 复用现有依赖，需要添加新的依赖每次都需要询问，同意之后才能添加
 - UI必须保证100ms内响应
 - 禁止使用npm命令执行命令，使用pnpm执行命令
-- 每次编写完代码必须在根目录执行`pnpm lint:fix`
+- 每次编写完代码必须在根目录执行`pnpm lint:fix`和`pnpm check`
 - 使用vitest进行单元测试，使用playwright进行e2e测试
 
 ## 技术栈

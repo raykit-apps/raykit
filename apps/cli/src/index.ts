@@ -1,6 +1,6 @@
 export { build } from './command/build'
-export * from './config'
 export { preview } from './command/preview'
 export { createServer } from './command/server'
+export * from './config'
 export { createLogger, mergeConfig } from 'vite'
 export type { LogLevel, Plugin, PluginOption } from 'vite'

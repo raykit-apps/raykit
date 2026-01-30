@@ -233,7 +233,7 @@ export async function resolveConfig(
   return resolved
 }
 
-const CONFIG_FILE_NAME = 'raykit.vite.config'
+const CONFIG_FILE_NAME = 'raykit.config'
 
 export async function loadConfigFromFile(
   configEnv: ConfigEnv,
