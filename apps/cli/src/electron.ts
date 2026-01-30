@@ -1,0 +1,161 @@
+import type { ChildProcess } from 'node:child_process'
+import { spawn } from 'node:child_process'
+import fs from 'node:fs'
+import { createRequire } from 'node:module'
+import path from 'node:path'
+import { loadPackageData } from './utils'
+
+const _require = createRequire(import.meta.url)
+
+function ensureElectronEntryFile(root = process.cwd()): void {
+  if (process.env.ELECTRON_ENTRY)
+    return
+  const pkg = loadPackageData()
+  if (pkg) {
+    if (!pkg.main) {
+      throw new Error('No entry point found for electron app, please add a "main" field to package.json')
+    } else {
+      const entryPath = path.resolve(root, pkg.main)
+      if (!fs.existsSync(entryPath)) {
+        throw new Error(`No electron app entry file found: ${entryPath}`)
+      }
+    }
+  } else {
+    throw new Error('Not found: package.json')
+  }
+}
+
+function getElectronMajorVer(): string {
+  let majorVer = process.env.ELECTRON_MAJOR_VER || ''
+  if (!majorVer) {
+    const pkg = _require.resolve('electron/package.json')
+    if (fs.existsSync(pkg)) {
+      const version = _require(pkg).version
+      majorVer = version.split('.')[0]
+      process.env.ELECTRON_MAJOR_VER = majorVer
+    }
+  }
+  return majorVer
+}
+
+export function supportESM(): boolean {
+  const majorVer = getElectronMajorVer()
+  return Number.parseInt(majorVer) >= 28
+}
+
+export function getElectronPath(): string {
+  let electronExecPath = process.env.ELECTRON_EXEC_PATH || ''
+  if (!electronExecPath) {
+    const electronModulePath = path.dirname(_require.resolve('electron'))
+    const pathFile = path.join(electronModulePath, 'path.txt')
+    let executablePath
+    if (fs.existsSync(pathFile)) {
+      executablePath = fs.readFileSync(pathFile, 'utf-8')
+    }
+    console.log(pathFile, executablePath, electronModulePath)
+    if (executablePath) {
+      electronExecPath = path.join(electronModulePath, 'dist', executablePath)
+      process.env.ELECTRON_EXEC_PATH = electronExecPath
+    } else {
+      throw new Error('Electron uninstall')
+    }
+  }
+  return electronExecPath
+}
+
+export function getElectronNodeTarget(): string {
+  const electronVer = getElectronMajorVer()
+
+  const nodeVer: Record<string, string> = {
+    39: '22.20',
+    38: '22.19',
+    37: '22.16',
+    36: '22.14',
+    35: '22.14',
+    34: '20.18',
+    33: '20.18',
+    32: '20.16',
+    31: '20.14',
+    30: '20.11',
+    29: '20.9',
+    28: '18.18',
+    27: '18.17',
+    26: '18.16',
+    25: '18.15',
+    24: '18.14',
+    23: '18.12',
+    22: '16.17',
+  }
+  if (electronVer && Number.parseInt(electronVer) > 10) {
+    let target = nodeVer[electronVer]
+    if (!target)
+      target = Object.values(nodeVer).reverse()[0]
+    return `node${target}`
+  }
+  return ''
+}
+
+export function getElectronChromeTarget(): string {
+  const electronVer = getElectronMajorVer()
+
+  const chromeVer: Record<string, string> = {
+    39: '142',
+    38: '140',
+    37: '138',
+    36: '136',
+    35: '134',
+    34: '132',
+    33: '130',
+    32: '128',
+    31: '126',
+    30: '124',
+    29: '122',
+    28: '120',
+    27: '118',
+    26: '116',
+    25: '114',
+    24: '112',
+    23: '110',
+    22: '108',
+  }
+  if (electronVer && Number.parseInt(electronVer) > 10) {
+    let target = chromeVer[electronVer]
+    if (!target)
+      target = Object.values(chromeVer).reverse()[0]
+    return `chrome${target}`
+  }
+  return ''
+}
+
+export function startElectron(root: string | undefined): ChildProcess {
+  ensureElectronEntryFile(root)
+
+  const electronPath = getElectronPath()
+
+  const isDev = process.env.NODE_ENV_ELECTRON_VITE === 'development'
+
+  const args: string[] = process.env.ELECTRON_CLI_ARGS ? JSON.parse(process.env.ELECTRON_CLI_ARGS) : []
+
+  if (!!process.env.REMOTE_DEBUGGING_PORT && isDev) {
+    args.push(`--remote-debugging-port=${process.env.REMOTE_DEBUGGING_PORT}`)
+  }
+
+  if (!!process.env.V8_INSPECTOR_PORT && isDev) {
+    args.push(`--inspect=${process.env.V8_INSPECTOR_PORT}`)
+  }
+
+  if (!!process.env.V8_INSPECTOR_BRK_PORT && isDev) {
+    args.push(`--inspect-brk=${process.env.V8_INSPECTOR_BRK_PORT}`)
+  }
+
+  if (process.env.NO_SANDBOX === '1') {
+    args.push('--no-sandbox')
+  }
+
+  const entry = process.env.ELECTRON_ENTRY || '.'
+
+  const ps = spawn(electronPath, [entry].concat(args), { stdio: 'inherit' })
+  ps.on('close', process.exit)
+
+  return ps
+}

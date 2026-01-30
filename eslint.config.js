@@ -3,6 +3,8 @@ import antfu from '@antfu/eslint-config'
 export default antfu(
   {
     formatters: true,
+    solid: true,
+    regexp: false,
     typescript: true,
   },
   {
@@ -10,24 +12,20 @@ export default antfu(
     rules: {
       'n/prefer-global/process': 'off',
       'no-control-regex': 'off',
-      'no-console': 'off',
-      'no-redeclare': 'off',
-      '@typescript-eslint/no-redeclare': 'off',
+      'toml/padding-line-between-pairs': 'off',
       'brace-style': ['error', '1tbs', { allowSingleLine: true }],
       '@stylistic/brace-style': 'off',
+      'no-redeclare': 'off',
+      'pnpm/json-enforce-catalog': 'off',
+      '@typescript-eslint/no-redeclare': 'off',
+      'ts/no-unsafe-function-type': 'off',
+      'ts/no-namespace': 'off',
       'unicorn/error-message': 'off',
+      'pnpm/json-prefer-workspace-settings': 'off',
       'no-restricted-syntax': 'off',
-      'import/no-mutable-exports': 'off',
-      // '@typescript-eslint/brace-style': ['error', '1tbs', { allowSingleLine: true }],
-      // 'brace-style': ['error', '1tbs'],
-      '@typescript-eslint/method-signature-style': 'off',
-      '@typescript-eslint/no-unsafe-function-type': 'off',
-      '@typescript-eslint/no-this-alias': 'off',
-      '@typescript-eslint/no-namespace': 'off',
-      'unicorn/no-new-array': 'off',
     },
     ignores: [
-      '**/.sveltekit',
+      // ...globs
     ],
   },
 )

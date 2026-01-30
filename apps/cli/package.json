@@ -12,9 +12,23 @@
     "type": "git",
     "url": "https://github.com/raykit-apps/raykit.git"
   },
-  "scripts": {},
+  "scripts": {
+    "build": "rollup -c rollup.config.ts --configPlugin typescript && echo ''",
+    "prepare": "pnpm build"
+  },
+  "peerDependencies": {
+    "vite": "^5.0.0 || ^6.0.0 || ^7.0.0"
+  },
   "dependencies": {
+    "picocolors": "^1.1.1"
   },
   "devDependencies": {
+    "@rollup/plugin-json": "^6.1.0",
+    "@rollup/plugin-node-resolve": "^16.0.3",
+    "@rollup/plugin-typescript": "^12.3.0",
+    "cac": "^6.7.14",
+    "rollup": "^4.53.3",
+    "rollup-plugin-delete": "^3.0.1",
+    "rollup-plugin-dts": "^6.3.0"
   }
 }

@@ -1,5 +1,10 @@
 {
   "extends": "../../tsconfig.json",
-  "compilerOptions": {},
-  "include": ["src/**/*.ts"]
+  "compilerOptions": {
+    // "rootDir": "src",
+    "declaration": true,
+    "outDir": "dist/node"
+  },
+  "include": ["src/**/*.ts", "rollup.config.ts"],
+  "exclude": ["node_modules"]
 }
