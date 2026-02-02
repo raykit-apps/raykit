@@ -1,4 +1,3 @@
-import type { MaybePromise } from '@raykit/base'
 import { ContributionProvider } from '@raykit/base'
 import { inject, injectable, named } from 'inversify'
 import { MainApplicationContribution } from './main-application-contribution'

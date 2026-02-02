@@ -11,6 +11,7 @@
     "preview": "rkc preview"
   },
   "dependencies": {
+    "@raykit/commands": "workspace:*",
     "inversify": "catalog:"
   },
   "devDependencies": {

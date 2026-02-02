@@ -1,0 +1,22 @@
+{
+  "name": "@raykit/commands",
+  "type": "module",
+  "private": true,
+  "exports": {
+    ".": "./src/browser/index.ts",
+    "./browser": "./src/browser/index.ts",
+    "./common": "./src/common/index.ts",
+    "./main": "./src/main/index.ts",
+    "./node": "./src/node/index.ts"
+  },
+  "main": "./src/browser/index.ts",
+  "types": "./src/browser/index.ts",
+  "peerDependencies": {
+    "electron": "catalog:"
+  },
+  "dependencies": {
+    "@raykit/base": "workspace:*",
+    "@raykit/core": "workspace:*",
+    "inversify": "catalog:"
+  }
+}
