@@ -15,10 +15,15 @@ raykit 是一个electron开发的桌面端应用，使用pnpm+monorepo项目结�
 - 复用现有依赖，需要添加新的依赖每次都需要询问，同意之后才能添加。
 - UI必须保证100ms内响应。
 - 禁止使用npm命令执行命令，使用pnpm执行命令。
-- 添加新命令之后必须在根目录执行`pnpm i`。
+- 添加依赖之后必须在根目录执行`pnpm i`。
 - 每次编写完代码必须在根目录执行`pnpm lint:fix`和`pnpm check`，出现报错必须进行错误修复。
 - 使用vitest进行单元测试，使用playwright进行e2e测试，测试出现问题必须进行问题修复。
+- 每个子模块必须符合单一职责的设计原则
+- 子模块`package.json`和`tsconfig.ts`中配置参考已有模块的配置，例如：packages/core,packages/base
 
 ## 技术栈
 
 - 使用vitest进行单元测试
+- UI使用solid-js+lumino，组件库使用kobalte
+- css样式使用tailwindcss4
+- inversify负责依赖注入
