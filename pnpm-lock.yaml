@@ -142,6 +142,21 @@ importers:
 
   packages/ipc: {}
 
+  packages/sandbox:
+    dependencies:
+      '@raykit/base':
+        specifier: workspace:*
+        version: link:../base
+      '@raykit/core':
+        specifier: workspace:*
+        version: link:../core
+      electron:
+        specifier: 'catalog:'
+        version: 40.1.0
+      inversify:
+        specifier: 'catalog:'
+        version: 7.11.0(reflect-metadata@0.2.2)
+
   packages/utils:
     dependencies:
       electron:
