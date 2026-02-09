@@ -32,10 +32,10 @@ pnpm add @raykit/ipc
 │  │     - Injects IPCServer (via DI)                            │     │
 │  │     - Collects ChannelContribution via ContributionProvider │     │
 │  │                                                             │     │
-│  │  2. IPCServer                                               │     │
-│  │     - Maintains channel map                                 │     │
-│  │     - Handles IPC protocol                                  │     │
-│  │     - Provides registerChannel() method                     │     │
+  │  │  2. IPCServer (implements IChannelServer)                  │     │
+  │  │     - Maintains channel map                                 │     │
+  │  │     - Handles IPC protocol                                  │     │
+  │  │     - Provides registerChannel() method                     │     │
 │  │                                                             │     │
 │  └─────────────────────────────────────────────────────────────┘     │
 │                              ▲                                       │
@@ -47,11 +47,11 @@ pnpm add @raykit/ipc
 │  │  │ FileSystemChannelContribution                        │ │       │
 │  │  │ (Implements ChannelContribution)                     │ │       │
 │  │  │                                                      │ │       │
-│  │  │ registerChannels(server: IIPCServer): void {         │ │       │
-│  │  │   const service = this.fileSystemService             │ │       │
-│  │  │   const channel = ProxyChannel.fromService(service)  │ │       │
-│  │  │   server.registerChannel('fileSystem', channel)      │ │       │
-│  │  │ }                                                    │ │       │
+  │  │  │ registerChannels(server: IChannelServer): void {         │ │       │
+  │  │  │   const service = this.fileSystemService             │ │       │
+  │  │  │   const channel = ProxyChannel.fromService(service)  │ │       │
+  │  │  │   server.registerChannel('fileSystem', channel)      │ │       │
+  │  │  │ }                                                    │ │       │
 │  │  └──────────────────────────────────────────────────────┘ │       │
 │  │                                                           │       │
 │  └───────────────────────────────────────────────────────────┘       │
@@ -119,12 +119,13 @@ pnpm add @raykit/ipc
 
 ### 核心概念
 
-1. **ChannelContribution**: 供其他模块实现的接口，包含 `registerChannels(server)` 方法
-2. **IPCServer**: 通过 DI 注入，提供 `registerChannel(name, channel)` 方法
-3. **IPCMainContribution**: 实现 `MainApplicationContribution`，在 `onStart` 中收集 `ChannelContribution` 并调用 `registerChannels`
-4. **ProxyChannel**: VSCode 风格的自动代理机制
-   - `fromService(service)`: 从 Service 自动生成 IServerChannel
-   - `toService<T>(channel)`: 从 Channel 自动生成 Service 代理
+1. **IChannel**: 客户端 Channel 接口，提供 `call()` 和 `listen()` 方法用于调用服务端方法和监听事件
+2. **IServerChannel**: 服务端 Channel 接口，处理来自客户端的调用和事件订阅
+3. **IChannelServer**: 服务端 Channel 管理接口，提供 `registerChannel()` 方法注册 Channel
+4. **ChannelContribution**: 项目特定的贡献模式（非 VSCode 标准），用于通过 DI 收集和注册多个 Channel
+5. **ProxyChannel**: VSCode 风格的自动代理机制
+   - `fromService(service)`: 从 Service 自动生成 IServerChannel（服务端使用）
+   - `toService<T>(channel)`: 从 Channel 自动生成 Service 代理（客户端使用）
 
 ## 使用指南
 
@@ -319,13 +320,13 @@ MainApplication.start()
 ### 核心类型
 
 ```typescript
-// Channel 贡献点接口
+// Channel 贡献点接口（项目特定模式）
 interface ChannelContribution {
-  registerChannels: (server: IIPCServer) => void
+  registerChannels: (server: IChannelServer) => void
 }
 
-// IPC Server 接口
-interface IIPCServer {
+// Channel Server 接口（VSCode 标准命名）
+interface IChannelServer {
   registerChannel: (channelName: string, channel: IServerChannel) => void
 }
 
@@ -344,7 +345,7 @@ interface IChannel {
 // IPC Main Contribution
 class IPCMainContribution implements MainApplicationContribution {
   constructor(
-    server: IIPCServer,
+    server: IChannelServer,
     contributions: ContributionProvider<ChannelContribution>
   )
 
