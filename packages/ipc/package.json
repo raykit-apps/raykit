@@ -2,9 +2,22 @@
   "name": "@raykit/ipc",
   "type": "module",
   "private": true,
-  "scripts": {},
-  "dependencies": {
+  "exports": {
+    ".": "./src/common/index.ts",
+    "./common": "./src/common/index.ts",
+    "./main": "./src/main/index.ts",
+    "./browser": "./src/browser/index.ts",
+    "./node": "./src/node/index.ts"
   },
-  "devDependencies": {
+  "main": "./src/common/index.ts",
+  "types": "./src/common/index.ts",
+  "peerDependencies": {
+    "electron": "catalog:"
+  },
+  "dependencies": {
+    "@raykit/base": "workspace:*",
+    "@raykit/core": "workspace:*",
+    "@raykit/sandbox": "workspace:*",
+    "inversify": "catalog:"
   }
 }

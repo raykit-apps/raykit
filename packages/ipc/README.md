@@ -60,7 +60,7 @@ pnpm add @raykit/ipc
                                     │ Electron IPC (ipcMain/ipcRenderer)
                                     ▼
 ┌─────────────────────────────────────────────────────────────────────┐
-│                     Renderer Process                                │
+│                     Browser Process                                 │
 │                                                                     │
 │  ┌────────────────────────────────────────────────────────────────┐ │
 │  │ IPC Client Usage (@raykit/ipc)                                 │ │
@@ -213,11 +213,11 @@ export const myMainModule = new ContainerModule((bind) => {
 })
 ```
 
-### 5. 在渲染进程中使用
+### 5. 在 Browser 进程中使用
 
 ```typescript
 import { IPCClient, ProxyChannel } from '@raykit/ipc'
-// packages/my-module/src/renderer/myServiceProxy.ts
+// packages/my-module/src/browser/myServiceProxy.ts
 import { injectable } from 'inversify'
 import { IMyService } from '../common/myService'
 
@@ -250,16 +250,16 @@ export class MyServiceProxy implements IMyService {
 }
 ```
 
-### 6. 注册渲染进程模块
+### 6. 注册 Browser 进程模块
 
 ```typescript
-// packages/my-module/src/renderer/myRendererModule.ts
+// packages/my-module/src/browser/myBrowserModule.ts
 import { ContainerModule } from 'inversify'
 import { IMyService, MyService } from '../common/myService'
 import { MyServiceProxy } from './myServiceProxy'
 
-export const myRendererModule = new ContainerModule((bind) => {
-  // 绑定 service proxy 到 renderer
+export const myBrowserModule = new ContainerModule((bind) => {
+  // 绑定 service proxy 到 browser
   bind<IMyService>(MyService).to(MyServiceProxy).inSingletonScope()
 })
 ```

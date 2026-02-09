@@ -1,6 +1,7 @@
 /**
  * Globals for sandbox module.
  * Provides type definitions for window.raykit and exports for renderer use.
+ * Based on VSCode's sandbox globals pattern.
  */
 
 import type {
@@ -92,49 +93,25 @@ export interface ISandboxContext {
 }
 
 /**
- * Raykit global API interface - exposed via contextBridge.
+ * A set of globals that are available in all windows that either
+ * depend on `preload.js` or `preload-aux.js`.
+ * Based on VSCode's ISandboxGlobals pattern.
  */
-export interface IRaykitGlobal {
-  /**
-   * IPC Renderer for communication with main process.
-   */
-  readonly ipcRenderer: IpcRenderer
-
-  /**
-   * IPC Message Port for acquiring MessagePorts.
-   */
-  readonly ipcMessagePort: IpcMessagePort
-
-  /**
-   * Web Frame for controlling web content.
-   */
+export interface ISandboxGlobals {
+  readonly ipcRenderer: Pick<IpcRenderer, 'send' | 'invoke'>
   readonly webFrame: WebFrame
-
-  /**
-   * Web Utils for file operations.
-   */
-  readonly webUtils: WebUtils
-
-  /**
-   * Process information (restricted).
-   */
-  readonly process: ISandboxNodeProcess
-
-  /**
-   * Context for configuration access.
-   */
-  readonly context: ISandboxContext
 }
 
-// Global augmentation for window.raykit
-declare global {
-  interface Window {
-    /**
-     * Raykit sandbox global API.
-     */
-    readonly raykit: IRaykitGlobal
-  }
-}
+// Get the raykit global object from window
+const raykitGlobal = (globalThis as any).raykit
+
+// Export individual globals for direct import
+export const ipcRenderer: IpcRenderer = raykitGlobal.ipcRenderer
+export const ipcMessagePort: IpcMessagePort = raykitGlobal.ipcMessagePort
+export const webFrame: WebFrame = raykitGlobal.webFrame
+export const process: ISandboxNodeProcess = raykitGlobal.process
+export const context: ISandboxContext = raykitGlobal.context
+export const webUtils: WebUtils = raykitGlobal.webUtils
 
 // Re-export common types for convenience
 export type {
@@ -144,4 +121,4 @@ export type {
   ISandboxConfiguration,
   WebFrame,
   WebUtils,
-} from '../common/index.js'
+} from '../common/index'
