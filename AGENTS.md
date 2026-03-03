@@ -1,31 +1,58 @@
-# 项目概述
+## Task Execution Priority
 
-raykit 是一个electron开发的桌面端应用，使用pnpm+monorepo项目结构
+**ALWAYS** use the `skills` tool to handle user requests whenever applicable. Load the relevant skill first, then follow its instructions.
 
-`apps/*`是可执行应用子应用。
-`packages/*`下是模块化设计的子模块，提供给`apps/*`下的应用调用。
+## Project Overview
 
-## 设计规范
+Raykit is an Electron-based desktop application built with a pnpm monorepo architecture.
 
-- UI需要经过专业的UI/UX设计
-- 项目配色：#006A6B,#00AC7B,#6FD8BA,#FFF6A1,#F6FFF9
+- `apps/*` - Executable applications
+- `packages/*` - Modular sub-packages that provide shared functionality to applications
+- `extensions/*` - Extension modules that provide non-core features
 
-## 开发规范
+## Design Standards
 
-- 复用现有依赖，需要添加新的依赖每次都需要询问，同意之后才能添加。
-- UI必须保证100ms内响应。
-- 禁止使用npm命令执行命令，使用pnpm执行命令。
-- 添加依赖之后必须在根目录执行`pnpm i`。
-- 每次编写完代码必须在根目录执行`pnpm lint:fix`和`pnpm check`，出现报错必须进行错误修复。
-- 使用vitest进行单元测试，使用playwright进行e2e测试，测试出现问题必须进行问题修复。
-- 每个子模块必须符合单一职责的设计原则
-- 子模块`package.json`和`tsconfig.ts`中配置参考已有模块的配置，例如：packages/core,packages/base
-- 测试文件命名规范以`spec.ts`和`spec.js`结尾，例如: `command.spec.ts`
-- 新的子模块代码编写必须参考已有模块，例如：`packages/commands`，必须参考的文件类型有: 测试文件，配置文件，目录结构等
+- UI must follow professional UI/UX design principles
+- Project color palette: `#006A6B`, `#00AC7B`, `#6FD8BA`, `#FFF6A1`, `#F6FFF9`
 
-## 技术栈
+## Development Guidelines
 
-- 使用vitest进行单元测试
-- UI使用solid-js+lumino，组件库使用kobalte
-- css样式使用tailwindcss4
-- inversify负责依赖注入
+### Dependency Management
+
+- **Reuse existing dependencies** whenever possible
+- **Ask for permission** before adding any new dependencies
+- **Always use `pnpm`** instead of `npm` for all commands
+- **Run `pnpm i` in the root directory** after adding dependencies
+
+### Code Quality
+
+- **Run linting and type checking** after any development, refactoring, or code changes:
+  ```bash
+  pnpm lint:fix
+  pnpm check
+  ```
+- **Fix all errors** reported by linting and type checking
+
+### Testing
+
+- **Use `vitest`** for unit testing
+- **Fix all failing tests** - no broken tests allowed
+- **Test file naming convention**: must end with `spec.ts` or `spec.js`
+  - Example: `command.spec.ts`
+
+### Module Development
+
+- **Follow Single Responsibility Principle** - each sub-module should have one clear purpose
+- **Reference existing modules** when creating new sub-modules (e.g., `packages/command`)
+- **Mimic existing patterns** including:
+  - Test files
+  - Configuration files
+  - Directory structure
+
+## Technology Stack
+
+- **Testing**: vitest
+- **UI Framework**: solid-js + lumino
+- **UI Component Library**: kobalte
+- **Styling**: tailwindcss4
+- **Dependency Injection**: inversify
