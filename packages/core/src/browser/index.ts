@@ -1,3 +1,3 @@
-export * from './browser-application'
-export * from './browser-application-contribution'
-export * from './browser-application-module'
+export * from './application-browser'
+export * from './application-browser-contribution'
+export * from './application-browser-module'

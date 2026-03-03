@@ -1,12 +1,9 @@
-shellEmulator: true
-
-trustPolicy: no-downgrade
-
 packages:
   - 'apps/*'
   - 'packages/*'
+  - 'extensions/*'
 
 catalog:
-  electron: ^40.1.0
+  electron: ^40.6.1
   inversify: ^7.11.0
   solid-js: ^1.9.11

@@ -11,7 +11,9 @@
     "preview": "rkc preview"
   },
   "dependencies": {
-    "@raykit/commands": "workspace:*",
+    "@raykit/command": "workspace:*",
+    "@raykit/core": "workspace:*",
+    "@raykit/windows": "workspace:*",
     "inversify": "catalog:"
   },
   "devDependencies": {

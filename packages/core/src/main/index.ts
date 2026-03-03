@@ -1,3 +1,3 @@
-export * from './main-application'
-export * from './main-application-contribution'
-export * from './main-application-module'
+export * from './application-main'
+export * from './application-main-contribution'
+export * from './application-main-module'

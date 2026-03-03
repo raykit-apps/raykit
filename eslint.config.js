@@ -23,6 +23,7 @@ export default antfu(
       'unicorn/error-message': 'off',
       'pnpm/json-prefer-workspace-settings': 'off',
       'no-restricted-syntax': 'off',
+      'pnpm/yaml-enforce-settings': 'off',
     },
     ignores: [
       // ...globs
