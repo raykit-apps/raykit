@@ -1,6 +1,6 @@
 export const WindowMinSize = {
   width: 750,
-  height: 475
+  height: 475,
 }
 
 export interface IFrame {
@@ -17,5 +17,5 @@ export interface IOpenWindowOptions {
 }
 
 export interface IOpenMainWindow {
-  
+
 }

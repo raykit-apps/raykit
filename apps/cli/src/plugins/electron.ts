@@ -24,8 +24,10 @@ function resolveBuildOutputs(
   libOptions: LibraryOptions | false,
 ): OutputOptions | OutputOptions[] | undefined {
   if (libOptions && !Array.isArray(outputs)) {
-    const libFormats = libOptions.formats || []
-    return libFormats.map(format => ({ ...outputs, format }))
+    const libFormats = libOptions.formats && libOptions.formats.length > 0
+      ? libOptions.formats
+      : ['cjs' as const]
+    return libFormats.map(format => ({ ...(outputs || {}), format }))
   }
   return outputs
 }
@@ -71,13 +73,12 @@ export function electronMainConfigPresetPlugin(options: ElectronPluginOptions): 
       if (!rollupOptions.input) {
         const libOptions = build.lib
         const outputOptions = rollupOptions.output
-        const formats = libOptions && libOptions.formats && libOptions.formats.length > 0
-          ? []
-          : [outputOptions && !Array.isArray(outputOptions) && outputOptions.format ? outputOptions.format : format]
-        if (defaultConfig.build.lib) {
-          defaultConfig.build.lib.formats = formats
-        } else {
-          defaultConfig.build.lib = { formats }
+
+        defaultConfig.build.lib = {
+          formats:
+            libOptions && libOptions.formats && libOptions.formats.length > 0
+              ? []
+              : [outputOptions && !Array.isArray(outputOptions) && outputOptions.format ? outputOptions.format : format],
         }
       } else {
         defaultConfig.build.rollupOptions.output.format = format
@@ -166,6 +167,9 @@ export function electronPreloadConfigPresetPlugin(options: ElectronPluginOptions
       const root = options?.root || process.cwd()
       const nodeTarget = getElectronNodeTarget()
 
+      const pkg = loadPackageData() || { type: 'commonjs' }
+      const format = pkg.type && pkg.type === 'module' && supportESM() ? 'es' : 'cjs'
+
       const defaultConfig: any = {
         resolve: {
           mainFields: ['module', 'jsnext:main', 'jsnext'],
@@ -177,12 +181,7 @@ export function electronPreloadConfigPresetPlugin(options: ElectronPluginOptions
           assetsDir: 'chunks',
           rollupOptions: {
             external: ['electron', /^electron\/.+/, ...builtinModules.flatMap(m => [m, `node:${m}`])],
-            output: {
-              format: 'cjs',
-              entryFileNames: '[name].js',
-              chunkFileNames: '[name].js',
-              assetFileNames: '[name].[ext]',
-            },
+            output: {},
           },
           reportCompressedSize: false,
           minify: false,
@@ -197,11 +196,53 @@ export function electronPreloadConfigPresetPlugin(options: ElectronPluginOptions
         },
       }
 
+      const build = config.build || {}
+      const rollupOptions = build.rollupOptions || {}
+      if (!rollupOptions.input) {
+        const libOptions = build.lib
+        const outputOptions = rollupOptions.output
+        defaultConfig.build.lib = {
+          formats:
+            libOptions && libOptions.formats && libOptions.formats.length > 0
+              ? []
+              : [outputOptions && !Array.isArray(outputOptions) && outputOptions.format ? outputOptions.format : format],
+        }
+      } else {
+        defaultConfig.build.rollupOptions.output.format = 'cjs'
+      }
+
+      defaultConfig.build.rollupOptions.output.assetFileNames = path.posix.join(
+        build.assetsDir || defaultConfig.build.assetsDir,
+        '[name]-[hash].[ext]',
+      )
+
       const buildConfig = mergeConfig(defaultConfig.build, config.build || {})
       config.build = buildConfig
-      config.resolve = mergeConfig(defaultConfig.resolve, config.resolve ?? {})
+
+      const resolvedOutputs = resolveBuildOutputs(config.build.rollupOptions!.output, config.build.lib || false)
+
+      if (resolvedOutputs) {
+        const outputs = Array.isArray(resolvedOutputs) ? resolvedOutputs : [resolvedOutputs]
+
+        if (outputs.find(({ format }) => format === 'es')) {
+          if (Array.isArray(config.build.rollupOptions!.output)) {
+            config.build.rollupOptions!.output.forEach((output) => {
+              if (output.format === 'es') {
+                output.entryFileNames = '[name].mjs'
+                output.chunkFileNames = '[name]-[hash].mjs'
+              }
+            })
+          } else {
+            config.build.rollupOptions!.output!.entryFileNames = '[name].mjs'
+            config.build.rollupOptions!.output!.chunkFileNames = '[name]-[hash].mjs'
+          }
+        }
+      }
 
       config.define = { ...processEnvDefine(), ...config.define }
+
+      config.publicDir = config.publicDir || 'resources'
+      config.ssr = mergeConfig(defaultConfig.ssr, config.ssr || {})
     },
   }
 }
@@ -278,9 +319,7 @@ export function electronNodeConfigPresetPlugin(options: ElectronPluginOptions): 
           target: nodeTarget,
           rollupOptions: {
             external: [...builtinModules.flatMap(m => [m, `node:${m}`])],
-            output: {
-              format,
-            },
+            output: {},
           },
           reportCompressedSize: false,
           minify: false,
@@ -291,6 +330,20 @@ export function electronNodeConfigPresetPlugin(options: ElectronPluginOptions): 
         ssr: {
           noExternal: true,
         },
+      }
+
+      const build = config.build || {}
+      const rollupOptions = build.rollupOptions || {}
+      if (!rollupOptions.input) {
+        const libOptions = build.lib
+        defaultConfig.build.lib = {
+          formats:
+            libOptions && libOptions.formats && libOptions.formats.length > 0
+              ? []
+              : [format as 'es' | 'cjs'],
+        }
+      } else {
+        defaultConfig.build.rollupOptions.output.format = format
       }
 
       const buildConfig = mergeConfig(defaultConfig.build, config.build || {})
