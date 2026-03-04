@@ -2,6 +2,7 @@ import { bindContributionProvider } from '@raykit/base'
 import { ContainerModule } from 'inversify'
 import { ApplicationBrowser } from './application-browser'
 import { ApplicationBrowserContribution } from './application-browser-contribution'
+import { ApplicationShell } from './shell/application-shell'
 
 /**
  * Browser application module.
@@ -10,4 +11,6 @@ import { ApplicationBrowserContribution } from './application-browser-contributi
 export const applicationBrowserModule = new ContainerModule((options) => {
   options.bind(ApplicationBrowser).toSelf().inSingletonScope()
   bindContributionProvider(options, ApplicationBrowserContribution)
+
+  options.bind(ApplicationShell).toSelf().inSingletonScope()
 })

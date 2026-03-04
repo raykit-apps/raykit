@@ -163,6 +163,9 @@ importers:
       '@raykit/base':
         specifier: workspace:*
         version: link:../base
+      '@raykit/widgets':
+        specifier: workspace:*
+        version: link:../widgets
       '@raykit/windows':
         specifier: workspace:*
         version: link:../windows
@@ -181,6 +184,24 @@ importers:
       electron:
         specifier: 'catalog:'
         version: 40.6.1
+
+  packages/widgets:
+    dependencies:
+      '@lumino/messaging':
+        specifier: ^2.0.4
+        version: 2.0.4
+      '@lumino/widgets':
+        specifier: ^2.7.5
+        version: 2.7.5
+      '@raykit/base':
+        specifier: workspace:*
+        version: link:../base
+      inversify:
+        specifier: 'catalog:'
+        version: 7.11.0(reflect-metadata@0.2.2)
+      solid-js:
+        specifier: 'catalog:'
+        version: 1.9.11
 
   packages/windows:
     dependencies:
@@ -865,6 +886,45 @@ packages:
 
   '@jridgewell/trace-mapping@0.3.30':
     resolution: {integrity: sha512-GQ7Nw5G2lTu/BtHTKfXhKHok2WGetd4XYcVKGx00SjAk8GMwgJM3zr6zORiPGuOE+/vkc90KtTosSSvaCjKb2Q==}
+
+  '@lumino/algorithm@2.0.4':
+    resolution: {integrity: sha512-gddBhESPqu25KWLeAK9Kz8tS9Ph7P45i0CNG7Ia4XMhK9PHLtTsBdJTC9jP+MqhbzC8zDT/4ekvYRV9ojRPj7Q==}
+
+  '@lumino/collections@2.0.4':
+    resolution: {integrity: sha512-D/Py9L5HET6+XUYGxFqDEEth4B65X2c7B/GQVRR8q5Fl7EArVL6e98ZXw8BMkuPcTNa0zlENpCKXzlcoJZxXgQ==}
+
+  '@lumino/commands@2.3.3':
+    resolution: {integrity: sha512-7Ci0QdFzt4NKFMhULr19sJPpOLHJw/oYlq6Pb0/Kq1s05+cIoLimr5wiyjkbAlNoGO/8A8SEBGHy3uctZz6G3A==}
+
+  '@lumino/coreutils@2.2.2':
+    resolution: {integrity: sha512-zaKJaK7rawPATn2BGHkbMrR6oK3s9PxNe9KreLwWF2dB4ZBHDiEmNLRyHRorfJ7XqVOEXAsAAj0jFn+qJPC/4Q==}
+
+  '@lumino/disposable@2.1.5':
+    resolution: {integrity: sha512-hO9AkJK0oEGzxopuxI8LaZqwzSNwXJTGCdr5K4gh6al+zxpN7rOCh6Aq3zDxkIHJU4zybxv8r02ardx9XJsG3A==}
+
+  '@lumino/domutils@2.0.4':
+    resolution: {integrity: sha512-naYGUQn3e0CLtz/tjKOZP8SOBg0SW7EguhkxLpNUXlVUvx7rVsfr0VI22FVL+jgI0FbxXpEkxpSMxtK73jxJAg==}
+
+  '@lumino/dragdrop@2.1.8':
+    resolution: {integrity: sha512-5sBYkTka598+XsgjY2tWOC+WYCh9NEgx8RhLvQ3x+V182YhcpEXw38RWGQZyNpQ4m4vtQWKv42A26q+ae6sMwg==}
+
+  '@lumino/keyboard@2.0.4':
+    resolution: {integrity: sha512-kIVkdSz8F5wtZr8hZp0CMX+E0eMCOnFH6XCT7j2UBQ80ERJHFy0eX+IbNo3dtRQ7+CcDhBV4hQquFNFa+/04QQ==}
+
+  '@lumino/messaging@2.0.4':
+    resolution: {integrity: sha512-NbZnchAPOciSe9Qn/g6EzG0LRaw7bygFIXbCD440ZhzvugdBeAerwYhrA795jkXPNrrl3olp5AlO0cBB/XZNtg==}
+
+  '@lumino/properties@2.0.4':
+    resolution: {integrity: sha512-XsL2qLZk+1FbfuTrkyjciI8PMDw3YcaBkqVQ+iv7OOJf9bUlrmTpCMY0Hu5d3hV2W3TWlRsdbvRRLEBJSKv0iA==}
+
+  '@lumino/signaling@2.1.5':
+    resolution: {integrity: sha512-Wkx6WR45ynmKBlW0GBEoh4xk9+QluKr1JHuMftqcStBHSQBCnN54UKRRDbySXHGRhhx6p4neu7sGomgQSlQK8w==}
+
+  '@lumino/virtualdom@2.0.4':
+    resolution: {integrity: sha512-7MFthA9KUsqZTGm/D98FZt1QupjIGyd3XyB4SIugn6DQAqhjBiyykCZydnRq3qmuMHybQel33dNIbHpzyNyQwA==}
+
+  '@lumino/widgets@2.7.5':
+    resolution: {integrity: sha512-i11PlbTsZYIvC/uhcC4FeeLnu/7vveG8WzXFbxPunjT1yGjleqQIPlpMOAJ5d4PwCKqeM8LYttYke6ZOXvXDLA==}
 
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -4006,6 +4066,69 @@ snapshots:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
+
+  '@lumino/algorithm@2.0.4': {}
+
+  '@lumino/collections@2.0.4':
+    dependencies:
+      '@lumino/algorithm': 2.0.4
+
+  '@lumino/commands@2.3.3':
+    dependencies:
+      '@lumino/algorithm': 2.0.4
+      '@lumino/coreutils': 2.2.2
+      '@lumino/disposable': 2.1.5
+      '@lumino/domutils': 2.0.4
+      '@lumino/keyboard': 2.0.4
+      '@lumino/signaling': 2.1.5
+      '@lumino/virtualdom': 2.0.4
+
+  '@lumino/coreutils@2.2.2':
+    dependencies:
+      '@lumino/algorithm': 2.0.4
+
+  '@lumino/disposable@2.1.5':
+    dependencies:
+      '@lumino/signaling': 2.1.5
+
+  '@lumino/domutils@2.0.4': {}
+
+  '@lumino/dragdrop@2.1.8':
+    dependencies:
+      '@lumino/coreutils': 2.2.2
+      '@lumino/disposable': 2.1.5
+
+  '@lumino/keyboard@2.0.4': {}
+
+  '@lumino/messaging@2.0.4':
+    dependencies:
+      '@lumino/algorithm': 2.0.4
+      '@lumino/collections': 2.0.4
+
+  '@lumino/properties@2.0.4': {}
+
+  '@lumino/signaling@2.1.5':
+    dependencies:
+      '@lumino/algorithm': 2.0.4
+      '@lumino/coreutils': 2.2.2
+
+  '@lumino/virtualdom@2.0.4':
+    dependencies:
+      '@lumino/algorithm': 2.0.4
+
+  '@lumino/widgets@2.7.5':
+    dependencies:
+      '@lumino/algorithm': 2.0.4
+      '@lumino/commands': 2.3.3
+      '@lumino/coreutils': 2.2.2
+      '@lumino/disposable': 2.1.5
+      '@lumino/domutils': 2.0.4
+      '@lumino/dragdrop': 2.1.8
+      '@lumino/keyboard': 2.0.4
+      '@lumino/messaging': 2.0.4
+      '@lumino/properties': 2.0.4
+      '@lumino/signaling': 2.1.5
+      '@lumino/virtualdom': 2.0.4
 
   '@nodelib/fs.scandir@2.1.5':
     dependencies:

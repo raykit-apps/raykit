@@ -1,7 +1,9 @@
 import type { MaybePromise } from '@raykit/base'
 import { ContributionProvider } from '@raykit/base'
+import { Widget } from '@raykit/widgets'
 import { inject, injectable, named } from 'inversify'
 import { ApplicationBrowserContribution } from './application-browser-contribution'
+import { ApplicationShell } from './shell/application-shell'
 
 @injectable()
 export class ApplicationBrowser {
@@ -9,7 +11,13 @@ export class ApplicationBrowser {
     @inject(ContributionProvider)
     @named(ApplicationBrowserContribution)
     protected readonly contributions: ContributionProvider<ApplicationBrowserContribution>,
+    @inject(ApplicationShell)
+    protected readonly _shell: ApplicationShell,
   ) {}
+
+  get shell(): ApplicationShell {
+    return this._shell
+  }
 
   /**
    * Start the browser application.
@@ -20,6 +28,20 @@ export class ApplicationBrowser {
    */
   async start(): Promise<void> {
     await this.startContributions()
+  }
+
+  protected getHost(): Promise<HTMLElement> {
+    if (document.body) {
+      return Promise.resolve(document.body)
+    }
+    return new Promise<HTMLElement>(resolve =>
+      window.addEventListener('load', () => resolve(document.body), { once: true }),
+    )
+  }
+
+  protected attachShell(host: HTMLElement): void {
+    // const ref = this.getStartupIndicator(host)
+    Widget.attach(this.shell, host)
   }
 
   /**

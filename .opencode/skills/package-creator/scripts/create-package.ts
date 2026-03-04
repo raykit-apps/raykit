@@ -22,6 +22,9 @@
 
 import * as fs from 'node:fs'
 import * as path from 'node:path'
+import { fileURLToPath } from 'node:url'
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 // Parse command line arguments
 function parseArgs(): { packageName: string, modules: string[] } {
