@@ -1,4 +1,5 @@
 import { ContributionProvider } from '@raykit/base'
+import { IWindowMainService } from '@raykit/windows/main'
 import { inject, injectable, named } from 'inversify'
 import { ApplicationMainContribution } from './application-main-contribution'
 
@@ -8,6 +9,8 @@ export class ApplicationMain {
     @inject(ContributionProvider)
     @named(ApplicationMainContribution)
     protected readonly contributions: ContributionProvider<ApplicationMainContribution>,
+    @inject(IWindowMainService)
+    protected readonly windowMainService: IWindowMainService,
   ) {}
 
   /**
@@ -19,6 +22,7 @@ export class ApplicationMain {
    */
   async start(): Promise<void> {
     await this.startContributions()
+    this.openFirstWindow()
   }
 
   /**
@@ -37,11 +41,15 @@ export class ApplicationMain {
   /**
    * Stop the contributions.
    */
-  stopContributions(): void {
+  protected stopContributions(): void {
     for (const contribution of this.contributions.getContributions()) {
       if (contribution.onStop) {
         contribution.onStop(this)
       }
     }
+  }
+
+  protected async openFirstWindow() {
+    this.windowMainService.open({})
   }
 }

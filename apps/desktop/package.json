@@ -13,6 +13,7 @@
   "dependencies": {
     "@raykit/command": "workspace:*",
     "@raykit/core": "workspace:*",
+    "@raykit/sandbox": "workspace:*",
     "@raykit/windows": "workspace:*",
     "inversify": "catalog:"
   },

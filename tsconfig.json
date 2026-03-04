@@ -8,7 +8,7 @@
     /* Bundler mode */
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
-    "allowImportingTsExtensions": true,
+    // "allowImportingTsExtensions": true,
     "allowJs": true,
     /* Linting */
     "strict": true,

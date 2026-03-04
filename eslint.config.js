@@ -25,8 +25,11 @@ export default antfu(
       'no-restricted-syntax': 'off',
       'pnpm/yaml-enforce-settings': 'off',
     },
+  },
+  {
     ignores: [
-      // ...globs
+      '.opencode',
+      'dist',
     ],
   },
 )

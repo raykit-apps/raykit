@@ -16,6 +16,8 @@
     "pnpm": ">=10.0.0"
   },
   "scripts": {
+    "dev": "pnpm -F @raykit/desktop dev",
+    "build": "pnpm -F @raykit/desktop build",
     "lint": "eslint",
     "lint:fix": "eslint . --fix",
     "check": "tsc --noEmit"
@@ -23,7 +25,7 @@
   "devDependencies": {
     "@antfu/eslint-config": "^7.6.1",
     "@types/node": "^22.19.13",
-    "eslint": "^10.0.2",
+    "eslint": "^9.39.3",
     "eslint-plugin-format": "^2.0.1",
     "eslint-plugin-solid": "^0.14.5",
     "typescript": "^5.9.3",

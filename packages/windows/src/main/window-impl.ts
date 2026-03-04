@@ -1,4 +1,5 @@
 import type { IAppWindow } from './window'
+import path from 'node:path'
 import { BrowserWindow } from 'electron'
 import { injectable } from 'inversify'
 
@@ -17,15 +18,29 @@ export class AppWindow implements IAppWindow {
   constructor() {}
 
   async init() {
-    // const url = await this.getMainViewUrl()
     this._win = new BrowserWindow({
-      title: 'Raykit',
-      // url,
+      width: 1200,
+      height: 800,
+      webPreferences: {
+        preload: path.join(__dirname, '../preload/index.js'),
+        contextIsolation: true,
+        nodeIntegration: false,
+      },
     })
-    this._id = this._win.id
-  }
 
-  async getMainViewUrl(): Promise<string> {
-    return 'http://localhost:5173'
+    // Load the renderer URL from environment variable
+    const rendererUrl = process.env.ELECTRON_RENDERER_URL
+    if (rendererUrl) {
+      this._win.loadURL(rendererUrl)
+    } else {
+    // Fallback to loading from file system for preview mode
+      this._win.loadFile(path.join(__dirname, '../renderer/index.html'))
+    }
+
+    // Open DevTools in development
+    if (process.env.NODE_ENV === 'development') {
+      this._win.webContents.openDevTools()
+    }
+    this._id = this._win.id
   }
 }
