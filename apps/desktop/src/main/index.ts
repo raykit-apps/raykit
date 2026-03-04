@@ -1,51 +1,37 @@
-import path, { dirname } from 'node:path'
-import { fileURLToPath } from 'node:url'
-import { app, BrowserWindow } from 'electron'
+import { ApplicationMain, applicationMainModule } from '@raykit/core'
+import { windowMainModule } from '@raykit/windows/main'
+import { app } from 'electron'
+import started from 'electron-squirrel-startup'
+import { Container } from 'inversify'
+import 'reflect-metadata'
 
-const __dirname = dirname(fileURLToPath(import.meta.url))
-
-let mainWindow: BrowserWindow | null = null
-
-function createWindow(): void {
-  mainWindow = new BrowserWindow({
-    width: 1200,
-    height: 800,
-    webPreferences: {
-      preload: path.join(__dirname, '../preload/index.js'),
-      contextIsolation: true,
-      nodeIntegration: false,
-    },
-  })
-
-  // Load the renderer URL from environment variable
-  const rendererUrl = process.env.ELECTRON_RENDERER_URL
-  if (rendererUrl) {
-    mainWindow.loadURL(rendererUrl)
-  } else {
-    // Fallback to loading from file system for preview mode
-    mainWindow.loadFile(path.join(__dirname, '../renderer/index.html'))
-  }
-
-  // Open DevTools in development
-  if (process.env.NODE_ENV === 'development') {
-    mainWindow.webContents.openDevTools()
-  }
-
-  mainWindow.on('closed', () => {
-    mainWindow = null
-  })
-}
-
-app.whenReady().then(createWindow)
-
-app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') {
+(async () => {
+  if (started || !app.requestSingleInstanceLock()) {
     app.quit()
   }
-})
 
-app.on('activate', () => {
-  if (mainWindow === null) {
-    createWindow()
+  const container = new Container()
+  container.load(applicationMainModule, windowMainModule)
+
+  function load() {
+    // TODO container.load()
   }
-})
+
+  async function start() {
+    const application = container.get(ApplicationMain)
+    await application.start()
+  }
+
+  try {
+    load()
+    await start()
+  } catch (error) {
+    if (typeof error !== 'number') {
+      console.error('Failed to start the electron application.')
+      if (error) {
+        console.error(error)
+      }
+    }
+    app.quit()
+  }
+})()

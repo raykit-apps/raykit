@@ -1,5 +1,6 @@
 import type { IAppWindow } from './window'
-import path from 'node:path'
+import path, { dirname } from 'node:path'
+import { fileURLToPath } from 'node:url'
 import { BrowserWindow } from 'electron'
 import { injectable } from 'inversify'
 
@@ -18,6 +19,8 @@ export class AppWindow implements IAppWindow {
   constructor() {}
 
   async init() {
+    const __dirname = dirname(fileURLToPath(import.meta.url))
+
     this._win = new BrowserWindow({
       width: 1200,
       height: 800,

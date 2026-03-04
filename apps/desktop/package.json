@@ -15,10 +15,21 @@
     "@raykit/core": "workspace:*",
     "@raykit/sandbox": "workspace:*",
     "@raykit/windows": "workspace:*",
-    "inversify": "catalog:"
+    "electron-squirrel-startup": "^1.0.1",
+    "inversify": "catalog:",
+    "solid-js": "catalog:"
   },
   "devDependencies": {
+    "@babel/core": "^7.28.5",
+    "@babel/plugin-proposal-class-properties": "^7.18.6",
+    "@babel/plugin-proposal-decorators": "^7.28.0",
     "@raykit/cli": "workspace:*",
-    "electron": "catalog:"
+    "@swc/core": "^1.15.8",
+    "@tailwindcss/vite": "^4.1.18",
+    "@types/electron-squirrel-startup": "^1.0.2",
+    "electron": "catalog:",
+    "tailwindcss": "^4.1.18",
+    "unplugin-swc": "^1.5.9",
+    "vite-plugin-solid": "^2.11.10"
   }
 }
