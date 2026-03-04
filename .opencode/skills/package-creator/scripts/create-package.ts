@@ -189,7 +189,6 @@ export {};
   // Create package.json with dynamic exports
   const packageJson: any = {
     name: `@raykit/${packageName}`,
-    version: '0.0.1',
     private: true,
     exports,
     main: exports['.'],

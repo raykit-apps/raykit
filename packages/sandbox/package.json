@@ -3,13 +3,14 @@
   "type": "module",
   "private": true,
   "exports": {
-    ".": "./src/browser/index.ts",
+    ".": "./src/common/index.ts",
     "./preload": "./src/browser/preload.ts",
     "./preload-aux": "./src/browser/preload-aux.ts",
-    "./common": "./src/common/index.ts"
+    "./common": "./src/common/index.ts",
+    "./browser": "./src/browser/index.ts"
   },
-  "main": "./src/browser/index.ts",
-  "types": "./src/browser/index.ts",
+  "main": "./src/common/index.ts",
+  "types": "./src/common/index.ts",
   "peerDependencies": {
     "electron": "catalog:"
   }
