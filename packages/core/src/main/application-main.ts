@@ -1,5 +1,6 @@
 import { ContributionProvider } from '@raykit/base'
 import { IWindowMainService } from '@raykit/windows/main'
+import { app } from 'electron'
 import { inject, injectable, named } from 'inversify'
 import { ApplicationMainContribution } from './application-main-contribution'
 
@@ -22,6 +23,7 @@ export class ApplicationMain {
    */
   async start(): Promise<void> {
     await this.startContributions()
+    await app.whenReady()
     this.openFirstWindow()
   }
 
