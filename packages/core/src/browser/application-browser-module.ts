@@ -3,6 +3,7 @@ import { ContainerModule } from 'inversify'
 import { ApplicationBrowser } from './application-browser'
 import { ApplicationBrowserContribution } from './application-browser-contribution'
 import { ApplicationShell } from './shell/application-shell'
+import { WidgetFactory, WidgetService } from './widget-service'
 
 /**
  * Browser application module.
@@ -13,4 +14,7 @@ export const applicationBrowserModule = new ContainerModule((options) => {
   bindContributionProvider(options, ApplicationBrowserContribution)
 
   options.bind(ApplicationShell).toSelf().inSingletonScope()
+
+  bindContributionProvider(options, WidgetFactory)
+  options.bind(WidgetService).toSelf().inSingletonScope()
 })
