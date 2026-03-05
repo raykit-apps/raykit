@@ -1,4 +1,4 @@
-import { commandBrowserModule } from '@raykit/command/browser'
+import { commandBrowserModule } from '@raykit/commands/browser'
 import { ApplicationBrowser, applicationBrowserModule } from '@raykit/core/browser'
 import { Container } from 'inversify'
 import 'reflect-metadata'

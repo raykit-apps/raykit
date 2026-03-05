@@ -78,9 +78,9 @@ importers:
 
   apps/desktop:
     dependencies:
-      '@raykit/command':
+      '@raykit/commands':
         specifier: workspace:*
-        version: link:../../packages/command
+        version: link:../../packages/commands
       '@raykit/core':
         specifier: workspace:*
         version: link:../../packages/core
@@ -143,7 +143,7 @@ importers:
         specifier: ^5.1.0
         version: 5.1.0
 
-  packages/command:
+  packages/commands:
     dependencies:
       '@raykit/base':
         specifier: workspace:*
