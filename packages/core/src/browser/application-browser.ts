@@ -32,7 +32,7 @@ export class ApplicationBrowser {
     const host = await this.getHost()
     this.attachShell(host)
 
-    // this.initializeLayout()
+    this.initializeLayout()
 
     this.registerEventListeners()
   }
@@ -53,6 +53,18 @@ export class ApplicationBrowser {
   protected attachShell(host: HTMLElement): void {
     // const ref = this.getStartupIndicator(host)
     Widget.attach(this.shell, host)
+  }
+
+  protected async initializeLayout(): Promise<void> {
+    await this.createDefaultLayout()
+  }
+
+  protected async createDefaultLayout(): Promise<void> {
+    for (const contribution of this.contributions.getContributions()) {
+      if (contribution.initializeLayout) {
+        await this.measure(`${contribution.constructor.name}.initializeLayout`, () => contribution.initializeLayout!(this))
+      }
+    }
   }
 
   /**

@@ -55,6 +55,12 @@ export interface ApplicationBrowserContribution {
    * Note: Only synchronous operations should be performed here.
    */
   onStop?: (app: ApplicationBrowser) => void
+
+  /**
+   * Called after the application shell has been attached in case there is no previous workbench layout state.
+   * Should return a promise if it runs asynchronously.
+   */
+  initializeLayout?: (app: ApplicationBrowser) => MaybePromise<void>
 }
 
 /**
