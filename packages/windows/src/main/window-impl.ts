@@ -25,11 +25,13 @@ export class AppWindow implements IAppWindow {
       width: 1200,
       height: 800,
       webPreferences: {
-        preload: path.join(__dirname, '../preload/index.js'),
+        // preload: path.join(__dirname, '../preload/index.js'),
         contextIsolation: true,
         nodeIntegration: false,
       },
     })
+
+    this._win.menuBarVisible = false
 
     // Load the renderer URL from environment variable
     const rendererUrl = process.env.ELECTRON_RENDERER_URL

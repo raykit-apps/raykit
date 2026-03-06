@@ -28,6 +28,13 @@ export class ApplicationBrowser {
    */
   async start(): Promise<void> {
     await this.startContributions()
+
+    const host = await this.getHost()
+    this.attachShell(host)
+
+    // this.initializeLayout()
+
+    this.registerEventListeners()
   }
 
   protected getHost(): Promise<HTMLElement> {
@@ -37,6 +44,10 @@ export class ApplicationBrowser {
     return new Promise<HTMLElement>(resolve =>
       window.addEventListener('load', () => resolve(document.body), { once: true }),
     )
+  }
+
+  protected registerEventListeners(): void {
+
   }
 
   protected attachShell(host: HTMLElement): void {

@@ -1,3 +1,7 @@
 @import 'tailwindcss';
 
 @source "../../../../packages/core/**/*.{ts,tsx}";
+
+.raykit-application-shell {
+  @apply absolute top-0 left-0 bottom-0 right-0;
+}

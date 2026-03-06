@@ -1,5 +1,5 @@
 import type { Layout } from '@raykit/widgets'
-import { BoxLayout, Panel, Widget } from '@raykit/widgets'
+import { BoxLayout, BoxPanel, Panel, Widget } from '@raykit/widgets'
 
 import { injectable, postConstruct } from 'inversify'
 
@@ -17,7 +17,7 @@ export class ApplicationShell extends Widget {
     super()
 
     this.maximizedElement = this.node.ownerDocument.createElement('div')
-    this.maximizedElement.className = 'fixed top-0 left-0 bottom-0 right-0 z-[2000]'
+    this.maximizedElement.className = 'fixed hidden top-0 left-0 bottom-0 right-0 z-[2000]'
     this.node.ownerDocument.body.appendChild(this.maximizedElement)
   }
 
@@ -27,6 +27,7 @@ export class ApplicationShell extends Widget {
   }
 
   protected initializeShell() {
+    this.addClass('raykit-application-shell')
     this.id = 'raykit-app-shell'
 
     this.mainPanel = this.createMainPanel()
@@ -52,13 +53,53 @@ export class ApplicationShell extends Widget {
 
   protected createBottomPanel(): Panel {
     const bottomPanel = new Panel()
-    bottomPanel.id = 'raykit-top-panel'
+    bottomPanel.id = 'raykit-bottom-panel'
     bottomPanel.hide()
     return bottomPanel
   }
 
   protected createLayout(): Layout {
-    const boxLayout = new BoxLayout()
+    const boxLayout = new BoxLayout({ direction: 'top-to-bottom', spacing: 0 })
+
+    BoxPanel.setStretch(this.topPanel!, 0)
+    boxLayout.addWidget(this.topPanel!)
+
+    BoxPanel.setStretch(this.mainPanel!, 1)
+    boxLayout.addWidget(this.mainPanel!)
+
+    BoxPanel.setStretch(this.bottomPanel!, 0)
+    boxLayout.addWidget(this.bottomPanel!)
+
     return boxLayout
+  }
+
+  async addWidget(widget: Widget, options?: Readonly<ApplicationShell.WidgetOptions>): Promise<void> {
+    if (!widget.id) {
+      console.error('Widgets added to the application shell must have a unique id property.')
+      return
+    }
+    const area = options?.area ?? 'main'
+    switch (area) {
+      case 'main':
+        this.mainPanel?.addWidget(widget)
+        break
+      case 'top':
+        this.topPanel?.addWidget(widget)
+        break
+      case 'bottom':
+        this.bottomPanel?.addWidget(widget)
+        break
+      default:
+        throw new Error(`Unexpected area: ${options?.area}`)
+    }
+  }
+}
+
+export namespace ApplicationShell {
+  export type Area = 'main' | 'top' | 'bottom'
+
+  export interface WidgetOptions {
+    area?: Area
+    ref?: Widget
   }
 }

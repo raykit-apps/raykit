@@ -11,10 +11,10 @@ import 'reflect-metadata'
   }
 
   const container = new Container()
-  container.load(applicationMainModule, windowMainModule)
+  container.load(applicationMainModule)
 
   function load() {
-    // TODO container.load()
+    container.load(windowMainModule)
   }
 
   async function start() {
