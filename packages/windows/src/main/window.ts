@@ -1,8 +1,8 @@
 // import type { Event } from '@raykit/base'
-import type { BrowserWindow } from 'electrobun/bun'
+import type { BrowserWindow } from 'electron'
 import type { IOpenWindowOptions } from '../common'
 
-export const IWindowMainService = Symbol('WindowMainService')
+export const IWindowMainService = Symbol('IWindowMainService')
 export interface IWindowMainService {
   open: (options: IOpenOptions) => Promise<IAppWindow[]>
 }
@@ -11,7 +11,7 @@ export interface IOpenOptions extends IOpenWindowOptions {
 
 }
 
-export const IAppWindow = Symbol('AppWindow')
+export const IAppWindow = Symbol('IAppWindow')
 export interface IAppWindow {
   // readonly onDidMaximize: Event<void>
   // readonly onDidUnmaximize: Event<void>

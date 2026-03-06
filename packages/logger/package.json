@@ -11,6 +11,8 @@
   "main": "./src/common/index.ts",
   "types": "./src/common/index.ts",
   "scripts": {},
-  "dependencies": {},
+  "dependencies": {
+    "inversify": "catalog:"
+  },
   "devDependencies": {}
 }

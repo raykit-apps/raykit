@@ -179,6 +179,12 @@ importers:
         specifier: 'catalog:'
         version: 1.9.11
 
+  packages/logger:
+    dependencies:
+      inversify:
+        specifier: 'catalog:'
+        version: 7.11.0(reflect-metadata@0.2.2)
+
   packages/sandbox:
     dependencies:
       electron:

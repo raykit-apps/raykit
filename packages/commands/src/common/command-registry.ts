@@ -6,7 +6,7 @@ import { Emitter as EmitterImpl } from '@raykit/base'
 /**
  * Symbol for the CommandRegistry.
  */
-export const CommandRegistry = Symbol('CommandRegistry')
+export const ICommandRegistry = Symbol('ICommandRegistry')
 
 /**
  * Event fired before a command is executed.
@@ -92,7 +92,7 @@ export interface ICommandRegistry {
 /**
  * Implementation of the CommandRegistry.
  */
-export class CommandRegistryImpl implements ICommandRegistry {
+export class CommandRegistry implements ICommandRegistry {
   private commands = new Map<string, Command>()
   private handlers = new Map<string, CommandHandler<unknown>[]>()
 

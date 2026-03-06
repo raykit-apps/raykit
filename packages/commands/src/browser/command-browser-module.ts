@@ -1,7 +1,7 @@
-import type { ICommandRegistry } from '../common'
 import { bindContributionProvider } from '@raykit/base'
 import { ContainerModule } from 'inversify'
-import { CommandContribution, CommandRegistry, CommandRegistryImpl } from '../common'
+import { CommandContribution, CommandRegistry, ICommandRegistry } from '../common'
+
 import { CommandBrowserContribution } from './command-browser-contribution'
 
 /**
@@ -10,7 +10,7 @@ import { CommandBrowserContribution } from './command-browser-contribution'
  */
 export const commandBrowserModule = new ContainerModule((options) => {
   // Bind CommandRegistry as singleton
-  options.bind<ICommandRegistry>(CommandRegistry).to(CommandRegistryImpl).inSingletonScope()
+  options.bind<ICommandRegistry>(ICommandRegistry).to(CommandRegistry).inSingletonScope()
 
   // Bind BrowserCommandContribution
   options.bind(CommandBrowserContribution).toSelf().inSingletonScope()
