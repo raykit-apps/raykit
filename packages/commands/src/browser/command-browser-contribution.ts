@@ -1,8 +1,6 @@
-import type { ContributionProvider } from '@raykit/base'
-import type { ApplicationBrowser, ApplicationBrowserContribution } from '@raykit/core/browser'
-import type { ICommandRegistry } from '../common'
-import { inject, injectable, named } from 'inversify'
-import { CommandContribution, CommandRegistry } from '../common'
+import type { ApplicationBrowserContribution } from '@raykit/core/browser'
+import { inject, injectable } from 'inversify'
+import { CommandRegistry } from '../common'
 
 /**
  * Browser command contribution.
@@ -12,17 +10,10 @@ import { CommandContribution, CommandRegistry } from '../common'
 export class CommandBrowserContribution implements ApplicationBrowserContribution {
   constructor(
     @inject(CommandRegistry)
-    private readonly registry: ICommandRegistry,
-    @inject(Symbol.for('ContributionProvider'))
-    @named(CommandContribution)
-    private readonly contributionProvider: ContributionProvider<CommandContribution>,
+    private readonly commands: CommandRegistry,
   ) {}
 
-  configure(_app: ApplicationBrowser): void {
-    // Collect all command contributions and register their commands
-    const contributions = this.contributionProvider.getContributions()
-    for (const contribution of contributions) {
-      contribution.registerCommands(this.registry)
-    }
+  onStart() {
+    this.commands.onStart()
   }
 }

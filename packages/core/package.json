@@ -16,8 +16,10 @@
   },
   "dependencies": {
     "@raykit/base": "workspace:*",
+    "@raykit/commands": "workspace:*",
     "@raykit/widgets": "workspace:*",
     "@raykit/windows": "workspace:*",
+    "fast-json-stable-stringify": "^2.1.0",
     "inversify": "catalog:"
   }
 }

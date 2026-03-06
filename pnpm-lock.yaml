@@ -163,6 +163,9 @@ importers:
       '@raykit/base':
         specifier: workspace:*
         version: link:../base
+      '@raykit/commands':
+        specifier: workspace:*
+        version: link:../commands
       '@raykit/widgets':
         specifier: workspace:*
         version: link:../widgets
@@ -172,6 +175,9 @@ importers:
       electron:
         specifier: 'catalog:'
         version: 40.6.1
+      fast-json-stable-stringify:
+        specifier: ^2.1.0
+        version: 2.1.0
       inversify:
         specifier: 'catalog:'
         version: 7.11.0(reflect-metadata@0.2.2)
