@@ -1,0 +1,14 @@
+{
+  "name": "@raykit/actions",
+  "private": true,
+  "exports": {
+    ".": "./src/common/index.ts",
+    "./common": "./src/common/index.ts",
+    "./browser": "./src/browser/index.ts"
+  },
+  "main": "./src/common/index.ts",
+  "types": "./src/common/index.ts",
+  "scripts": {},
+  "dependencies": {},
+  "devDependencies": {}
+}
