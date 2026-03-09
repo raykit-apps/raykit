@@ -1,5 +1,5 @@
 export * from './cancellation'
 export * from './contribution-provider'
-export * from './disposable'
 export * from './event'
+export * from './lifecycle'
 export * from './types'

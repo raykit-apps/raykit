@@ -13,3 +13,7 @@ export function isFunction<T extends (...args: unknown[]) => unknown>(value: unk
 export function isObject<T extends object>(value: unknown): value is UnknownObject<T> {
   return typeof value === 'object' && value !== null
 }
+
+export function isIterable<T>(obj: unknown): obj is Iterable<T> {
+  return !!obj && typeof (obj as any)[Symbol.iterator] === 'function'
+}

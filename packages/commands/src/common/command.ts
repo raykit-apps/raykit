@@ -1,5 +1,5 @@
-import type { Event } from '@raykit/base'
-import { ContributionProvider, Disposable, DisposableCollection, Emitter, isObject, WaitUntilEvent } from '@raykit/base'
+import type { Event, IDisposable } from '@raykit/base'
+import { ContributionProvider, Disposable, Emitter, isObject, toDisposable, WaitUntilEvent } from '@raykit/base'
 import { inject, injectable, named } from 'inversify'
 import debounce from 'p-debounce'
 
@@ -97,7 +97,7 @@ export class CommandRegistry implements CommandService {
   protected readonly _commands: { [id: string]: Command } = {}
   protected readonly _handlers: { [id: string]: CommandHandler[] } = {}
 
-  protected readonly toUnregisterCommands = new Map<string, Disposable>()
+  protected readonly toUnregisterCommands = new Map<string, IDisposable>()
 
   // List of recently used commands.
   protected _recent: string[] = []
@@ -134,27 +134,27 @@ export class CommandRegistry implements CommandService {
    *
    * Throw if a command is already registered for the given command identifier.
    */
-  registerCommand(command: Command, handler?: CommandHandler): Disposable {
+  registerCommand(command: Command, handler?: CommandHandler): IDisposable {
     if (this._commands[command.id]) {
       console.warn(`A command ${command.id} is already registered.`)
-      return Disposable.NULL
+      return Disposable.None
     }
-    const toDispose = new DisposableCollection(this.doRegisterCommand(command))
-    if (handler) {
-      toDispose.push(this.registerHandler(command.id, handler))
-    }
+    const toDispose = toDisposable(() => {
+      this.doRegisterCommand(command)
+      if (handler) {
+        this.registerHandler(command.id, handler)
+      }
+      this.toUnregisterCommands.delete(command.id)
+    })
     this.toUnregisterCommands.set(command.id, toDispose)
-    toDispose.push(Disposable.create(() => this.toUnregisterCommands.delete(command.id)))
     return toDispose
   }
 
-  protected doRegisterCommand(command: Command): Disposable {
+  protected doRegisterCommand(command: Command): IDisposable {
     this._commands[command.id] = command
-    return {
-      dispose: () => {
-        delete this._commands[command.id]
-      },
-    }
+    return toDisposable(() => {
+      delete this._commands[command.id]
+    })
   }
 
   /**
@@ -184,22 +184,20 @@ export class CommandRegistry implements CommandService {
    * then the given handler is registered as more specific, and
    * has higher priority during enablement, visibility and toggle state evaluations.
    */
-  registerHandler(commandId: string, handler: CommandHandler): Disposable {
+  registerHandler(commandId: string, handler: CommandHandler): IDisposable {
     let handlers = this._handlers[commandId]
     if (!handlers) {
       this._handlers[commandId] = handlers = []
     }
     handlers.unshift(handler)
     this.fireDidChange()
-    return {
-      dispose: () => {
-        const idx = handlers.indexOf(handler)
-        if (idx >= 0) {
-          handlers.splice(idx, 1)
-          this.fireDidChange()
-        }
-      },
-    }
+    return toDisposable(() => {
+      const idx = handlers.indexOf(handler)
+      if (idx >= 0) {
+        handlers.splice(idx, 1)
+        this.fireDidChange()
+      }
+    })
   }
 
   protected fireDidChange = debounce(() => this.doFireDidChange(), 0)
