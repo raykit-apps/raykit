@@ -4,6 +4,6 @@ packages:
   - 'extensions/*'
 
 catalog:
-  electron: ^40.6.1
+  electron: ^41.0.0
   inversify: ^7.11.0
   solid-js: ^1.9.11
