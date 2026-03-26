@@ -88,9 +88,9 @@ export class CounterStateService {
 
 ```tsx
 import type { JSX } from 'solid-js'
-import { createSignal } from 'solid-js'
-import { inject, injectable } from 'inversify'
 import { SolidWidget } from '@raykit/widgets/browser'
+import { inject, injectable } from 'inversify'
+import { createSignal } from 'solid-js'
 import { CounterStateService } from './counter-state-service'
 
 function CounterPanel(props: { count: number, onIncrement: () => void }): JSX.Element {
@@ -119,7 +119,7 @@ export class CounterWidget extends SolidWidget {
     this.title.label = 'Counter'
 
     this.setCount(this.stateService.getSnapshot().count)
-    this._register(this.stateService.onDidChangeSnapshot(snapshot => {
+    this._register(this.stateService.onDidChangeSnapshot((snapshot) => {
       this.setCount(snapshot.count)
     }))
   }

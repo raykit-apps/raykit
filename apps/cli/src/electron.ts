@@ -156,7 +156,7 @@ export function startElectron(root: string | undefined): ChildProcess {
 
   const entry = process.env.ELECTRON_ENTRY || '.'
 
-  const ps = spawn(electronPath, [entry].concat(args), { stdio: 'inherit' })
+  const ps = spawn(electronPath, [...[entry], ...args], { stdio: 'inherit' })
   ps.on('close', process.exit)
 
   return ps

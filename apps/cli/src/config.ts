@@ -172,20 +172,20 @@ export async function resolveConfig(
               electronMainConfigValidatorPlugin(),
             ]
 
-            viteConfig.plugins = builtInMainPlugins.concat(viteConfig.plugins || [])
+            viteConfig.plugins = [...builtInMainPlugins, ...viteConfig.plugins || []]
           } else if (userConfig.target === 'preload') {
             const builtInPreloadPlugins: PluginOption[] = [
               electronPreloadConfigPresetPlugin({ root }),
               electronPreloadConfigValidatorPlugin(),
             ]
-            viteConfig.plugins = builtInPreloadPlugins.concat(viteConfig.plugins || [])
+            viteConfig.plugins = [...builtInPreloadPlugins, ...viteConfig.plugins || []]
           } else {
             // Default to node target
             const builtInNodePlugins: PluginOption[] = [
               electronNodeConfigPresetPlugin({ root }),
               electronNodeConfigValidatorPlugin(),
             ]
-            viteConfig.plugins = builtInNodePlugins.concat(viteConfig.plugins || [])
+            viteConfig.plugins = [...builtInNodePlugins, ...viteConfig.plugins || []]
           }
 
           userConfig.vite = viteConfig
@@ -211,7 +211,7 @@ export async function resolveConfig(
             electronRendererConfigValidatorPlugin(),
           ]
 
-          viteConfig.plugins = builtInRendererPlugins.concat(viteConfig.plugins || [])
+          viteConfig.plugins = [...builtInRendererPlugins, ...viteConfig.plugins || []]
 
           userConfig.vite = viteConfig
         })
@@ -234,6 +234,7 @@ export async function resolveConfig(
 }
 
 const CONFIG_FILE_NAME = 'raykit.config'
+const VITE_CONFIG_FILE_PATTERN = /^vite.config.(js|ts|mjs|cjs|mts|cts)$/
 
 export async function loadConfigFromFile(
   configEnv: ConfigEnv,
@@ -241,7 +242,7 @@ export async function loadConfigFromFile(
   configRoot: string = process.cwd(),
   logLevel?: LogLevel,
 ): Promise<ResolvedConfigFile | null> {
-  if (configFile && /^vite.config.(js|ts|mjs|cjs|mts|cts)$/.test(configFile)) {
+  if (configFile && VITE_CONFIG_FILE_PATTERN.test(configFile)) {
     throw new Error(`config file cannot be named ${configFile}.`)
   }
 

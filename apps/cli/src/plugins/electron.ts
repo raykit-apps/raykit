@@ -11,6 +11,9 @@ export interface ElectronPluginOptions {
   root?: string
 }
 
+const ELECTRON_SUBPATH_PATTERN = /^electron\/.+/
+const ES_BUILD_TARGET_PATTERN = /^es((202\d{1})|next)$/
+
 function processEnvDefine(): Record<string, string> {
   return {
     'process.env': `process.env`,
@@ -58,7 +61,7 @@ export function electronMainConfigPresetPlugin(options: ElectronPluginOptions): 
           target: nodeTarget,
           assetsDir: 'chunks',
           rollupOptions: {
-            external: ['electron', /^electron\/.+/, ...builtinModules.flatMap(m => [m, `node:${m}`])],
+            external: ['electron', ELECTRON_SUBPATH_PATTERN, ...builtinModules.flatMap(m => [m, `node:${m}`])],
             output: {
               entryFileNames: '[name].js',
             },
@@ -180,7 +183,7 @@ export function electronPreloadConfigPresetPlugin(options: ElectronPluginOptions
           target: nodeTarget,
           assetsDir: 'chunks',
           rollupOptions: {
-            external: ['electron', /^electron\/.+/, ...builtinModules.flatMap(m => [m, `node:${m}`])],
+            external: ['electron', ELECTRON_SUBPATH_PATTERN, ...builtinModules.flatMap(m => [m, `node:${m}`])],
             output: {},
           },
           reportCompressedSize: false,
@@ -224,7 +227,7 @@ export function electronPreloadConfigPresetPlugin(options: ElectronPluginOptions
       if (resolvedOutputs) {
         const outputs = Array.isArray(resolvedOutputs) ? resolvedOutputs : [resolvedOutputs]
 
-        if (outputs.find(({ format }) => format === 'es')) {
+        if (outputs.some(({ format }) => format === 'es')) {
           if (Array.isArray(config.build.rollupOptions!.output)) {
             config.build.rollupOptions!.output.forEach((output) => {
               if (output.format === 'es') {
@@ -467,7 +470,7 @@ export function electronRendererConfigValidatorPlugin(): Plugin {
         throw new Error('build.target option is required in the electron vite renderer config.')
       } else {
         const targets = Array.isArray(build.target) ? build.target : [build.target]
-        if (targets.some(t => !t.startsWith('chrome') && !/^es((202\d{1})|next)$/.test(t))) {
+        if (targets.some(t => !t.startsWith('chrome') && !ES_BUILD_TARGET_PATTERN.test(t))) {
           config.logger.warn(
             'The electron vite renderer config build.target is not "chrome?" or "es?". This could be a mistake.',
           )

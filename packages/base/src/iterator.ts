@@ -182,7 +182,7 @@ export namespace Iterable {
   export async function asyncToArrayFlat<T>(iterable: AsyncIterable<T[]>): Promise<T[]> {
     let result: T[] = []
     for await (const item of iterable) {
-      result = result.concat(item)
+      result = [...result, ...item]
     }
     return result
   }

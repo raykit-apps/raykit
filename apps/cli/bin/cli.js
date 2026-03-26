@@ -1,7 +1,10 @@
 #!/usr/bin/env node
 
-const debugIndex = process.argv.findIndex(arg => /^(?:-d|--debug)$/.test(arg))
-const filterIndex = process.argv.findIndex(arg => /^(?:-f|--filter)$/.test(arg))
+const DEBUG_FLAG_PATTERN = /^(?:-d|--debug)$/
+const FILTER_FLAG_PATTERN = /^(?:-f|--filter)$/
+
+const debugIndex = process.argv.findIndex(arg => DEBUG_FLAG_PATTERN.test(arg))
+const filterIndex = process.argv.findIndex(arg => FILTER_FLAG_PATTERN.test(arg))
 
 if (debugIndex > 0) {
   let value = process.argv[debugIndex + 1]
