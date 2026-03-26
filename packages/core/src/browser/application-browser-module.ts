@@ -1,5 +1,6 @@
 import { bindContributionProvider } from '@raykit/base'
 import { ContainerModule } from 'inversify'
+import { bindStatusBar } from './actions-bar'
 import { ApplicationBrowser } from './application-browser'
 import { ApplicationBrowserContribution } from './application-browser-contribution'
 import { ApplicationShell } from './shell/application-shell'
@@ -12,6 +13,8 @@ import { WidgetFactory, WidgetService } from './widget-service'
 export const applicationBrowserModule = new ContainerModule((options) => {
   options.bind(ApplicationBrowser).toSelf().inSingletonScope()
   bindContributionProvider(options, ApplicationBrowserContribution)
+
+  bindStatusBar(options)
 
   options.bind(ApplicationShell).toSelf().inSingletonScope()
 

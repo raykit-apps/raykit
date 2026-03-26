@@ -65,6 +65,18 @@ export function toDisposable(fn: () => void): IDisposable {
   return new FunctionDisposable(fn)
 }
 
+export type DisposableGroup = { push: (disposable: IDisposable) => void } | { add: (disposable: IDisposable) => void }
+
+export namespace DisposableGroup {
+  export function canPush(candidate?: DisposableGroup): candidate is { push: (disposable: IDisposable) => void } {
+    return Boolean(candidate && (candidate as { push: () => void }).push)
+  }
+
+  export function canAdd(candidate?: DisposableGroup): candidate is { add: (disposable: IDisposable) => void } {
+    return Boolean(candidate && (candidate as { add: () => void }).add)
+  }
+}
+
 export class DisposableStore implements IDisposable {
   static DISABLE_DISPOSED_WARNING = false
 

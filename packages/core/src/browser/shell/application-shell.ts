@@ -1,7 +1,8 @@
 import type { Layout } from '@raykit/widgets'
 import { BoxLayout, BoxPanel, Panel, Widget } from '@raykit/widgets'
 
-import { injectable, postConstruct } from 'inversify'
+import { inject, injectable, postConstruct } from 'inversify'
+import { ActionsBar } from '../actions-bar'
 
 @injectable()
 export class ApplicationShell extends Widget {
@@ -13,7 +14,9 @@ export class ApplicationShell extends Widget {
 
   protected readonly maximizedElement: HTMLElement
 
-  constructor() {
+  constructor(
+    @inject(ActionsBar) protected readonly actionsBar: ActionsBar,
+  ) {
     super()
 
     this.maximizedElement = this.node.ownerDocument.createElement('div')
@@ -67,8 +70,8 @@ export class ApplicationShell extends Widget {
     BoxPanel.setStretch(this.mainPanel!, 1)
     boxLayout.addWidget(this.mainPanel!)
 
-    BoxPanel.setStretch(this.bottomPanel!, 0)
-    boxLayout.addWidget(this.bottomPanel!)
+    BoxPanel.setStretch(this.actionsBar!, 0)
+    boxLayout.addWidget(this.actionsBar!)
 
     return boxLayout
   }

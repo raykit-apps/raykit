@@ -353,7 +353,7 @@ export class CommandRegistry implements CommandService {
    * @param commands the list of recently used commands.
    */
   set recent(commands: Command[]) {
-    this._recent = Array.from(new Set(commands.map(e => e.id)))
+    this._recent = [...new Set(commands.map(e => e.id))]
   }
 
   /**

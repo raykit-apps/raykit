@@ -4,5 +4,5 @@
     "jsx": "preserve",
     "jsxImportSource": "solid-js"
   },
-  "include": ["src/**/*.ts", "../widgets/src/browser/widget-decoration.ts", "../widgets/src/browser/widget-open-handler.ts", "../widgets/src/browser/widget-service.ts"]
+  "include": ["src/**/*.ts", "../widgets/src/browser/widget-decoration.ts", "../widgets/src/browser/widget-open-handler.ts", "../widgets/src/browser/widget-service.ts", "src/browser/actions-bar/actions-bar.tsx"]
 }

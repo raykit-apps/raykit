@@ -1,10 +1,10 @@
-import type { Disposable } from './disposable'
+import type { IDisposable } from './lifecycle'
 import type { MaybePromise } from './types'
 import { CancellationToken } from './cancellation'
-import { DisposableGroup } from './disposable'
+import { DisposableGroup } from './lifecycle'
 
 export interface Event<T> {
-  (listener: (e: T) => any, thisArgs?: any, disposables?: DisposableGroup): Disposable
+  (listener: (e: T) => any, thisArgs?: any, disposables?: DisposableGroup): IDisposable
 }
 
 export namespace Event {
@@ -33,7 +33,7 @@ export namespace Event {
   export function once<T>(event: Event<T>): Event<T> {
     return (listener, thisArgs = undefined, disposables) => {
       let didFire = false
-      const result: Disposable = event((e) => {
+      const result: IDisposable = event((e) => {
         if (didFire) {
           return
         } else if (result) {
@@ -80,7 +80,7 @@ class CallbackList implements Iterable<Callback> {
     return (this._callbacks && this._callbacks.length) || 0
   }
 
-  public add(callback: Function, context: any = undefined, bucket?: Disposable[]): void {
+  public add(callback: Function, context: any = undefined, bucket?: IDisposable[]): void {
     if (!this._callbacks) {
       this._callbacks = []
       this._contexts = []
@@ -183,7 +183,7 @@ export class Emitter<T = any> {
         this._callbacks.add(listener, thisArgs)
         const removeMaxListenersCheck = this.checkMaxListeners(Event.getMaxListeners(this._event!))
 
-        const result: Disposable = {
+        const result: IDisposable = {
           dispose: () => {
             if (removeMaxListenersCheck) {
               removeMaxListenersCheck()
