@@ -10,8 +10,6 @@ export class ApplicationShell extends Widget {
 
   topPanel?: Panel
 
-  bottomPanel?: Panel
-
   protected readonly maximizedElement: HTMLElement
 
   constructor(
@@ -35,7 +33,6 @@ export class ApplicationShell extends Widget {
 
     this.mainPanel = this.createMainPanel()
     this.topPanel = this.createTopPanel()
-    this.bottomPanel = this.createBottomPanel()
 
     this.layout = this.createLayout()
   }
@@ -43,22 +40,15 @@ export class ApplicationShell extends Widget {
   protected createMainPanel(): Panel {
     const mainPanel = new Panel()
     mainPanel.id = 'raykit-main-panel'
-    mainPanel.hide()
+    mainPanel.show()
     return mainPanel
   }
 
   protected createTopPanel(): Panel {
     const topPanel = new Panel()
     topPanel.id = 'raykit-top-panel'
-    topPanel.hide()
+    topPanel.show()
     return topPanel
-  }
-
-  protected createBottomPanel(): Panel {
-    const bottomPanel = new Panel()
-    bottomPanel.id = 'raykit-bottom-panel'
-    bottomPanel.hide()
-    return bottomPanel
   }
 
   protected createLayout(): Layout {
@@ -88,9 +78,6 @@ export class ApplicationShell extends Widget {
         break
       case 'top':
         this.topPanel?.addWidget(widget)
-        break
-      case 'bottom':
-        this.bottomPanel?.addWidget(widget)
         break
       default:
         throw new Error(`Unexpected area: ${options?.area}`)

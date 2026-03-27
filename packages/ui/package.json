@@ -1,6 +1,13 @@
 {
   "name": "@raykit/ui",
+  "type": "module",
   "private": true,
+  "exports": {
+    ".": "./src/index.ts",
+    "./components/ui/*": "./src/components/ui/*",
+    "./lib/*": "./src/lib/*",
+    "./style/*": "./src/style/*"
+  },
   "main": "./src/index.ts",
   "types": "./src/index.ts",
   "scripts": {},
@@ -8,10 +15,10 @@
     "solid-js": "catalog:"
   },
   "dependencies": {
-    "@kobalte/core": "^0.13.0",
-    "class-variance-authority": "^0.7.0",
-    "clsx": "^2.1.0",
-    "tailwind-merge": "^2.2.0"
+    "@kobalte/core": "^0.13.11",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^2.6.1"
   },
   "devDependencies": {}
 }
