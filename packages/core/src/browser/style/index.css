@@ -3,3 +3,7 @@
 .raykit-application-shell {
   @apply absolute top-0 left-0 bottom-0 right-0;
 }
+
+#raykit-top-panel {
+  @apply min-h-14;
+}

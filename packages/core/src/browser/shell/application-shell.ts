@@ -1,6 +1,5 @@
 import type { Layout } from '@raykit/widgets'
 import { BoxLayout, BoxPanel, Panel, Widget } from '@raykit/widgets'
-
 import { inject, injectable, postConstruct } from 'inversify'
 import { ActionsBar } from '../actions-bar'
 
@@ -82,6 +81,17 @@ export class ApplicationShell extends Widget {
         break
       default:
         throw new Error(`Unexpected area: ${options?.area}`)
+    }
+  }
+
+  getWidgets(area: ApplicationShell.Area): Widget[] {
+    switch (area) {
+      case 'main':
+        return [...this.mainPanel?.widgets ?? []]
+      case 'top':
+        return [...this.topPanel?.widgets ?? []]
+      default:
+        throw new Error(`Illegal argument: ${area}`)
     }
   }
 

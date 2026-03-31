@@ -1,0 +1,22 @@
+{
+  "name": "@raykit/devtools",
+  "type": "module",
+  "private": true,
+  "exports": {
+    ".": "./src/browser/index.ts",
+    "./browser": "./src/browser/index.ts"
+  },
+  "main": "./src/browser/index.ts",
+  "types": "./src/browser/index.ts",
+  "peerDependencies": {
+    "electron": "catalog:",
+    "solid-js": "catalog:"
+  },
+  "dependencies": {
+    "@raykit/base": "workspace:*",
+    "@raykit/commands": "workspace:*",
+    "@raykit/core": "workspace:*",
+    "@raykit/widgets": "workspace:*",
+    "inversify": "catalog:"
+  }
+}

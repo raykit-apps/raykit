@@ -7,7 +7,6 @@ import { WidgetService } from '../widget-service'
 import { ApplicationShell } from './application-shell'
 
 export interface OpenViewArguments {
-  toggle?: boolean
   activate?: boolean
   reveal?: boolean
 }
@@ -53,6 +52,10 @@ export abstract class AbstractViewContribution<T extends Widget> implements Comm
     return this.options.widgetName
   }
 
+  get defaultViewOptions(): ApplicationShell.WidgetOptions {
+    return this.options.defaultWidgetOptions
+  }
+
   get widget(): Promise<T> {
     return this.widgetService!.getOrCreateWidget(this.viewId)
   }
@@ -60,8 +63,10 @@ export abstract class AbstractViewContribution<T extends Widget> implements Comm
   async openView(args: Partial<OpenViewArguments> = {}): Promise<T> {
     const shell = this.shell
     const widget = await this.widgetService.getOrCreateWidget(this.viewId)
-    console.log(widget)
-    await shell.addWidget(widget!)
+    await shell.addWidget(widget, this.defaultViewOptions)
+    if (args.activate) {
+      //
+    }
     return this.widget
   }
 
