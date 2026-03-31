@@ -1,5 +1,5 @@
 import type { Event, IDisposable } from '@raykit/base'
-import { ContributionProvider, Disposable, Emitter, isObject, toDisposable, WaitUntilEvent } from '@raykit/base'
+import { ContributionProvider, Disposable, DisposableStore, Emitter, isObject, toDisposable, WaitUntilEvent } from '@raykit/base'
 import { inject, injectable, named } from 'inversify'
 import debounce from 'p-debounce'
 
@@ -139,14 +139,21 @@ export class CommandRegistry implements CommandService {
       console.warn(`A command ${command.id} is already registered.`)
       return Disposable.None
     }
+
+    const commandStore = new DisposableStore()
+    commandStore.add(this.doRegisterCommand(command))
+    if (handler) {
+      commandStore.add(this.registerHandler(command.id, handler))
+    }
+
     const toDispose = toDisposable(() => {
-      this.doRegisterCommand(command)
-      if (handler) {
-        this.registerHandler(command.id, handler)
-      }
       this.toUnregisterCommands.delete(command.id)
+      commandStore.dispose()
+      this.fireDidChange()
     })
+
     this.toUnregisterCommands.set(command.id, toDispose)
+    this.fireDidChange()
     return toDispose
   }
 
@@ -154,6 +161,7 @@ export class CommandRegistry implements CommandService {
     this._commands[command.id] = command
     return toDisposable(() => {
       delete this._commands[command.id]
+      delete this._handlers[command.id]
     })
   }
 

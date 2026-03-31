@@ -6,9 +6,9 @@ import { ActionsBar } from '../actions-bar'
 
 @injectable()
 export class ApplicationShell extends Widget {
-  mainPanel?: Panel
-
   topPanel?: Panel
+
+  mainPanel?: Panel
 
   protected readonly maximizedElement: HTMLElement
 
@@ -32,7 +32,6 @@ export class ApplicationShell extends Widget {
     this.id = 'raykit-app-shell'
 
     this.mainPanel = this.createMainPanel()
-    this.topPanel = this.createTopPanel()
 
     this.layout = this.createLayout()
   }
@@ -83,11 +82,14 @@ export class ApplicationShell extends Widget {
         throw new Error(`Unexpected area: ${options?.area}`)
     }
   }
+
+  async closeWidget(id: string) {
+
+  }
 }
 
 export namespace ApplicationShell {
-  export type Area = 'main' | 'top' | 'bottom'
-
+  export type Area = 'main' | 'top'
   export interface WidgetOptions {
     area?: Area
     ref?: Widget

@@ -1,4 +1,6 @@
 export * from './application-browser'
 export * from './application-browser-contribution'
 export * from './application-browser-module'
+export * from './application-browser-state'
+export * from './shell'
 export * from './widget-service'

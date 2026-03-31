@@ -7,6 +7,7 @@
     "./browser": "./src/browser/index.ts",
     "./main": "./src/main/index.ts",
     "./node": "./src/node/index.ts",
+    "./common": "./src/common/index.ts",
     "./style/*.css": "./src/browser/style/*.css"
   },
   "main": "./src/main/index.ts",
