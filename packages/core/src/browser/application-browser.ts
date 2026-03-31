@@ -3,6 +3,7 @@ import { ContributionProvider } from '@raykit/base'
 import { Widget } from '@raykit/widgets'
 import { inject, injectable, named } from 'inversify'
 import { ApplicationBrowserContribution } from './application-browser-contribution'
+import { ApplicationBrowserStateService } from './application-browser-state'
 import { ApplicationShell } from './shell/application-shell'
 
 @injectable()
@@ -11,8 +12,8 @@ export class ApplicationBrowser {
     @inject(ContributionProvider)
     @named(ApplicationBrowserContribution)
     protected readonly contributions: ContributionProvider<ApplicationBrowserContribution>,
-    @inject(ApplicationShell)
-    protected readonly _shell: ApplicationShell,
+    @inject(ApplicationShell) protected readonly _shell: ApplicationShell,
+    @inject(ApplicationBrowserStateService) protected readonly stateService: ApplicationBrowserStateService,
   ) {}
 
   get shell(): ApplicationShell {
@@ -28,13 +29,18 @@ export class ApplicationBrowser {
    */
   async start(): Promise<void> {
     await this.startContributions()
+    this.stateService.state = 'started-contributions'
 
     const host = await this.getHost()
     this.attachShell(host)
+    this.stateService.state = 'attached-shell'
 
     this.initializeLayout()
+    this.stateService.state = 'initialized-layout'
 
     this.registerEventListeners()
+
+    this.stateService.state = 'ready'
   }
 
   protected getHost(): Promise<HTMLElement> {

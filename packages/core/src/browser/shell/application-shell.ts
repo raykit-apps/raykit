@@ -31,6 +31,8 @@ export class ApplicationShell extends Widget {
     this.addClass('raykit-application-shell')
     this.id = 'raykit-app-shell'
 
+    this.topPanel = this.createTopPanel()
+
     this.mainPanel = this.createMainPanel()
 
     this.layout = this.createLayout()

@@ -13,6 +13,7 @@
   "dependencies": {
     "@raykit/commands": "workspace:*",
     "@raykit/core": "workspace:*",
+    "@raykit/quick-input": "workspace:*",
     "@raykit/sandbox": "workspace:*",
     "@raykit/windows": "workspace:*",
     "electron-squirrel-startup": "^1.0.1",

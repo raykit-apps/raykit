@@ -84,6 +84,9 @@ importers:
       '@raykit/core':
         specifier: workspace:*
         version: link:../../packages/core
+      '@raykit/quick-input':
+        specifier: workspace:*
+        version: link:../../packages/quick-input
       '@raykit/sandbox':
         specifier: workspace:*
         version: link:../../packages/sandbox

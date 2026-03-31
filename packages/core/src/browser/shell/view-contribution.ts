@@ -27,11 +27,9 @@ export function bindViewContribution<T extends AbstractViewContribution<Widget>>
 
 @injectable()
 export abstract class AbstractViewContribution<T extends Widget> implements CommandContribution {
-  @inject(WidgetService)
-  protected readonly widgetService?: WidgetService
+  @inject(WidgetService) protected readonly widgetService!: WidgetService
 
-  @inject(ApplicationShell)
-  protected readonly shell?: ApplicationShell
+  @inject(ApplicationShell) protected readonly shell!: ApplicationShell
 
   readonly toggleCommand?: Command
 
@@ -60,8 +58,9 @@ export abstract class AbstractViewContribution<T extends Widget> implements Comm
   }
 
   async openView(args: Partial<OpenViewArguments> = {}): Promise<T> {
-    const shell = this.shell!
-    const widget = await this.widgetService?.getOrCreateWidget(this.viewId)
+    const shell = this.shell
+    const widget = await this.widgetService.getOrCreateWidget(this.viewId)
+    console.log(widget)
     await shell.addWidget(widget!)
     return this.widget
   }
