@@ -1,6 +1,8 @@
 {
   "compilerOptions": {
     "target": "esnext",
+    "jsx": "preserve",
+    "jsxImportSource": "solid-js",
     "useDefineForClassFields": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,

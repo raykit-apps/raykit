@@ -11,6 +11,9 @@
   },
   "main": "./src/common/index.ts",
   "types": "./src/common/index.ts",
+  "scripts": {
+    "check": "tsc -p tsconfig.json --noEmit"
+  },
   "peerDependencies": {
     "electron": "catalog:"
   }

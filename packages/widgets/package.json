@@ -7,7 +7,9 @@
   },
   "main": "./src/browser/index.ts",
   "types": "./src/browser/index.ts",
-  "scripts": {},
+  "scripts": {
+    "check": "tsc -p tsconfig.json --noEmit"
+  },
   "peerDependencies": {
     "solid-js": "catalog:"
   },

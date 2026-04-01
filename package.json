@@ -20,7 +20,7 @@
     "build": "pnpm -F @raykit/desktop build",
     "lint": "eslint",
     "lint:fix": "eslint . --fix",
-    "check": "tsc --noEmit"
+    "check": "pnpm -r --workspace-concurrency=1 --filter=!root --if-present check"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^7.7.3",

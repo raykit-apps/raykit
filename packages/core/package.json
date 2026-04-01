@@ -12,6 +12,9 @@
   },
   "main": "./src/main/index.ts",
   "types": "./src/main/index.ts",
+  "scripts": {
+    "check": "tsc -p tsconfig.json --noEmit"
+  },
   "peerDependencies": {
     "electron": "catalog:",
     "solid-js": "catalog:"

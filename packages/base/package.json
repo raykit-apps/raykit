@@ -4,7 +4,9 @@
   "private": true,
   "main": "./src/index.ts",
   "types": "./src/index.ts",
-  "scripts": {},
+  "scripts": {
+    "check": "tsc -p tsconfig.json --noEmit"
+  },
   "dependencies": {
     "inversify": "catalog:",
     "p-debounce": "^5.1.0"

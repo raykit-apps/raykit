@@ -6,6 +6,7 @@
   "private": true,
   "main": "./out/main/index.js",
   "scripts": {
+    "check": "tsc -p tsconfig.json --noEmit",
     "dev": "rkc dev",
     "build": "rkc build",
     "preview": "rkc preview"

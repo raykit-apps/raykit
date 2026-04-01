@@ -23,6 +23,7 @@
     "dist"
   ],
   "scripts": {
+    "check": "tsc -p tsconfig.json --noEmit",
     "build": "rollup -c rollup.config.ts --configPlugin typescript && echo ''",
     "prepare": "pnpm build"
   },

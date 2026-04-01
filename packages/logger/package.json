@@ -10,7 +10,9 @@
   },
   "main": "./src/common/index.ts",
   "types": "./src/common/index.ts",
-  "scripts": {},
+  "scripts": {
+    "check": "tsc -p tsconfig.json --noEmit"
+  },
   "dependencies": {
     "inversify": "catalog:"
   },

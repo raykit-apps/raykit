@@ -8,6 +8,9 @@
   },
   "main": "./src/browser/index.ts",
   "types": "./src/browser/index.ts",
+  "scripts": {
+    "check": "tsc -p tsconfig.json --noEmit"
+  },
   "peerDependencies": {
     "electron": "catalog:",
     "solid-js": "catalog:"
