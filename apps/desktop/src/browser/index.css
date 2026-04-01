@@ -5,6 +5,17 @@
 
 @import '@raykit/core/style/index.css';
 
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+}
+
 :root {
   --raykit-ui-background: #f6fff9;
   --raykit-ui-foreground: #006a6b;

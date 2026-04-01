@@ -53,7 +53,7 @@ export class ApplicationBrowser {
   }
 
   protected registerEventListeners(): void {
-
+    window.addEventListener('resize', () => this.shell.update())
   }
 
   protected attachShell(host: HTMLElement): void {

@@ -1,7 +1,11 @@
 @import './action-bar.css';
 
 .raykit-application-shell {
-  @apply absolute top-0 left-0 bottom-0 right-0;
+  @apply absolute top-0 left-0 bottom-0 right-0 overflow-hidden;
+}
+
+.lm-Widget {
+  contain: none !important;
 }
 
 #raykit-top-panel {
