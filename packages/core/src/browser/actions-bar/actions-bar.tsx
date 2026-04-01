@@ -15,6 +15,11 @@ export class ActionsBar extends SolidWidget implements IActionsBar {
   }
 
   protected render(): JSX.Element {
-    return <div>文字</div>
+    return (
+      <footer class="h-10 px-2 flex border-t border-accent justify-between items-center">
+        <div>左边</div>
+        <div>右边</div>
+      </footer>
+    )
   }
 }

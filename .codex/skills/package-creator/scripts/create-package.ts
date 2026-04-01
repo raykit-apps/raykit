@@ -207,7 +207,7 @@ export {};
 
   // Create tsconfig.json (extending root config)
   const tsconfigJson = {
-    extends: '../../tsconfig.json',
+    extends: '../../tsconfig.base.json',
     compilerOptions: {},
     include: ['src/**/*'],
   }
