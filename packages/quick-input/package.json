@@ -12,6 +12,13 @@
     "electron": "catalog:",
     "solid-js": "catalog:"
   },
+  "raykit": {
+    "containerModules": {
+      "browser": [
+        "quickInputModule"
+      ]
+    }
+  },
   "dependencies": {
     "@raykit/base": "workspace:*",
     "@raykit/commands": "workspace:*",

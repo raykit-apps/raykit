@@ -1,8 +1,8 @@
 import { ApplicationMain, applicationMainModule } from '@raykit/core'
-import { windowMainModule } from '@raykit/windows/main'
 import { app } from 'electron'
 import started from 'electron-squirrel-startup'
 import { Container } from 'inversify'
+import { loadAutoMainModules } from 'virtual:raykit/auto-main-modules'
 import 'reflect-metadata'
 
 (async () => {
@@ -14,7 +14,7 @@ import 'reflect-metadata'
   container.load(applicationMainModule)
 
   function load() {
-    container.load(windowMainModule)
+    loadAutoMainModules(container)
   }
 
   async function start() {

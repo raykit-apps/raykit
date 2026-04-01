@@ -95,7 +95,7 @@ export class ApplicationShell extends Widget {
     }
   }
 
-  async closeWidget(id: string) {
+  async closeWidget(_id: string) {
 
   }
 }

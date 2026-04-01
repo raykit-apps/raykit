@@ -11,6 +11,13 @@
   "main": "./src/common/index.ts",
   "types": "./src/common/index.ts",
   "scripts": {},
+  "raykit": {
+    "containerModules": {
+      "main": [
+        "windowMainModule"
+      ]
+    }
+  },
   "dependencies": {
     "@raykit/base": "workspace:*",
     "electron": "catalog:",

@@ -5,6 +5,7 @@ import path from 'node:path'
 import colors from 'picocolors'
 import { createLogger, mergeConfig, build as viteBuild } from 'vite'
 import { resolveConfig } from '../config'
+import { deepClone } from '../utils'
 
 export interface BuildOptions {
   outDir?: string
@@ -88,8 +89,7 @@ function createBuildTask(buildConfig: BuildConfig, root?: string, options?: Buil
   const type = buildConfig.target || 'node'
   const name = `${type}:${path.basename(buildConfig.entry)}`
 
-  // Deep clone by serializing and deserializing
-  const viteConfig: InlineConfig = JSON.parse(JSON.stringify(buildConfig.vite || {}))
+  const viteConfig = deepClone<Record<string, unknown>>((buildConfig.vite || {}) as Record<string, unknown>) as InlineConfig
 
   // Apply options overrides
   if (options?.outDir) {
@@ -119,8 +119,7 @@ function createBuildTask(buildConfig: BuildConfig, root?: string, options?: Buil
 function createRendererTask(rendererConfig: RendererConfig, root?: string, options?: BuildOptions): BuildTask {
   const name = `renderer:${path.basename(rendererConfig.entry)}`
 
-  // Deep clone by serializing and deserializing
-  const viteConfig: InlineConfig = JSON.parse(JSON.stringify(rendererConfig.vite || {}))
+  const viteConfig = deepClone<Record<string, unknown>>((rendererConfig.vite || {}) as Record<string, unknown>) as InlineConfig
 
   // Apply options overrides
   if (options?.outDir) {

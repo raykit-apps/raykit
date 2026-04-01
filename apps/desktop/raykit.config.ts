@@ -5,6 +5,7 @@ import swc from 'unplugin-swc'
 import solidPlugin from 'vite-plugin-solid'
 
 export default defineConfig({
+  autoContainerModules: true,
   build: [
     {
       entry: './src/main/index.ts',

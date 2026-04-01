@@ -29,6 +29,7 @@ export default antfu(
   {
     ignores: [
       '.opencode',
+      '.codex',
       'dist',
     ],
   },

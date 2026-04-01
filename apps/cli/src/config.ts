@@ -1,8 +1,14 @@
 import type { MaybeArray } from 'rollup'
 import type { ConfigEnv, InlineConfig, LogLevel, PluginOption, UserConfig as ViteConfig } from 'vite'
+import type { AutoContainerModulesOption } from './plugins/auto-container-modules'
 import fs from 'node:fs'
 import path from 'node:path'
 import { mergeConfig, normalizePath, loadConfigFromFile as viteLoadConfigFromFile } from 'vite'
+import {
+
+  createInternalAutoContainerModulesPlugin,
+  normalizeAutoContainerModules,
+} from './plugins/auto-container-modules'
 import {
   electronMainConfigPresetPlugin,
   electronMainConfigValidatorPlugin,
@@ -55,6 +61,10 @@ export interface UserConfig {
    * Whether to launch Electron after build (development only)
    */
   launchElectron?: boolean
+  /**
+   * Auto discover and load container modules from dependency package manifests.
+   */
+  autoContainerModules?: AutoContainerModulesOption
 }
 
 export type UserConfigFnObject = (env: ConfigEnv) => UserConfig
@@ -145,6 +155,7 @@ export async function resolveConfig(
 
     if (loadResult) {
       const root = config.root
+      const packageRoot = path.dirname(loadResult.path)
       delete config.root
       delete config.configFile
 
@@ -157,6 +168,19 @@ export async function resolveConfig(
       if (buildViteConfig.filter(viteConfig => viteConfig.target === 'main').length > 1) {
         throw new Error('Only one main entry can be target.')
       }
+
+      let rendererViteConfig: MaybeArray<RendererConfig> = loadResult.config.renderer ?? []
+      if (isObject<RendererConfig>(rendererViteConfig)) {
+        rendererViteConfig = [rendererViteConfig]
+      }
+
+      const autoContainerModulesConfigured = loadResult.config.autoContainerModules !== undefined && loadResult.config.autoContainerModules !== false
+      const normalizedAutoContainerModules = normalizeAutoContainerModules(
+        loadResult.config.autoContainerModules,
+        buildViteConfig,
+        rendererViteConfig,
+      )
+
       if (buildViteConfig.length > 0) {
         buildViteConfig.forEach((userConfig) => {
           let viteConfig = userConfig.vite ?? {}
@@ -172,6 +196,17 @@ export async function resolveConfig(
               electronMainConfigValidatorPlugin(),
             ]
 
+            if (autoContainerModulesConfigured) {
+              builtInMainPlugins.push(
+                createInternalAutoContainerModulesPlugin({
+                  runtime: 'main',
+                  packageRoot,
+                  enabled: normalizedAutoContainerModules.main,
+                  virtualId: 'virtual:raykit/auto-main-modules',
+                }),
+              )
+            }
+
             viteConfig.plugins = [...builtInMainPlugins, ...viteConfig.plugins || []]
           } else if (userConfig.target === 'preload') {
             const builtInPreloadPlugins: PluginOption[] = [
@@ -185,6 +220,18 @@ export async function resolveConfig(
               electronNodeConfigPresetPlugin({ root }),
               electronNodeConfigValidatorPlugin(),
             ]
+
+            if (autoContainerModulesConfigured) {
+              builtInNodePlugins.push(
+                createInternalAutoContainerModulesPlugin({
+                  runtime: 'node',
+                  packageRoot,
+                  enabled: normalizedAutoContainerModules.node,
+                  virtualId: 'virtual:raykit/auto-node-modules',
+                }),
+              )
+            }
+
             viteConfig.plugins = [...builtInNodePlugins, ...viteConfig.plugins || []]
           }
 
@@ -193,10 +240,6 @@ export async function resolveConfig(
       }
       loadResult.config.build = buildViteConfig
 
-      let rendererViteConfig: MaybeArray<RendererConfig> = loadResult.config.renderer ?? []
-      if (isObject<RendererConfig>(rendererViteConfig)) {
-        rendererViteConfig = [rendererViteConfig]
-      }
       if (rendererViteConfig.length > 0) {
         rendererViteConfig.forEach((userConfig) => {
           let viteConfig = userConfig.vite ?? {}
@@ -210,6 +253,17 @@ export async function resolveConfig(
             electronRendererConfigPresetPlugin({ root }),
             electronRendererConfigValidatorPlugin(),
           ]
+
+          if (autoContainerModulesConfigured) {
+            builtInRendererPlugins.push(
+              createInternalAutoContainerModulesPlugin({
+                runtime: 'browser',
+                packageRoot,
+                enabled: normalizedAutoContainerModules.browser,
+                virtualId: 'virtual:raykit/auto-browser-modules',
+              }),
+            )
+          }
 
           viteConfig.plugins = [...builtInRendererPlugins, ...viteConfig.plugins || []]
 

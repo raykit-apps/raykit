@@ -93,6 +93,9 @@ export function electronMainConfigPresetPlugin(options: ElectronPluginOptions): 
       )
 
       const buildConfig = mergeConfig(defaultConfig.build, build)
+      if (defaultConfig.build.lib && build.lib) {
+        buildConfig.lib = mergeConfig(defaultConfig.build.lib, build.lib)
+      }
       config.build = buildConfig
 
       config.resolve = mergeConfig(defaultConfig.resolve, config.resolve ?? {})
@@ -220,6 +223,9 @@ export function electronPreloadConfigPresetPlugin(options: ElectronPluginOptions
       )
 
       const buildConfig = mergeConfig(defaultConfig.build, config.build || {})
+      if (defaultConfig.build.lib && config.build?.lib) {
+        buildConfig.lib = mergeConfig(defaultConfig.build.lib, config.build.lib)
+      }
       config.build = buildConfig
 
       const resolvedOutputs = resolveBuildOutputs(config.build.rollupOptions!.output, config.build.lib || false)
@@ -350,6 +356,9 @@ export function electronNodeConfigPresetPlugin(options: ElectronPluginOptions): 
       }
 
       const buildConfig = mergeConfig(defaultConfig.build, config.build || {})
+      if (defaultConfig.build.lib && config.build?.lib) {
+        buildConfig.lib = mergeConfig(defaultConfig.build.lib, config.build.lib)
+      }
       config.build = buildConfig
       config.resolve = mergeConfig(defaultConfig.resolve, config.resolve ?? {})
 
