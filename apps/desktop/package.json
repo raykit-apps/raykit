@@ -16,6 +16,7 @@
     "@raykit/core": "workspace:*",
     "@raykit/quick-input": "workspace:*",
     "@raykit/sandbox": "workspace:*",
+    "@raykit/tray": "workspace:*",
     "@raykit/windows": "workspace:*",
     "electron-squirrel-startup": "^1.0.1",
     "inversify": "catalog:",

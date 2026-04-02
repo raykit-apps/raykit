@@ -1,0 +1,31 @@
+{
+  "name": "@raykit/tray",
+  "type": "module",
+  "private": true,
+  "exports": {
+    ".": "./src/common/index.ts",
+    "./common": "./src/common/index.ts",
+    "./main": "./src/main/index.ts"
+  },
+  "main": "./src/common/index.ts",
+  "types": "./src/common/index.ts",
+  "scripts": {
+    "check": "tsc -p tsconfig.json --noEmit"
+  },
+  "raykit": {
+    "containerModules": {
+      "main": [
+        "trayMainModule"
+      ]
+    }
+  },
+  "peerDependencies": {
+    "electron": "catalog:"
+  },
+  "dependencies": {
+    "@raykit/base": "workspace:*",
+    "@raykit/core": "workspace:*",
+    "@raykit/windows": "workspace:*",
+    "inversify": "catalog:"
+  }
+}

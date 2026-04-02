@@ -90,6 +90,9 @@ importers:
       '@raykit/sandbox':
         specifier: workspace:*
         version: link:../../packages/sandbox
+      '@raykit/tray':
+        specifier: workspace:*
+        version: link:../../packages/tray
       '@raykit/windows':
         specifier: workspace:*
         version: link:../../packages/windows
@@ -136,6 +139,78 @@ importers:
       vite-plugin-solid:
         specifier: ^2.11.10
         version: 2.11.10(solid-js@1.9.12)(vite@7.3.1(@types/node@24.10.9)(jiti@2.6.1)(lightningcss@1.31.1)(tsx@4.20.5)(yaml@2.8.2))
+
+  extensions/devtools:
+    dependencies:
+      '@raykit/base':
+        specifier: workspace:*
+        version: link:../../packages/base
+      '@raykit/commands':
+        specifier: workspace:*
+        version: link:../../packages/commands
+      '@raykit/core':
+        specifier: workspace:*
+        version: link:../../packages/core
+      '@raykit/widgets':
+        specifier: workspace:*
+        version: link:../../packages/widgets
+      electron:
+        specifier: 'catalog:'
+        version: 41.1.0
+      inversify:
+        specifier: 'catalog:'
+        version: 8.1.0(reflect-metadata@0.2.2)
+      solid-js:
+        specifier: 'catalog:'
+        version: 1.9.12
+
+  extensions/settings:
+    dependencies:
+      '@raykit/base':
+        specifier: workspace:*
+        version: link:../../packages/base
+      '@raykit/commands':
+        specifier: workspace:*
+        version: link:../../packages/commands
+      '@raykit/core':
+        specifier: workspace:*
+        version: link:../../packages/core
+      '@raykit/widgets':
+        specifier: workspace:*
+        version: link:../../packages/widgets
+      electron:
+        specifier: 'catalog:'
+        version: 41.1.0
+      inversify:
+        specifier: 'catalog:'
+        version: 8.1.0(reflect-metadata@0.2.2)
+      solid-js:
+        specifier: 'catalog:'
+        version: 1.9.12
+
+  extensions/store:
+    dependencies:
+      '@raykit/base':
+        specifier: workspace:*
+        version: link:../../packages/base
+      '@raykit/commands':
+        specifier: workspace:*
+        version: link:../../packages/commands
+      '@raykit/core':
+        specifier: workspace:*
+        version: link:../../packages/core
+      '@raykit/widgets':
+        specifier: workspace:*
+        version: link:../../packages/widgets
+      electron:
+        specifier: 'catalog:'
+        version: 41.1.0
+      inversify:
+        specifier: 'catalog:'
+        version: 8.1.0(reflect-metadata@0.2.2)
+      solid-js:
+        specifier: 'catalog:'
+        version: 1.9.12
 
   packages/actions: {}
 
@@ -190,6 +265,21 @@ importers:
         specifier: 'catalog:'
         version: 1.9.12
 
+  packages/keybinding:
+    dependencies:
+      '@raykit/base':
+        specifier: workspace:*
+        version: link:../base
+      '@raykit/core':
+        specifier: workspace:*
+        version: link:../core
+      electron:
+        specifier: 'catalog:'
+        version: 41.1.0
+      inversify:
+        specifier: 'catalog:'
+        version: 8.1.0(reflect-metadata@0.2.2)
+
   packages/logger:
     dependencies:
       inversify:
@@ -225,6 +315,24 @@ importers:
       electron:
         specifier: 'catalog:'
         version: 41.1.0
+
+  packages/tray:
+    dependencies:
+      '@raykit/base':
+        specifier: workspace:*
+        version: link:../base
+      '@raykit/core':
+        specifier: workspace:*
+        version: link:../core
+      '@raykit/windows':
+        specifier: workspace:*
+        version: link:../windows
+      electron:
+        specifier: 'catalog:'
+        version: 41.1.0
+      inversify:
+        specifier: 'catalog:'
+        version: 8.1.0(reflect-metadata@0.2.2)
 
   packages/ui:
     dependencies:

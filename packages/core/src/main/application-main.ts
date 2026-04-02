@@ -22,9 +22,18 @@ export class ApplicationMain {
    * - complete startup
    */
   async start(): Promise<void> {
-    await this.startContributions()
+    this.hookApplicationEvents()
     await app.whenReady()
+    await this.startContributions()
     this.openFirstWindow()
+  }
+
+  hookApplicationEvents() {
+    app.on('will-quit', this.onWillQuit.bind(this))
+  }
+
+  protected onWillQuit(): void {
+    this.stopContributions()
   }
 
   /**
