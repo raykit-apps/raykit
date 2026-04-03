@@ -1,9 +1,9 @@
 {
-  "name": "@raykit/windows",
+  "name": "@raykit/ipc",
+  "type": "module",
   "private": true,
   "exports": {
     ".": "./src/common/index.ts",
-    "./common": "./src/common/index.ts",
     "./browser": "./src/browser/index.ts",
     "./main": "./src/main/index.ts",
     "./node": "./src/node/index.ts"
@@ -13,20 +13,13 @@
   "scripts": {
     "check": "tsc -p tsconfig.json --noEmit"
   },
-  "raykit": {
-    "containerModules": {
-      "browser": [
-        "windowBrowserModule"
-      ],
-      "main": [
-        "windowMainModule"
-      ]
-    }
+  "peerDependencies": {
+    "electron": "catalog:"
   },
   "dependencies": {
     "@raykit/base": "workspace:*",
-    "electron": "catalog:",
+    "@raykit/core": "workspace:*",
+    "@raykit/sandbox": "workspace:*",
     "inversify": "catalog:"
-  },
-  "devDependencies": {}
+  }
 }

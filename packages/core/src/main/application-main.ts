@@ -61,6 +61,6 @@ export class ApplicationMain {
   }
 
   protected async openFirstWindow() {
-    this.windowMainService.open({})
+    await this.windowMainService.openMainWindow()
   }
 }

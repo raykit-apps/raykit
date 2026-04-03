@@ -7,6 +7,11 @@ export interface Event<T> {
   (listener: (e: T) => any, thisArgs?: any, disposables?: DisposableGroup): IDisposable
 }
 
+export interface NodeEventEmitter {
+  on: (...args: any[]) => unknown
+  removeListener: (...args: any[]) => unknown
+}
+
 export namespace Event {
   const _disposable = { dispose(): void {} }
   export function getMaxListeners(event: Event<unknown>): number {
@@ -61,6 +66,20 @@ export namespace Event {
   export function filter<T, S extends T>(event: Event<T>, predicate: (e: T) => e is S): Event<S>
   export function filter<T>(event: Event<T>, predicate: (e: T) => unknown): Event<T> {
     return (listener, thisArg, disposables) => event(e => predicate(e) && listener.call(thisArg, e), undefined, disposables)
+  }
+
+  export function fromNodeEventEmitter<T>(
+    emitter: NodeEventEmitter,
+    eventName: string | symbol,
+    map: (...args: any[]) => T = (...args) => args[0] as T,
+  ): Event<T> {
+    let fn: (...args: any[]) => void = () => {}
+    const onFirstListenerAdd = () => emitter.on(eventName, fn)
+    const onLastListenerRemove = () => emitter.removeListener(eventName, fn)
+    const result = new Emitter<T>({ onFirstListenerAdd, onLastListenerRemove })
+    fn = (...args: any[]) => result.fire(map(...args))
+
+    return result.event
   }
 
   // export function any<T>(...events: Event<T>[]): Event<T>

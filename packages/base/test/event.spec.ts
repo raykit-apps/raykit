@@ -1,3 +1,4 @@
+import { EventEmitter } from 'node:events'
 import { describe, expect, it } from 'vitest'
 import { CancellationToken } from '../src/cancellation'
 import { Emitter, Event, WaitUntilEvent } from '../src/event'
@@ -57,6 +58,27 @@ describe('event', () => {
       emitter.fire(10)
 
       expect(values).toEqual([7, 10])
+    })
+  })
+
+  describe('fromNodeEventEmitter', () => {
+    it('should subscribe and unsubscribe underlying node listeners with event listeners', () => {
+      const emitter = new EventEmitter()
+      const event = Event.fromNodeEventEmitter<number>(emitter, 'value', value => value)
+      const values: number[] = []
+
+      expect(emitter.listenerCount('value')).toBe(0)
+
+      const disposable = event(value => values.push(value))
+      expect(emitter.listenerCount('value')).toBe(1)
+
+      emitter.emit('value', 7)
+      emitter.emit('value', 11)
+      disposable.dispose()
+      emitter.emit('value', 13)
+
+      expect(values).toEqual([7, 11])
+      expect(emitter.listenerCount('value')).toBe(0)
     })
   })
 })

@@ -41,7 +41,7 @@ export class DefaultTrayContribution implements TrayContribution {
   protected async openMainWindow(): Promise<void> {
     const existingWindow = BrowserWindow.getAllWindows()[0]
     if (!existingWindow) {
-      await this.windowMainService.open({})
+      await this.windowMainService.openMainWindow()
       return
     }
 

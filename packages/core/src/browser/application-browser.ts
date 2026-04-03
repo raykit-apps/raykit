@@ -1,19 +1,26 @@
 import type { MaybePromise } from '@raykit/base'
+import type { WindowContext } from '@raykit/windows'
 import { ContributionProvider } from '@raykit/base'
 import { Widget } from '@raykit/widgets'
-import { inject, injectable, named } from 'inversify'
+import { WindowBrowserService } from '@raykit/windows/browser'
+import { inject, injectable, named, optional } from 'inversify'
 import { ApplicationBrowserContribution } from './application-browser-contribution'
 import { ApplicationBrowserStateService } from './application-browser-state'
 import { ApplicationShell } from './shell/application-shell'
+import { WidgetService } from './widget-service'
 
 @injectable()
 export class ApplicationBrowser {
+  protected currentWindowContext?: WindowContext
+
   constructor(
     @inject(ContributionProvider)
     @named(ApplicationBrowserContribution)
     protected readonly contributions: ContributionProvider<ApplicationBrowserContribution>,
     @inject(ApplicationShell) protected readonly _shell: ApplicationShell,
     @inject(ApplicationBrowserStateService) protected readonly stateService: ApplicationBrowserStateService,
+    @inject(WidgetService) protected readonly widgetService: WidgetService,
+    @inject(WindowBrowserService) @optional() protected readonly windowBrowserService?: WindowBrowserService,
   ) {}
 
   get shell(): ApplicationShell {
@@ -28,6 +35,7 @@ export class ApplicationBrowser {
    * - complete startup
    */
   async start(): Promise<void> {
+    await this.configureCurrentWindow()
     await this.startContributions()
     this.stateService.state = 'started-contributions'
 
@@ -35,7 +43,7 @@ export class ApplicationBrowser {
     this.attachShell(host)
     this.stateService.state = 'attached-shell'
 
-    this.initializeLayout()
+    await this.initializeLayout()
     this.stateService.state = 'initialized-layout'
 
     this.registerEventListeners()
@@ -62,7 +70,25 @@ export class ApplicationBrowser {
   }
 
   protected async initializeLayout(): Promise<void> {
+    await this.initializeCurrentWindowLayout()
     await this.createDefaultLayout()
+  }
+
+  protected async configureCurrentWindow(): Promise<void> {
+    this.currentWindowContext = await this.windowBrowserService?.getCurrentWindowContext()
+
+    if (this.currentWindowContext?.role === 'view' && this.currentWindowContext.viewId) {
+      this.shell.configureStandaloneView(this.currentWindowContext.viewId)
+    }
+  }
+
+  protected async initializeCurrentWindowLayout(): Promise<void> {
+    if (this.currentWindowContext?.role !== 'view' || !this.currentWindowContext.viewId) {
+      return
+    }
+
+    const widget = await this.widgetService.getOrCreateWidget(this.currentWindowContext.viewId)
+    await this.shell.addWidget(widget, { area: 'main' })
   }
 
   protected async createDefaultLayout(): Promise<void> {

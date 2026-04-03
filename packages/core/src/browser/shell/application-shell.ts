@@ -9,6 +9,8 @@ export class ApplicationShell extends Widget {
 
   mainPanel?: Panel
 
+  protected standaloneViewId?: string
+
   protected readonly maximizedElement: HTMLElement
 
   constructor(
@@ -71,7 +73,23 @@ export class ApplicationShell extends Widget {
       console.error('Widgets added to the application shell must have a unique id property.')
       return
     }
-    const area = options?.area ?? 'main'
+
+    if (this.standaloneViewId && widget.id !== this.standaloneViewId) {
+      widget.hide()
+      return
+    }
+
+    const area = this.standaloneViewId ? 'main' : (options?.area ?? 'main')
+    const panel = area === 'top' ? this.topPanel : this.mainPanel
+    if (!panel) {
+      return
+    }
+
+    if (widget.parent === panel) {
+      widget.show()
+      return
+    }
+
     switch (area) {
       case 'main':
         this.mainPanel?.addWidget(widget)
@@ -96,7 +114,19 @@ export class ApplicationShell extends Widget {
   }
 
   async closeWidget(_id: string) {
+    const widget = [
+      ...(this.mainPanel?.widgets ?? []),
+      ...(this.topPanel?.widgets ?? []),
+    ].find(candidate => candidate.id === _id)
 
+    widget?.close()
+    return widget
+  }
+
+  configureStandaloneView(viewId: string): void {
+    this.standaloneViewId = viewId
+    this.topPanel?.hide()
+    this.actionsBar.hide()
   }
 }
 

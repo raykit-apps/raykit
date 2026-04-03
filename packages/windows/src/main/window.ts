@@ -1,35 +1,72 @@
-// import type { Event } from '@raykit/base'
-import type { BrowserWindow } from 'electron'
-import type { IOpenWindowOptions } from '../common'
+import type { Event, IDisposable } from '@raykit/base'
+import type { BrowserWindow, WebContents } from 'electron'
+import type {
+  IFrame,
+  IOpenMainWindow,
+  IOpenStandaloneViewWindow,
+  IOpenWindowRequest,
+  WindowConfiguration,
+  WindowContext,
+} from '../common'
 
 export const IWindowMainService = Symbol('IWindowMainService')
 export interface IWindowMainService {
-  open: (options: IOpenOptions) => Promise<IAppWindow[]>
+  readonly onDidOpenWindow: Event<IAppWindow>
+  readonly onDidDestroyWindow: Event<IAppWindow>
+  readonly onDidMoveWindow: Event<IWindowMoveEvent>
+  readonly onDidMaximizeWindow: Event<IAppWindow>
+  readonly onDidUnmaximizeWindow: Event<IAppWindow>
+  readonly onDidChangeFullScreen: Event<IWindowFullScreenChangedEvent>
+  open: (options?: IOpenOptions) => Promise<IAppWindow[]>
+  openMainWindow: (options?: IOpenMainOptions) => Promise<IAppWindow>
+  openStandaloneView: (options: IOpenStandaloneViewOptions) => Promise<IAppWindow>
+  getWindows: () => IAppWindow[]
+  getWindowById: (id: number) => IAppWindow | undefined
+  revealWindow: (window: IAppWindow) => void
 }
 
-export interface IOpenOptions extends IOpenWindowOptions {
-
-}
+export interface IOpenOptions extends IOpenWindowRequest {}
+export interface IOpenMainOptions extends IOpenMainWindow {}
+export interface IOpenStandaloneViewOptions extends IOpenStandaloneViewWindow {}
 
 export const IAppWindow = Symbol('IAppWindow')
-export interface IAppWindow {
-  // readonly onDidMaximize: Event<void>
-  // readonly onDidUnmaximize: Event<void>
-  // readonly onDidClose: Event<void>
+export interface IAppWindow extends IDisposable {
+  readonly onDidClose: Event<void>
+  readonly onDidMove: Event<IFrame>
+  readonly onDidMaximize: Event<void>
+  readonly onDidUnmaximize: Event<void>
+  readonly onDidEnterFullScreen: Event<void>
+  readonly onDidLeaveFullScreen: Event<void>
+  readonly id: number
+  readonly win: BrowserWindow
+  readonly config: WindowConfiguration
+  readonly context: WindowContext
+  init: (options: ICreateWindowOptions) => Promise<void>
+  load: () => Promise<void>
+  getBounds: () => IFrame
+  matches: (webContents: WebContents) => boolean
+  focus: () => void
+  show: () => void
+  hide: () => void
+  close: () => void
+}
 
-  readonly id: number | null
-  readonly win: BrowserWindow | null
+export interface IWindowMoveEvent {
+  window: IAppWindow
+  bounds: IFrame
+}
 
-  init: () => Promise<void>
-
-  // focus: () => void
-
-  // close: () => void
-
-  // hide: () => void
+export interface IWindowFullScreenChangedEvent {
+  window: IAppWindow
+  fullscreen: boolean
 }
 
 export const WindowFactory = Symbol('WindowFactory')
 export interface WindowFactory {
-  (): Promise<IAppWindow>
+  (options: ICreateWindowOptions): Promise<IAppWindow>
+}
+
+export interface ICreateWindowOptions {
+  config: WindowConfiguration
+  context: WindowContext
 }
