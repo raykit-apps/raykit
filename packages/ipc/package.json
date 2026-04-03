@@ -16,6 +16,16 @@
   "peerDependencies": {
     "electron": "catalog:"
   },
+  "raykit": {
+    "containerModules": {
+      "browser": [
+        "ipcBrowserModule"
+      ],
+      "main": [
+        "ipcMainModule"
+      ]
+    }
+  },
   "dependencies": {
     "@raykit/base": "workspace:*",
     "@raykit/core": "workspace:*",
